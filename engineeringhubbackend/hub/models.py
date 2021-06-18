@@ -73,7 +73,9 @@ class Event(models.Model):
 class Message(models.Model):
     userFrom = models.ForeignKey(User, related_name="user_from", on_delete=models.SET_NULL, null=True, blank=True)
     groupFrom = models.ForeignKey(Group, related_name="group_from", on_delete=models.SET_NULL, null=True, blank=True)
-    userTo = models.ForeignKey(User, related_name="user_to", on_delete=models.CASCADE)
+    userTo = models.ForeignKey(User, related_name="user_to", on_delete=models.SET_NULL, null=True, blank=True)
+    groupTo = models.ForeignKey(Group, related_name="group_to", on_delete=models.SET_NULL, null=True, blank=True)
+    
     message = models.TextField(blank=True)
     timestamp = models.DateTimeField()
 
