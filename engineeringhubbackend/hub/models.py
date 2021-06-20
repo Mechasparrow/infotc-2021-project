@@ -2,6 +2,7 @@ from typing import DefaultDict
 from django.db import models
 
 from django.contrib.auth.models import User
+from django.db.models.fields import related
 
 # Create your models here.
 
@@ -27,14 +28,14 @@ class College(models.Model):
         return str(self.name)
 
 class Instructor(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_instructor")
     facultyPage = models.URLField(null = True, blank=True)
 
     def __str__(self):
         return str(self.user.username)
 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_student")
     yearsInSchool = models.IntegerField()
 
     def __str__(self):
@@ -42,8 +43,8 @@ class Student(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    instructor = models.OneToOneField(Instructor, on_delete=models.SET_NULL, null=True, blank=True)
-    students = models.ManyToManyField(Student, "courses", blank=True)
+    instructor = models.OneToOneField(Instructor, on_delete=models.SET_NULL, null=True, blank=True, related_name = "courses_taught")
+    students = models.ManyToManyField(Student, blank=True, related_name = "courses_enrolled")
 
     def __str__(self):
         return str(self.name)
@@ -61,7 +62,7 @@ class Group(models.Model):
     
 
 class Event(models.Model):
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="group_events")
     name = models.CharField(max_length=200)
     timeStart = models.DateTimeField()
     timeEnd = models.DateTimeField() 
@@ -91,7 +92,7 @@ class Project(models.Model):
     name = models.CharField(max_length=200)
     created = models.DateTimeField()
     complete = models.BooleanField(default=False)
-    relatedProposal = models.ForeignKey(ProjectProposal, on_delete=models.SET_NULL, null=True, blank=True)
+    relatedProposal = models.ForeignKey(ProjectProposal, on_delete=models.SET_NULL, null=True, blank=True, related_name="assigned_project")
     interestedUsers = models.ManyToManyField(User, related_name="interested_users", blank=True)
 
 class ProjectNote(models.Model):
