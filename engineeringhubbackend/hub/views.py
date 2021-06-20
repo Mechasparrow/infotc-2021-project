@@ -30,11 +30,17 @@ class UserViewSet(viewsets.ViewSet):
 
     @action(detail=True, methods=['get'])
     def get_user_skills(self, request, pk):
-        located_user = User.objects.get(pk=pk)
-        queryset=models.Skill.objects.filter(users__id=located_user.pk)
-
-        serializer = serializers.SkillSerializer(queryset, many=True)
+        located_user = User.objects.get(pk=pk).user_skills
+        serializer = serializers.SkillSerializer(located_user, many=True)
         return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def get_user_discliplines(self, request, pk):
+        located_user = User.objects.get(pk=pk).user_discliplines
+        serializer = serializers.DiscliplineSerializer(located_user, many=True)
+        return Response(serializer.data)
+
+
 
     @action(detail=True, methods=['post'])
     def add_user_skill(self, request, pk):
