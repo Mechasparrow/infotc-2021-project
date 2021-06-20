@@ -16,6 +16,10 @@ class SkillViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retrie
     queryset = models.Skill.objects.all()
     serializer_class = serializers.SkillSerializer
 
+class DiscliplineViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    queryset = models.Disclipline.objects.all()
+    serializer_class = serializers.DiscliplineSerializer
+
 class UserViewSet(viewsets.ViewSet):
     
     def retrieve(self, request, pk):
@@ -40,8 +44,6 @@ class UserViewSet(viewsets.ViewSet):
         serializer = serializers.DiscliplineSerializer(located_user, many=True)
         return Response(serializer.data)
 
-
-
     @action(detail=True, methods=['post'])
     def add_user_skill(self, request, pk):
         located_user = User.objects.get(pk=pk)
@@ -50,12 +52,26 @@ class UserViewSet(viewsets.ViewSet):
 
         skill_pk = request.data['skill_pk']
         located_skill = models.Skill.objects.get(pk=skill_pk)
-        print(located_skill)
 
-        located_skill.users.add(located_user)
-        located_skill.save()
+        located_user.user_skills.add(located_skill)
+        located_user.save()
 
         return self.get_user_skills(request,pk)
+
+    
+    @action(detail=True, methods=['post'])
+    def add_user_disclipline(self, request, pk):
+        located_user = User.objects.get(pk=pk)
+
+        # Verify that located user is authenticated user TODO
+
+        disclipline_pk = request.data['disclipline_pk']
+        located_disclipline = models.Disclipline.objects.get(pk=disclipline_pk)
+        
+        located_user.user_discliplines.add(located_disclipline)
+        located_user.save()
+
+        return self.get_user_discliplines(request,pk)
 
     @action(detail=False, methods=['post'])
     def create_user(self, request):
