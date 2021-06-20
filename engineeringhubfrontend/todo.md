@@ -1,4 +1,4 @@
 # TODO list 
 
-- [ ] Please install tailwindcss
+- [X] Please install tailwindcss
 
