@@ -4,15 +4,24 @@ from rest_framework import routers, serializers, viewsets
 
 from . import models
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email']
-
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Skill
         fields = ['id', 'name']
+
+class DiscliplineSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Disclipline
+        fields = ['id', 'name']
+
+class UserSerializer(serializers.ModelSerializer):
+    user_skills = SkillSerializer(read_only=True, many=True)
+    user_discliplines = DiscliplineSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'user_skills','user_discliplines']
+
 
 class NewUserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=200)
