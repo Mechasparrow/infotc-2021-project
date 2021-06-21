@@ -1,6 +1,6 @@
 # TODO list
 
 - [X] Install Django-Rest-Framework
-- [ ] Switch Database to Postgres
+- [X] Switch Database to Postgres
 - [X] Setup models
 - [X] Begin adding routes
