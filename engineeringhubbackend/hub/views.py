@@ -46,33 +46,39 @@ class UserViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     @action(detail=True, methods=['post'])
+    @permission_classes([permissions.IsAuthenticated])
     def add_user_skill(self, request, pk):
         located_user = User.objects.get(pk=pk)
 
         # Verify that located user is authenticated user TODO
+        if request.user.is_authenticated and request.user == located_user:
+            skill_pk = request.data['skill_pk']
+            located_skill = models.Skill.objects.get(pk=skill_pk)
 
-        skill_pk = request.data['skill_pk']
-        located_skill = models.Skill.objects.get(pk=skill_pk)
+            located_user.user_skills.add(located_skill)
+            located_user.save()
 
-        located_user.user_skills.add(located_skill)
-        located_user.save()
-
-        return self.get_user_skills(request,pk)
+            return self.get_user_skills(request,pk)
+        else:
+            return Response(status=401)
 
     
     @action(detail=True, methods=['post'])
+    @permission_classes([permissions.IsAuthenticated])
     def add_user_disclipline(self, request, pk):
         located_user = User.objects.get(pk=pk)
-
-        # Verify that located user is authenticated user TODO
-
-        disclipline_pk = request.data['disclipline_pk']
-        located_disclipline = models.Disclipline.objects.get(pk=disclipline_pk)
         
-        located_user.user_discliplines.add(located_disclipline)
-        located_user.save()
+        # Verify that located user is authenticated user TODO
+        if request.user.is_authenticated and request.user == located_user:
+            disclipline_pk = request.data['disclipline_pk']
+            located_disclipline = models.Disclipline.objects.get(pk=disclipline_pk)
+            
+            located_user.user_discliplines.add(located_disclipline)
+            located_user.save()
 
-        return self.get_user_discliplines(request,pk)
+            return self.get_user_discliplines(request,pk)
+        else:
+            return Response(status=401)
 
     @action(detail=False, methods=['get'])
     def get_logged_in_user(self,request):
@@ -81,21 +87,33 @@ class UserViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'])
     def user_login(self, request):
+
         username = request.data["username"]
         password = request.data["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            token = Token.objects.create(user=user)
-            token.save()
+            token, created = Token.objects.get_or_create(user=user)
+
+            if created:
+                token.save()
 
             return Response({"status": 200, "token": token.key}) 
         else:
             return Response(status=401)
 
-    @action(detail=True, methods=['post'])
+    @action(detail=False, methods=['post'])
+    @permission_classes([permissions.IsAuthenticated])
     def user_logout(self, request):
-        # TODO
-        pass
+        if request.user.is_authenticated:
+            # Do something for authenticated users.    
+            print (request.user.id)
+            token = Token.objects.get(user=request.user.pk)
+            token.delete()
+            return Response({"message": "User Token deleted"})
+        else:
+            # Do something for anonymous users.
+            return Response({"message": "User Token invalid"})
+
 
     @action(detail=False, methods=['post'])
     def create_user(self, request):
