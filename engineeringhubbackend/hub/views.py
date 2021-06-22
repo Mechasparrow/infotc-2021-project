@@ -9,6 +9,7 @@ from rest_framework.authtoken.models import Token
 from . import serializers
 
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 from . import models
 
@@ -74,6 +75,19 @@ class UserViewSet(viewsets.ViewSet):
         return self.get_user_discliplines(request,pk)
 
     @action(detail=False, methods=['post'])
+    def user_login(self, request):
+        username = request.data["username"]
+        password = request.data["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            token = Token.objects.create(user=user)
+            token.save()
+
+            return Response({"status": 200, "token": token.key}) 
+        else:
+            return Response(status=401)
+
+    @action(detail=False, methods=['post'])
     def create_user(self, request):
         user_serializer = serializers.NewUserSerializer(data=request.data)
         if (user_serializer.is_valid()):
@@ -88,7 +102,7 @@ class UserViewSet(viewsets.ViewSet):
 
                 return Response({"status": 200, "token": token.key})
             except:
-                return Response({"status": 200,"reason": "Need unique username"})
+                return Response({"status": 500,"reason": "Need unique username"})
         else:
             print("Data not valid")
             return Response({"status": 500})
