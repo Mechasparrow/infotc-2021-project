@@ -87,6 +87,11 @@ class UserViewSet(viewsets.ViewSet):
         else:
             return Response(status=401)
 
+    @action(detail=True, methods=['post'])
+    def user_logout(self, request):
+        # TODO
+        pass
+
     @action(detail=False, methods=['post'])
     def create_user(self, request):
         user_serializer = serializers.NewUserSerializer(data=request.data)
