@@ -74,6 +74,11 @@ class UserViewSet(viewsets.ViewSet):
 
         return self.get_user_discliplines(request,pk)
 
+    @action(detail=False, methods=['get'])
+    def get_logged_in_user(self,request):
+        #TODO stub
+        pass
+
     @action(detail=False, methods=['post'])
     def user_login(self, request):
         username = request.data["username"]
