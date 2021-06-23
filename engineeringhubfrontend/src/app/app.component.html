@@ -1,5 +1,9 @@
-<button class = "py-1 m-2 px-4 bg-transparent text-black border-4 font-bold hover:text-blue-500 border-black hover:border-blue-500">
-  Hello
-</button>
 
-<router-outlet></router-outlet>
+<div class = "flex flex-col min-h-screen">
+  <Navbar></Navbar>
+  <div class = "flex-grow">
+    <HomePageComponent></HomePageComponent>
+    <router-outlet></router-outlet>
+  </div>
+  <Footer></Footer>
+</div>
