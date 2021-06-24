@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DefaultPageLayoutComponent } from './share/default-page-layout/default-page-layout.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    DefaultPageLayoutComponent
   ],
   imports: [
     BrowserModule,
