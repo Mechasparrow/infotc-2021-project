@@ -5,5 +5,25 @@ import { Injectable } from '@angular/core';
 })
 export class TokenStoreService {
 
-  constructor() { }
+  private TOKEN_SESSION_LOCATION:string = "infotc-token";
+
+  constructor() { 
+
+  }
+
+  hasAuthenticationToken(): boolean {
+    return sessionStorage.getItem(this.TOKEN_SESSION_LOCATION) != null;
+  }
+
+  setAuthenticationToken(token:string){
+    sessionStorage.setItem(this.TOKEN_SESSION_LOCATION, token);
+  }
+
+  getAuthenticationToken(): string | null {
+    return sessionStorage.getItem(this.TOKEN_SESSION_LOCATION);
+  }
+
+  clearToken() {
+    sessionStorage.clear();
+  }
 }
