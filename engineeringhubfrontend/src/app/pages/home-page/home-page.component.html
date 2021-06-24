@@ -1,104 +1,110 @@
-<div>
-    <div class = "bg-yellow-500 py-10 w-full">
-        <div class="space-x-4 text-center">
-            <img class = "inline-block" src = "../../assets/column.svg"/>
-            <img class = "inline-block" src = "../../assets/column.svg"/>
-            <img class = "inline-block" src = "../../assets/column.svg"/>
-            <img class = "inline-block" src = "../../assets/column.svg"/>
-            <img class = "inline-block" src = "../../assets/column.svg"/>
-            <img class = "inline-block" src = "../../assets/column.svg"/>
-        </div>
-    </div>
-    <div class = "bg-gray-800 h-5 w-full"></div>
-    
-    <div class = "w-full flex">
-        <div class = "flex-1">
-            <div class = "float-left">
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
+<div class = "flex flex-col min-h-screen">
+    <Navbar></Navbar>
+    <div class = "flex-grow">                
+        <div>
+            <div class = "bg-yellow-500 py-10 w-full">
+                <div class="space-x-4 text-center">
+                    <img class = "inline-block" src = "../../assets/column.svg"/>
+                    <img class = "inline-block" src = "../../assets/column.svg"/>
+                    <img class = "inline-block" src = "../../assets/column.svg"/>
+                    <img class = "inline-block" src = "../../assets/column.svg"/>
+                    <img class = "inline-block" src = "../../assets/column.svg"/>
+                    <img class = "inline-block" src = "../../assets/column.svg"/>
+                </div>
             </div>
-        </div>
-        <div class = "flex-grow text-center flex justify-center items-center">
+            <div class = "bg-gray-800 h-5 w-full"></div>
+            
+            <div class = "w-full flex">
+                <div class = "flex-1">
+                    <div class = "float-left">
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                    </div>
+                </div>
+                <div class = "flex-grow text-center flex justify-center items-center">
+                    <div>
+                        <div class = "text-2xl mb-4">
+                            Welcome to the Mizzou Engineering Hub. 
+                            <br>
+                            Please Login or Signup to Access the Portal
+                        </div>
+                        <div class = "space-x-16 ">
+                            <button routerLink="/login" class = "text-xl text-white px-8 py-1 rounded-lg bg-yellow-500 inline-block">
+                                Login
+                            </button>
+                
+                            <button routerLink="/signup" class = "text-xl text-white px-8 py-1 rounded-lg bg-yellow-500 inline-block">
+                                Sign Up
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "flex-1">
+                    <div class = "float-right">
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                        <div class = "gray-stripe"></div>
+                        <div class = "orange-stripe "></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class = "bg-gray-800 h-5 w-full"></div>
             <div>
-                <div class = "text-2xl mb-4">
-                    Welcome to the Mizzou Engineering Hub. 
-                    <br>
-                    Please Login or Signup to Access the Portal
-                </div>
-                <div class = "space-x-16 ">
-                    <button routerLink="/login" class = "text-xl text-white px-8 py-1 rounded-lg bg-yellow-500 inline-block">
-                        Login
-                    </button>
-        
-                    <button routerLink="/signup" class = "text-xl text-white px-8 py-1 rounded-lg bg-yellow-500 inline-block">
-                        Sign Up
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class = "flex-1">
-            <div class = "float-right">
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-                <div class = "gray-stripe"></div>
-                <div class = "orange-stripe "></div>
-            </div>
-        </div>
-
-    </div>
-    <div class = "bg-gray-800 h-5 w-full"></div>
-    <div>
-        <div class = "my-8 text-center">
-            <div class = "text-2xl">
-                What is Mizzou Engineering Hub?
-                <br>
-                Mizzou Engineering Hub is ...
-            </div>
-            <div class = "mx-auto my-4 w-48 h-1 bg-gray-500">
-
-            </div>
-
-            <!-- 3 Column Detail -->
-            <div class = "grid mx-4 grid-cols-3 gap-4" >
-                <div class = "col-span-1 w-full">
-                    <img class = "transform scale-75 mx-auto" src = "../../assets/icons/message.svg"/>
+                <div class = "my-8 text-center">
                     <div class = "text-2xl">
-                        A place to <span class = "font-bold text-yellow-500">collaborate</span>
+                        What is Mizzou Engineering Hub?
+                        <br>
+                        Mizzou Engineering Hub is ...
+                    </div>
+                    <div class = "mx-auto my-4 w-48 h-1 bg-gray-500">
+
+                    </div>
+
+                    <!-- 3 Column Detail -->
+                    <div class = "grid mx-4 grid-cols-3 gap-4" >
+                        <div class = "col-span-1 w-full">
+                            <img class = "transform scale-75 mx-auto" src = "../../assets/icons/message.svg"/>
+                            <div class = "text-2xl">
+                                A place to <span class = "font-bold text-yellow-500">collaborate</span>
+                            </div>
+                        </div>
+                        <div class = "col-span-1 w-full">
+                            <img class = "transform scale-75 mx-auto" src = "../../assets/icons/handiwork.svg"/>
+                            <div class = "text-2xl">
+                                A place to <span class = "font-bold text-yellow-500">build</span>
+                            </div>
+                        </div>
+                        <div class = "col-span-1 w-full">
+                            <img class = "transform scale-75 mx-auto" src = "../../assets/icons/share.svg"/>
+                            <div class = "text-2xl">
+                                A place to <span class = "font-bold text-yellow-500">share</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projects and Ideas -->
+                    <div class = "mt-14 text-3xl">
+                        <span class = "font-bold text-yellow-500">Projects</span> and <span class = "font-bold text-yellow-500">Ideas</span>
                     </div>
                 </div>
-                <div class = "col-span-1 w-full">
-                    <img class = "transform scale-75 mx-auto" src = "../../assets/icons/handiwork.svg"/>
-                    <div class = "text-2xl">
-                        A place to <span class = "font-bold text-yellow-500">build</span>
-                    </div>
-                </div>
-                <div class = "col-span-1 w-full">
-                    <img class = "transform scale-75 mx-auto" src = "../../assets/icons/share.svg"/>
-                    <div class = "text-2xl">
-                        A place to <span class = "font-bold text-yellow-500">share</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projects and Ideas -->
-            <div class = "mt-14 text-3xl">
-                <span class = "font-bold text-yellow-500">Projects</span> and <span class = "font-bold text-yellow-500">Ideas</span>
             </div>
         </div>
     </div>
+    <Footer></Footer>
 </div>
