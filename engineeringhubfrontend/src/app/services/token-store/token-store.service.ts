@@ -16,6 +16,7 @@ export class TokenStoreService {
   }
 
   setAuthenticationToken(token:string){
+    console.log("token saved");
     sessionStorage.setItem(this.TOKEN_SESSION_LOCATION, token);
   }
 

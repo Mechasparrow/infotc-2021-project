@@ -81,9 +81,14 @@ class UserViewSet(viewsets.ViewSet):
             return Response(status=401)
 
     @action(detail=False, methods=['get'])
+    @permission_classes([permissions.IsAuthenticated])
     def get_logged_in_user(self,request):
-        #TODO stub
-        pass
+        if (request.user.is_authenticated):
+            queryset = request.user
+            serializer = serializers.UserSerializer(queryset)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
 
     @action(detail=False, methods=['post'])
     def user_login(self, request):
@@ -116,11 +121,12 @@ class UserViewSet(viewsets.ViewSet):
 
 
     @action(detail=False, methods=['post'])
-    def create_user(self, request):
+    def user_signup(self, request):
         user_serializer = serializers.NewUserSerializer(data=request.data)
         if (user_serializer.is_valid()):
             
             try:
+                print("try")
                 user = User.objects.create_user(username=user_serializer.data["username"], password=user_serializer.data["password"])
             
                 user.save()
@@ -129,8 +135,10 @@ class UserViewSet(viewsets.ViewSet):
                 token.save()
 
                 return Response({"status": 200, "token": token.key})
-            except:
-                return Response({"status": 500,"reason": "Need unique username"})
+            except Exception as e:
+                
+                print(str(e))
+                return Response(status=500)
         else:
             print("Data not valid")
-            return Response({"status": 500})
+            return Response(status=500)

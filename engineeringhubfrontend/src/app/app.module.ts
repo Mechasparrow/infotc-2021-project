@@ -12,6 +12,7 @@ import { NavbarComponent } from './share/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],
