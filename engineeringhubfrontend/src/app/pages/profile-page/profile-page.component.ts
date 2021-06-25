@@ -17,6 +17,21 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
+  async logout(){
+    let token = this.tokenStore.getAuthenticationToken();
+    
+    if (token != null){
+      try {
+        await this.api.userLogout(token);
+      }catch (err) {
+        console.log(err);
+        alert("Auth error: going back home");
+      }
+    }
+
+    this.goBackHome();
+  }
+
   ngOnInit(): void {
     console.log("loading authenticated user");
     this.loadAuthenticatedUser();  

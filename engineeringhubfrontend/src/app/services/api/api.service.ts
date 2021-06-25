@@ -26,6 +26,18 @@ export class ApiService {
 
   }
 
+  async userLogout(token:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${token}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/users/user_logout/`, httpOptions).toPromise().then ((data:any) => {
+      this.tokenStore.clearToken();
+    });
+  }
+
   async userSignUp(username:string,password:string, confirmPassword:string){
     var payload = {
       username: username,

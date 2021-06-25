@@ -1,7 +1,26 @@
 <DefaultPageLayout>
     <div class = "flex flex-grow flex-col h-full">
-        <div class = "px-4 pt-10 text-2xl flex-grow w-48 bg-yellow-500 text-white">
-            Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}
+        <div class = "flex-grow w-52 bg-yellow-500 ">
+            <div class = "pt-10 text-center text-2xl text-white">
+                Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}
+            </div>
+            <div class = "mt-10">
+                <div class = "menu-row border-t-4">
+                    My Projects
+                </div>
+                <div class = "menu-row">
+                    My Friends
+                </div>
+                <div class = "menu-row">
+                    My Groups
+                </div>
+                <div class = "menu-row">
+                    My Messages
+                </div>
+                <div (click)="logout()" class = "menu-row">
+                    X Logout
+                </div>
+            </div>
         </div>
     </div>
 </DefaultPageLayout>
