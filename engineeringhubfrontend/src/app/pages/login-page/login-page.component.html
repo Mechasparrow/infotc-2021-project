@@ -19,9 +19,9 @@
 
                 <button [ngClass] = "{
                     'cursor-default': !loginForm.valid,
-                    'bg-gray-400': !loginForm.valid,
-                    'bg-gray-800': loginForm.valid
-                }" [disabled] = "!loginForm.valid" class = "float-right bg-gray-400 text-white px-4 py-2 rounded-full">
+                    'bg-mizzou-gray': !loginForm.valid,
+                    'bg-mizzou-black': loginForm.valid
+                }" [disabled] = "!loginForm.valid" class = "float-right text-white px-4 py-2 rounded-full">
                     Submit
                 </button>
             </form>
