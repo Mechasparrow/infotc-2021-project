@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Disclipline } from 'src/app/models/Disclipline';
+import { Skill } from 'src/app/models/Skill';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api/api.service';
 import { TokenStoreService } from 'src/app/services/token-store/token-store.service';
@@ -17,12 +19,26 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
+  newSkillAdded(skill:string){
+    //TODO reach out to server and update the user_skills
+  
+    //update user skills
+    this.authenticatedUser?.user_skills.push(<Skill>{name: skill});
+  }
+
   getSkillsList(){
     if (this.authenticatedUser != undefined){
       return this.authenticatedUser.user_skills.map((skill)=>skill.name)
     }else{
       return [];
     }
+  }
+
+  newDiscliplineAdded(disclipline:string){
+    //TODO reach out to server and update the user_discliplines
+  
+    //update user discliplines
+    this.authenticatedUser?.user_discliplines.push(<Disclipline>{name: disclipline});
   }
 
   getDiscliplinesList(){

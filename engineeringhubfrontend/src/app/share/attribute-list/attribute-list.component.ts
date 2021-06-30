@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'AttributeList',
@@ -7,12 +8,35 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AttributeListComponent implements OnInit {
 
+  @Input() editable: boolean = false;
+
   @Input() listName: string = "";
   @Input() attributeList: string[] = [];
+
+  @Output() attributedAdded: EventEmitter<string> = new EventEmitter<string>();
+
+  editting:boolean = false;
+  newAttribute: FormControl = new FormControl("");
 
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  onEdit(): void {
+    this.editting = true;
+  }
+
+  onSubmit(){
+    let createdAttribute = this.newAttribute.value;
+
+    //TODO Emit event back to the Profile page component
+    this.attributedAdded.emit(createdAttribute);
+
+    //Stop editting
+    this.editting = false;
+    this.newAttribute.setValue("");
   }
 
 }

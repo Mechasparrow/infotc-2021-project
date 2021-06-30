@@ -1,8 +1,17 @@
 <div>
-    <div class = "inline text-xl font-bold">{{listName}}:</div>
+    <div class = "inline text-xl font-bold">{{listName}}s:</div>
     <div class = "inline-block ml-4 space-x-2">
         <div class = "inline-block bg-mizzou-black text-white rounded-full px-6" *ngFor="let attribute of attributeList">
             {{attribute}}
         </div>
     </div>
+
+    <button (click)="onEdit()" *ngIf="editable && !editting" class = "inline-block hover:bg-mizzou-orange bg-mizzou-black text-white rounded-full ml-2 px-4">
+        +
+    </button>
+
+    <form (ngSubmit) = "onSubmit()" class = "inline-block" *ngIf="editting">
+        <input [formControl] = "newAttribute" class = "ml-2 rounded-full" type="text" />
+        <button class = "inline-block hover:bg-mizzou-orange bg-mizzou-black text-white rounded-full ml-2 px-4">Add new {{listName}}</button>
+    </form>
 </div>

@@ -2,8 +2,10 @@
     <div class = "flex flex-grow h-full">
         <div class = "flex flex-col">
             <div class = "flex-grow w-52 bg-mizzou-gold">
-                <div class = "pt-10 text-center text-2xl text-black">
-                    Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}
+                <div class = "pt-10 text-black">
+                    <div class = "px-1 text-center mb-2 text-2xl">Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}</div>
+                    <div class = "px-2 text-xl">College: </div>
+                    <div class = "px-2 text-xl">Major: </div>
                 </div>
                 <div class = "mt-10">
                     <div class = "menu-row border-t-4">
@@ -27,12 +29,32 @@
         <div class = "flex-grow">
             <div class = "mt-4 ml-4 space-y-4">
                 <div>
-                    <AttributeList listName="Skills" [attributeList]="getSkillsList()"></AttributeList>
+                    <AttributeList (attributedAdded)="newSkillAdded($event)"  [editable] = "true" listName="Skill" [attributeList]="getSkillsList()"></AttributeList>
                 </div>
                 <div>
-                    <AttributeList listName="Discliplines" [attributeList]="getDiscliplinesList()"></AttributeList>
+                    <AttributeList (attributedAdded)="newDiscliplineAdded($event)" [editable] = "true" listName="Disclipline" [attributeList]="getDiscliplinesList()"></AttributeList>
                 </div>
             </div>
+
+            <form class="mx-8 mt-4">
+                <select class = "rounded-full mb-2">
+                    <option selected value="projects">Projects</option>
+                    
+                    <option value="users">Users</option>
+                    
+                    <option value="groups">Groups</option>
+                </select>
+                <div class = "flex">
+                    <input class = "rounded-full flex-grow" type="text"/>
+    
+                    <div class = "w-24">
+                        <button class = "p-4 ml-4 rounded-full bg-mizzou-gold font-bold text-white">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
         </div>
         
     </div>
