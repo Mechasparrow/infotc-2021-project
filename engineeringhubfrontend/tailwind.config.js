@@ -13,6 +13,9 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
       extend: {
+        fontFamily: {
+          'sans': ['OpenSans', 'Helvetica', 'Arial', 'sans-serif']
+        },
         colors: {
           mizzou: {  
             'gold': '#F1B82D',

@@ -1,4 +1,15 @@
 @import 'tailwindcss/base';
+
+@layer base {
+        
+    @font-face {
+        font-family: OpenSans;
+        src: url(./assets/fonts/open-sans/OpenSans-Regular.ttf);
+    }
+}
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
+    
+
+
