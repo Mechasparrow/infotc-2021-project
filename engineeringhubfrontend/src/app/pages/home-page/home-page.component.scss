@@ -1,7 +1,15 @@
 .orange-stripe{
-    @apply w-20 h-8 bg-yellow-500;
+    @apply w-20 h-8 bg-mizzou-gold;
 }
 
 .gray-stripe{
-    @apply w-20 h-8 bg-gray-500;
+    @apply w-20 h-8 bg-mizzou-gray;
+}
+
+.text-highlight {
+    @apply font-bold text-mizzou-gold
+}
+
+.home-button {
+    @apply text-xl text-white px-8 py-1 rounded-lg hover:bg-mizzou-orange bg-mizzou-gold inline-block
 }

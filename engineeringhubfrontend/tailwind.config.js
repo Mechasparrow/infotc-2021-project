@@ -12,7 +12,23 @@ module.exports = {
     },
     darkMode: false, // or 'media' or 'class'
     theme: {
-      extend: {},
+      extend: {
+        colors: {
+          mizzou: {  
+            'gold': '#F1B82D',
+            'warmgray':'#8F8884',
+            'lightwarmgray':'#DBD5CD',
+            'lightgray':'#D7D7D7',
+            'lightblue':'#E4F1FA',
+            'blue':'#1C5E90',
+            'green': '#69901D',
+            'red': '#900000',
+            'gray': '#7D7D7D',
+            'black': '#000000',
+            'orange': "#BD5C2C"
+          }
+        }
+      },
     },
     variants: {
       extend: {},
