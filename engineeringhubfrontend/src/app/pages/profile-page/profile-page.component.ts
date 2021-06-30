@@ -69,10 +69,6 @@ export class ProfilePageComponent implements OnInit {
     this.loadAuthenticatedUser();  
   }
 
-  goBackHome() {
-    this.router.navigate(['/']);
-  }
-
   async loadAuthenticatedUser() {
     let token = this.tokenStore.getAuthenticationToken();
     
@@ -90,4 +86,11 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
+  goBackHome() {
+    this.router.navigate(['/']);
+  }
+
+  navigateToProjects(){
+    this.router.navigate(['/projects']);
+  }
 }

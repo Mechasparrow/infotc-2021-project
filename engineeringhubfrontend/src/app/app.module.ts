@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultPageLayoutComponent } from './share/default-page-layout/default-page-layout.component';
 import { AttributeListComponent } from './share/attribute-list/attribute-list.component';
 import { MainSearchComponent } from './share/main-search/main-search.component';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MainSearchComponent } from './share/main-search/main-search.component';
     ProfilePageComponent,
     DefaultPageLayoutComponent,
     AttributeListComponent,
-    MainSearchComponent
+    MainSearchComponent,
+    ProjectPageComponent
   ],
   imports: [
     BrowserModule,
