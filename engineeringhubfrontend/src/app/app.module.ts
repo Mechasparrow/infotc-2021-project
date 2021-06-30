@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DefaultPageLayoutComponent } from './share/default-page-layout/default-page-layout.component';
+import { AttributeListComponent } from './share/attribute-list/attribute-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DefaultPageLayoutComponent } from './share/default-page-layout/default-
     LoginPageComponent,
     SignUpPageComponent,
     ProfilePageComponent,
-    DefaultPageLayoutComponent
+    DefaultPageLayoutComponent,
+    AttributeListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,26 +1,39 @@
 <DefaultPageLayout>
-    <div class = "flex flex-grow flex-col h-full">
-        <div class = "flex-grow w-52 bg-mizzou-gold">
-            <div class = "pt-10 text-center text-2xl text-black">
-                Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}
-            </div>
-            <div class = "mt-10">
-                <div class = "menu-row border-t-4">
-                    My Projects
+    <div class = "flex flex-grow h-full">
+        <div class = "flex flex-col">
+            <div class = "flex-grow w-52 bg-mizzou-gold">
+                <div class = "pt-10 text-center text-2xl text-black">
+                    Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}
                 </div>
-                <div class = "menu-row">
-                    My Friends
-                </div>
-                <div class = "menu-row">
-                    My Groups
-                </div>
-                <div class = "menu-row">
-                    My Messages
-                </div>
-                <div (click)="logout()" class = "menu-row">
-                    X Logout
+                <div class = "mt-10">
+                    <div class = "menu-row border-t-4">
+                        My Projects
+                    </div>
+                    <div class = "menu-row">
+                        My Friends
+                    </div>
+                    <div class = "menu-row">
+                        My Groups
+                    </div>
+                    <div class = "menu-row">
+                        My Messages
+                    </div>
+                    <div (click)="logout()" class = "menu-row">
+                        X Logout
+                    </div>
                 </div>
             </div>
         </div>
+        <div class = "flex-grow">
+            <div class = "mt-4 ml-4 space-y-4">
+                <div>
+                    <AttributeList listName="Skills" [attributeList]="getSkillsList()"></AttributeList>
+                </div>
+                <div>
+                    <AttributeList listName="Discliplines" [attributeList]="getDiscliplinesList()"></AttributeList>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </DefaultPageLayout>
