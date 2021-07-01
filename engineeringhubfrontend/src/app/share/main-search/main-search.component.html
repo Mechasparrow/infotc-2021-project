@@ -1,6 +1,6 @@
-<div>
-    <form class="mx-8 mt-4">
-        <select class = "rounded-full mb-2">
+<div class = "mx-8">
+    <form [formGroup] = "searchForm" (ngSubmit)="onSubmit()" class="mt-4">
+        <select formControlName="searchFilter" class = "rounded-full mb-2">
             <option selected value="projects">Projects</option>
             
             <option value="users">Users</option>
@@ -8,13 +8,39 @@
             <option value="groups">Groups</option>
         </select>
         <div class = "flex">
-            <input class = "rounded-full flex-grow" type="text"/>
+            <input formControlName="searchInput" class = "rounded-full flex-grow" type="text"/>
     
             <div class = "w-24">
-                <button class = "p-4 ml-4 rounded-full bg-mizzou-gold font-bold text-white">
+                <button class = "p-4 ml-4 rounded-full hover:bg-mizzou-orange bg-mizzou-gold font-bold text-white">
                     Search
                 </button>
             </div>
         </div>
     </form>
+
+    <div class="mt-4 mb-4 space-y-4">
+        <div>
+            <ResultCard 
+            [cardType]="0" 
+            [projectAttributes]="['C#']" 
+            [projectName]="'Semester Capstone 1'" 
+            [projectDescription]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'" ></ResultCard>
+        </div>
+        
+        <div>
+            <ResultCard 
+            [cardType]="1"
+            [genericName]="'MCA'"
+            ></ResultCard>
+
+        </div>
+
+        <div>
+            <ResultCard 
+            [cardType]="2"
+            [genericName]="'Paul'"
+            ></ResultCard>
+
+        </div>
+    </div>
 </div>

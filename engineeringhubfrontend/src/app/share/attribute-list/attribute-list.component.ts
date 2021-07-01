@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 export class AttributeListComponent implements OnInit {
 
   @Input() editable: boolean = false;
-
+  @Input() hasHeader: boolean = true;
   @Input() listName: string = "";
   @Input() attributeList: string[] = [];
 

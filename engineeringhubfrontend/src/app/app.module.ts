@@ -17,6 +17,7 @@ import { DefaultPageLayoutComponent } from './share/default-page-layout/default-
 import { AttributeListComponent } from './share/attribute-list/attribute-list.component';
 import { MainSearchComponent } from './share/main-search/main-search.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { ResultCardComponent } from './share/result-card/result-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
     DefaultPageLayoutComponent,
     AttributeListComponent,
     MainSearchComponent,
-    ProjectPageComponent
+    ProjectPageComponent,
+    ResultCardComponent
   ],
   imports: [
     BrowserModule,
