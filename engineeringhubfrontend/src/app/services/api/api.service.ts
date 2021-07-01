@@ -15,12 +15,22 @@ export class ApiService {
 
   //TODO
   async addUserSkill(skill:string, authToken:string){
-
+    //POST /skills/
+    var payload = {
+      name: skill
+    }
+    
+    return this.http.post(`${this.apiEndpoint}/skills/`, payload).toPromise();
   }
 
   //TODO
-  async addUserDisclipline(skill:string, authToken:string){
+  async addUserDisclipline(disclipline:string, authToken:string){
+    //POST /discliplines/
+    var payload = {
+      name: disclipline
+    }
 
+    return this.http.post(`${this.apiEndpoint}/discliplines/`, payload).toPromise();
   }
 
   async userLogin(username:string,password:string){
