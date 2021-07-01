@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TokenStoreService } from '../token-store/token-store.service';
 
 @Injectable({
@@ -59,5 +59,28 @@ export class ApiService {
     }
 
     return this.http.get(`${this.apiEndpoint}/users/get_logged_in_user/`, httpOptions).toPromise();
+  }
+
+  async getUserProjects(token:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${token}`
+      })
+    }
+
+    return this.http.get(`${this.apiEndpoint}/projects/viewUserProjects/`, httpOptions).toPromise();
+  }
+
+  async searchProjects(searchString:string){
+    var payload = 
+    {
+      "search_query": searchString  
+    }
+
+    var httpOptions = {
+      params: payload
+    }
+
+    return this.http.get(`${this.apiEndpoint}/projects/searchProjects/`, httpOptions).toPromise();
   }
 }
