@@ -13,6 +13,16 @@ export class ApiService {
 
   }
 
+  //TODO
+  async addUserSkill(skill:string, authToken:string){
+
+  }
+
+  //TODO
+  async addUserDisclipline(skill:string, authToken:string){
+
+  }
+
   async userLogin(username:string,password:string){
     var payload = {
       username: username,
