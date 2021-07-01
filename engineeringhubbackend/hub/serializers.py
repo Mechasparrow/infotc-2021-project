@@ -25,7 +25,6 @@ class CollegeSerializer(serializers.ModelSerializer):
         model = models.College
         fields = ['id', 'name']
 
-
 class UserSerializer(serializers.ModelSerializer):
     user_skills = SkillSerializer(read_only=True, many=True)
     user_discliplines = DiscliplineSerializer(read_only=True, many=True)
@@ -36,6 +35,13 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'user_skills','user_discliplines', 'majors', 'colleges']
 
+class ProjectSerializer(serializers.ModelSerializer):
+    project_skills = SkillSerializer(read_only=True, many=True)
+    project_discliplines = DiscliplineSerializer(read_only=True,many=True)
+
+    class Meta:
+        model = models.Project
+        fields = ['id', 'owningUser', 'owningGroup', 'name', 'created', 'complete', 'relatedProposal', 'interestedUsers', 'private','project_skills','project_discliplines']
 
 class NewUserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=200)

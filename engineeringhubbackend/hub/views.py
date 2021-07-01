@@ -142,3 +142,19 @@ class UserViewSet(viewsets.ViewSet):
         else:
             print("Data not valid")
             return Response(status=500)
+
+class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    queryset=models.Project.objects.all()
+    serializer_class=serializers.ProjectSerializer
+    
+    @action(detail=False, methods=['get'])
+    @permission_classes([permissions.IsAuthenticated])
+    def viewUserProjects(self,request):
+        # Verify that located user is authenticated user TODO
+        if request.user.is_authenticated:
+            queryset = models.Project.objects.filter(owningUser=request.user)
+            
+            serializer = serializers.ProjectSerializer(queryset, many=True)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)

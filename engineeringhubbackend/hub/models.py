@@ -94,6 +94,7 @@ class Project(models.Model):
     complete = models.BooleanField(default=False)
     relatedProposal = models.ForeignKey(ProjectProposal, on_delete=models.SET_NULL, null=True, blank=True, related_name="assigned_project")
     interestedUsers = models.ManyToManyField(User, related_name="interested_users", blank=True)
+    private = models.BooleanField(default = False)
 
 class ProjectNote(models.Model):
     title = models.CharField(max_length=200)
