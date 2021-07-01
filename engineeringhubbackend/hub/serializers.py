@@ -14,13 +14,27 @@ class DiscliplineSerializer(serializers.ModelSerializer):
         model = models.Disclipline
         fields = ['id', 'name']
 
+
+class MajorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Major
+        fields = ['id', 'name']
+
+class CollegeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.College
+        fields = ['id', 'name']
+
+
 class UserSerializer(serializers.ModelSerializer):
     user_skills = SkillSerializer(read_only=True, many=True)
     user_discliplines = DiscliplineSerializer(read_only=True, many=True)
+    majors = MajorSerializer(read_only=True, many=True)
+    colleges = CollegeSerializer(read_only=True, many=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'user_skills','user_discliplines']
+        fields = ['id', 'username', 'email', 'user_skills','user_discliplines', 'majors', 'colleges']
 
 
 class NewUserSerializer(serializers.Serializer):

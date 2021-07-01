@@ -4,8 +4,8 @@
             <div class = "flex-grow w-52 bg-mizzou-gold">
                 <div class = "pt-10 text-black">
                     <div class = "px-1 text-center mb-2 text-2xl">Welcome {{authenticatedUser != undefined ? authenticatedUser.username : ""}}</div>
-                    <div class = "px-2 text-xl">College: </div>
-                    <div class = "px-2 text-xl">Major: </div>
+                    <div class = "px-2 text-xl">College: {{authenticatedUser != undefined ? authenticatedUser.colleges[0].name : ""}}</div>
+                    <div class = "px-2 text-xl">Major: {{authenticatedUser != undefined ? authenticatedUser.majors[0].name : ""}} </div>
                 </div>
                 <div class = "mt-10">
                     <div (click)="navigateToProjects()" class = "menu-row border-t-4">
