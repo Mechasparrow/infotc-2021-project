@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'hub.apps.HubConfig',
     'django.contrib.auth',
+    'django.contrib.postgres',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',

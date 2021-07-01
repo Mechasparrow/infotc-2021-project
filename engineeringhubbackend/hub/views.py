@@ -158,3 +158,12 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
             return Response(serializer.data)
         else:
             return Response(status=401)
+
+    @action(detail=False, methods=['get'])
+    def searchProjects(self, request):
+        searchString = request.data["search_query"]
+
+        queryset = models.Project.objects.filter(name__search=searchString)
+
+        serializer = serializers.ProjectSerializer(queryset,many=True)
+        return Response(serializer.data)
