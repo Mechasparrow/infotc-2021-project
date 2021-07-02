@@ -161,7 +161,7 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
 
     @action(detail=False, methods=['get'])
     def searchProjects(self, request):
-        searchString = request.data["search_query"]
+        searchString = request.query_params["search_query"]
 
         queryset = models.Project.objects.filter(name__search=searchString)
 

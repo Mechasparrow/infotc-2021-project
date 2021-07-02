@@ -35,6 +35,7 @@ export interface Project {
     id: number,
     owningUser: number,
     owningGroup: number,
+    description:string,
     name: string,
     created: Date,
     complete:boolean,

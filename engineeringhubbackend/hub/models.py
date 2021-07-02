@@ -90,6 +90,7 @@ class Project(models.Model):
     owningUser = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     owningGroup = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
     created = models.DateTimeField()
     complete = models.BooleanField(default=False)
     relatedProposal = models.ForeignKey(ProjectProposal, on_delete=models.SET_NULL, null=True, blank=True, related_name="assigned_project")

@@ -13,7 +13,6 @@ export class ApiService {
 
   }
 
-  //TODO
   async addUserSkill(skill:string, authToken:string){
     //POST /skills/
     var payload = {
@@ -23,7 +22,6 @@ export class ApiService {
     return this.http.post(`${this.apiEndpoint}/skills/`, payload).toPromise();
   }
 
-  //TODO
   async addUserDisclipline(disclipline:string, authToken:string){
     //POST /discliplines/
     var payload = {

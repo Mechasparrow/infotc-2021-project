@@ -41,7 +41,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Project
-        fields = ['id', 'owningUser', 'owningGroup', 'name', 'created', 'complete', 'relatedProposal', 'interestedUsers', 'private','project_skills','project_discliplines']
+        fields = ['id', 'owningUser', 'owningGroup', 'name', 'description','created', 'complete', 'relatedProposal', 'interestedUsers', 'private','project_skills','project_discliplines']
 
 class NewUserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=200)
