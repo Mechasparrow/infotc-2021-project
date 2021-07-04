@@ -18,6 +18,10 @@ import { AttributeListComponent } from './share/attribute-list/attribute-list.co
 import { MainSearchComponent } from './share/main-search/main-search.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { ResultCardComponent } from './share/result-card/result-card.component';
+import { AddNewProjectComponent } from './pages/add-new-project/add-new-project.component';
+import { ViewProjectPageComponent } from './pages/view-project-page/view-project-page.component';
+import { AddProjectNotePageComponent } from './pages/add-project-note-page/add-project-note-page.component';
+import { AddProjectProposalPageComponent } from './pages/add-project-proposal-page/add-project-proposal-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ResultCardComponent } from './share/result-card/result-card.component';
     AttributeListComponent,
     MainSearchComponent,
     ProjectPageComponent,
-    ResultCardComponent
+    ResultCardComponent,
+    AddNewProjectComponent,
+    ViewProjectPageComponent,
+    AddProjectNotePageComponent,
+    AddProjectProposalPageComponent
   ],
   imports: [
     BrowserModule,
