@@ -35,6 +35,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'user_skills','user_discliplines', 'majors', 'colleges']
 
+class ProjectNoteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.ProjectNote
+        fields = ['id', 'title', 'note', 'created', 'relatedProject']
+
 class ProjectSerializer(serializers.ModelSerializer):
     project_skills = SkillSerializer(read_only=True, many=True)
     project_discliplines = DiscliplineSerializer(read_only=True,many=True)

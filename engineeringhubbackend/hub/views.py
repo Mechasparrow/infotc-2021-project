@@ -150,10 +150,21 @@ class UserViewSet(viewsets.ViewSet):
             print("Data not valid")
             return Response(status=500)
 
+
 class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Project.objects.all()
     serializer_class=serializers.ProjectSerializer
-    
+
+    @action(detail=True, methods=['get'])
+    def getProjectNotes(self, request, pk):
+        located_project = models.Project.objects.get(pk=pk)
+        located_project_skills = models.ProjectNote.objects.filter(relatedProject=located_project)
+
+        #TODO project note serializer
+        serializer = serializers.ProjectNoteSerializer(located_project_skills, many=True)
+
+        return Response(serializer.data)
+        
     @action(detail=False, methods=['get'])
     @permission_classes([permissions.IsAuthenticated])
     def viewUserProjects(self,request):
