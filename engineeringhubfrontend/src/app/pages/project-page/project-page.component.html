@@ -1,37 +1,19 @@
 <DefaultPageLayout>
-    <div class = "flex flex-grow h-full">
-        <div>    
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
             <div class = "mt-8 text-2xl text-center">
                 Your Projects
                 
                 <a class = "hover:underline text-mizzou-orange" href="#" [routerLink]="'/profile'">Go back</a>
             </div>
-
-            <div class="mt-4 mx-8 mb-4 space-y-4">
-                <div>
-                    <ResultCard 
-                    [cardType]="0" 
-                    [projectAttributes]="['C#']" 
-                    [projectName]="'Semester Capstone 1'" 
-                    [projectDescription]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'" ></ResultCard>
-                </div>
-                
-                <div>
-                    <ResultCard 
-                    [cardType]="0" 
-                    [projectAttributes]="['C#']" 
-                    [projectName]="'Semester Capstone 2'" 
-                    [projectDescription]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'" ></ResultCard>
-                </div>
-                
-                <div>
-                    <ResultCard 
-                    [cardType]="0" 
-                    [projectAttributes]="['C#']" 
-                    [projectName]="'Semester Capstone 3'" 
-                    [projectDescription]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'" ></ResultCard>
-                </div>
-                
+        </div>
+        <div class="mt-4 mx-8 mb-4 space-y-4">
+            <div *ngFor = "let projectResult of ToProjectCardResults(userProjectList)">
+                <ResultCard 
+                [cardType]="projectCardType" 
+                [projectAttributes]="projectResult.attributes" 
+                [projectName]="projectResult.name" 
+                [projectDescription]="projectResult.description"></ResultCard>
             </div>
         </div>
     </div>

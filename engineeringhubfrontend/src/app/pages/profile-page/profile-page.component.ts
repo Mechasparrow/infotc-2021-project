@@ -19,11 +19,16 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
-  newSkillAdded(skill:string){
-    //TODO reach out to server and update the user_skills
-  
-    //update user skills
-    this.authenticatedUser?.user_skills.push(<Skill>{name: skill});
+  async newSkillAdded(skill:string){
+    let token = this.tokenStore.getAuthenticationToken();
+    if (this.authenticatedUser != undefined && token != null){
+      try {
+        await this.api.addUserSkill(skill, this.authenticatedUser.id, token);
+        await this.loadAuthenticatedUser();
+      }catch (err){
+        console.log(err);
+      }
+    }
   }
 
   getSkillsList(){
@@ -34,11 +39,16 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
-  newDiscliplineAdded(disclipline:string){
-    //TODO reach out to server and update the user_discliplines
-  
-    //update user discliplines
-    this.authenticatedUser?.user_discliplines.push(<Disclipline>{name: disclipline});
+  async newDiscliplineAdded(disclipline:string){
+    let token = this.tokenStore.getAuthenticationToken();
+    if (this.authenticatedUser != undefined && token != null){
+      try {
+        await this.api.addUserDisclipline(disclipline, this.authenticatedUser.id, token);
+        await this.loadAuthenticatedUser();
+      }catch (err){
+        console.log(err);
+      }
+    }
   }
 
   getDiscliplinesList(){

@@ -13,22 +13,35 @@ export class ApiService {
 
   }
 
-  async addUserSkill(skill:string, authToken:string){
+  async addUserSkill(skill:string, user_pk:number, authToken:string){
     //POST /skills/
     var payload = {
       name: skill
     }
     
-    return this.http.post(`${this.apiEndpoint}/skills/`, payload).toPromise();
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    
+    return this.http.post(`${this.apiEndpoint}/users/${user_pk}/add_user_skill/`, payload, httpOptions).toPromise();
   }
 
-  async addUserDisclipline(disclipline:string, authToken:string){
+  async addUserDisclipline(disclipline:string, user_pk:number, authToken:string){
     //POST /discliplines/
     var payload = {
       name: disclipline
     }
 
-    return this.http.post(`${this.apiEndpoint}/discliplines/`, payload).toPromise();
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/users/${user_pk}/add_user_disclipline/`, payload,httpOptions).toPromise();
   }
 
   async userLogin(username:string,password:string){

@@ -52,8 +52,12 @@ class UserViewSet(viewsets.ViewSet):
 
         # Verify that located user is authenticated user TODO
         if request.user.is_authenticated and request.user == located_user:
-            skill_pk = request.data['skill_pk']
-            located_skill = models.Skill.objects.get(pk=skill_pk)
+            skill_name = request.data['name']
+
+            located_skill, skill_created = models.Skill.objects.get_or_create(name=skill_name)
+
+            if (skill_created):
+                located_skill.save()
 
             located_user.user_skills.add(located_skill)
             located_user.save()
@@ -70,9 +74,12 @@ class UserViewSet(viewsets.ViewSet):
         
         # Verify that located user is authenticated user TODO
         if request.user.is_authenticated and request.user == located_user:
-            disclipline_pk = request.data['disclipline_pk']
-            located_disclipline = models.Disclipline.objects.get(pk=disclipline_pk)
+            disclipline_name = request.data['name']
+            located_disclipline, disclipline_created = models.Disclipline.objects.get_or_create(name=disclipline_name)
             
+            if (disclipline_created):
+                located_disclipline.save()
+
             located_user.user_discliplines.add(located_disclipline)
             located_user.save()
 
