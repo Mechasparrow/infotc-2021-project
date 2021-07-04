@@ -1,1 +1,33 @@
-<p>view-project-page works!</p>
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Viewing __project here__
+                
+                <a class = "hover:underline text-mizzou-orange" href="#" [routerLink]="'/projects'">Go back</a>
+            </div>
+        </div>
+
+        <!--
+            TODO add Project info section
+        -->
+
+        <!--
+            TODO add create note button 
+        -->
+
+        <div class="mt-4">
+            <div class = "mt-2 border-2 border-mizzou-black p-4 mx-8" *ngFor = "let projectNote of projectNotes">
+                <div class = "text-2xl">
+                    {{projectNote.title}}
+                </div>
+                <div>
+                    {{projectNote.note["content"]}}
+                </div>
+                <div>
+                    {{getPrettyDate(projectNote)}}
+                </div>
+            </div>
+        </div>
+    </div>
+</DefaultPageLayout>

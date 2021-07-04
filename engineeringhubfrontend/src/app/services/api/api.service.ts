@@ -92,6 +92,12 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/users/get_logged_in_user/`, httpOptions).toPromise();
   }
 
+  async getProjectNotes(projectId:number){
+    //http://localhost:8000/api/hub/projects/1/getProjectNotes/
+  
+    return this.http.get(`${this.apiEndpoint}/projects/${projectId}/getProjectNotes/`).toPromise();
+  }
+
   async getUserProjects(token:string){
     var httpOptions = {
       headers: new HttpHeaders({
