@@ -167,6 +167,12 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
             return Response(status=401)
 
     @action(detail=False, methods=['get'])
+    @permission_classes([permissions.IsAuthenticated])
+    def viewUserProjectsWithSearch(self,request):
+        # TODO
+        pass
+
+    @action(detail=False, methods=['get'])
     def searchProjects(self, request):
         searchString = request.query_params["search_query"]
 
