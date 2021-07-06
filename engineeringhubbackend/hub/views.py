@@ -187,7 +187,7 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
     def searchProjects(self, request):
         searchString = request.query_params["search_query"]
 
-        queryset = models.Project.objects.filter(name__search=searchString)
+        queryset = models.Project.objects.filter(name__search=searchString, private=False)
 
         serializer = serializers.ProjectSerializer(queryset,many=True)
         return Response(serializer.data)
