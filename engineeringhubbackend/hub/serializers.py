@@ -41,6 +41,18 @@ class ProjectNoteSerializer(serializers.ModelSerializer):
         model = models.ProjectNote
         fields = ['id', 'title', 'note', 'created', 'relatedProject']
 
+class ProjectProposalSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.ProjectProposal
+        fields = ['id', 'owningUser', 'owningGroup', 'name', 'description']
+
+class GroupSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Group
+        fields = ['id', 'name', 'users']
+
 class ProjectSerializer(serializers.ModelSerializer):
     project_skills = SkillSerializer(read_only=True, many=True)
     project_discliplines = DiscliplineSerializer(read_only=True,many=True)

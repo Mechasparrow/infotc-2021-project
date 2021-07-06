@@ -22,7 +22,16 @@ class DiscliplineViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.
     serializer_class = serializers.DiscliplineSerializer
 
 class UserViewSet(viewsets.ViewSet):
-    
+
+    @action(detail=False,methods=['get'])    
+    def searchUsers(self, request):
+        searchString = request.query_params.get("search_query", "")
+
+        queryset = User.objects.filter(username__trigram_similar=searchString)
+
+        serializer = serializers.UserSerializer(queryset,many=True)
+        return Response(serializer.data)
+
     def retrieve(self, request, pk):
         queryset = User.objects.get(pk=pk)
         serializer = serializers.UserSerializer(queryset)
@@ -151,7 +160,16 @@ class UserViewSet(viewsets.ViewSet):
             return Response(status=500)
 
 
+class ProjectProposalViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    queryset=models.ProjectProposal.objects.all()
+    serializer_class=serializers.ProjectProposalSerializer
+
+class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    queryset=models.Group.objects.all()
+    serializer_class=serializers.GroupSerializer
+
 class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    
     queryset=models.Project.objects.all()
     serializer_class=serializers.ProjectSerializer
 
