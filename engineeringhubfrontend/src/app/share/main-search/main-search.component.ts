@@ -4,9 +4,12 @@ import { Disclipline } from 'src/app/models/Disclipline';
 import { Project } from 'src/app/models/Project';
 import { Skill } from 'src/app/models/Skill';
 import { User } from 'src/app/models/User';
+import {Group} from 'src/app/models/Group';
+
 import { ApiService } from 'src/app/services/api/api.service';
 
 import { CardType } from '../result-card/result-card.component';
+import { ProjectProposal } from 'src/app/models/ProjectProposal';
 
 interface SearchResult {
   type: CardType,
@@ -62,11 +65,27 @@ export class MainSearchComponent implements OnInit {
   }
 
   async groupSearch(searchQuery:string){
-    alert("not implemented");
+    let groupSearchResults = <Group[]> (await this.api.searchGroups(searchQuery));
+
+    this.searchResults = (<Group[]>groupSearchResults).map ((groupSearchResult: Group) => {
+      return <SearchResult>{
+        type: CardType.GroupView,
+        genericName: groupSearchResult.name
+      }
+    });
   }
 
   async projectProposalSearch(searchQuery:string){
-    alert("not implemented");
+    console.log("Search project propasls");
+    let projectProposalSearchResults = <ProjectProposal[]> (await this.api.searchProjectProposals(searchQuery));
+
+    this.searchResults = (<ProjectProposal[]>projectProposalSearchResults).map ((projectProposalSearchResult: ProjectProposal) => {
+      return <SearchResult>{
+        type: CardType.ProjectProposalView,
+        name: projectProposalSearchResult.name,
+        description: projectProposalSearchResult.description
+      }
+    });
   }
 
   async onSubmit(){

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { TokenStoreService } from '../token-store/token-store.service';
+import { of } from 'rxjs';
+import { Group } from 'src/app/models/Group';
+import { ProjectProposal } from 'src/app/models/ProjectProposal';
 
 @Injectable({
   providedIn: 'root'
@@ -132,5 +135,31 @@ export class ApiService {
     }
 
     return this.http.get(`${this.apiEndpoint}/users/searchUsers/`, httpOptions).toPromise();
+  }
+
+  async searchProjectProposals(searchString: string){
+    var payload = 
+    {
+      "search_query": searchString  
+    }
+
+    var httpOptions = {
+      params: payload
+    }
+
+    return this.http.get(`${this.apiEndpoint}/project-proposals/searchProjectProposals/`, httpOptions).toPromise();
+  }
+
+  async searchGroups(searchString: string){
+    var payload = 
+    {
+      "search_query": searchString  
+    }
+
+    var httpOptions = {
+      params: payload
+    }
+
+    return this.http.get(`${this.apiEndpoint}/groups/searchGroups/`, httpOptions).toPromise();
   }
 }

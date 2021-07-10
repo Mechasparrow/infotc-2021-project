@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
+from django.contrib.postgres.search import TrigramSimilarity
 
 from . import serializers
 
@@ -27,7 +28,9 @@ class UserViewSet(viewsets.ViewSet):
     def searchUsers(self, request):
         searchString = request.query_params.get("search_query", "")
 
-        queryset = User.objects.filter(username__trigram_similar=searchString)
+        queryset = User.objects.annotate(
+            similarity=TrigramSimilarity('username', searchString)
+        ).filter(similarity__gt=0.2).order_by('-similarity')
 
         serializer = serializers.UserSerializer(queryset,many=True)
         return Response(serializer.data)
@@ -164,9 +167,31 @@ class ProjectProposalViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, v
     queryset=models.ProjectProposal.objects.all()
     serializer_class=serializers.ProjectProposalSerializer
 
+    @action(detail=False,methods=['get'])    
+    def searchProjectProposals(self, request):
+        searchString = request.query_params.get("search_query", "")
+
+        queryset = models.ProjectProposal.objects.annotate(
+            similarity=TrigramSimilarity('name', searchString)
+        ).filter(similarity__gt=0.2).order_by('-similarity')
+
+        serializer = serializers.ProjectProposalSerializer(queryset,many=True)
+        return Response(serializer.data)
+
 class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Group.objects.all()
     serializer_class=serializers.GroupSerializer
+
+    @action(detail=False,methods=['get'])    
+    def searchGroups(self, request):
+        searchString = request.query_params.get("search_query", "")
+
+        queryset = models.Group.objects.annotate(
+            similarity=TrigramSimilarity('name', searchString)
+        ).filter(similarity__gt=0.2).order_by('-similarity')
+
+        serializer = serializers.GroupSerializer(queryset,many=True)
+        return Response(serializer.data)
 
 class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     
@@ -205,7 +230,9 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
     def searchProjects(self, request):
         searchString = request.query_params["search_query"]
 
-        queryset = models.Project.objects.filter(name__search=searchString, private=False)
+        queryset = models.Project.objects.annotate(
+            similarity=TrigramSimilarity('name', searchString)
+        ).filter(similarity__gt=0.2,private=False).order_by('-similarity')
 
         serializer = serializers.ProjectSerializer(queryset,many=True)
         return Response(serializer.data)

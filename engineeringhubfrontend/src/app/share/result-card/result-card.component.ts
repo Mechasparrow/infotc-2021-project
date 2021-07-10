@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export enum CardType {
   ProjectView,
+  ProjectProposalView,
   GroupView,
   UserView
 }
@@ -32,6 +33,8 @@ export class ResultCardComponent implements OnInit {
     switch (this.cardType){
       case CardType.ProjectView:
         return 'project';
+      case CardType.ProjectProposalView:
+        return 'project proposal';
       case CardType.GroupView:
         return 'group';
       case CardType.UserView:
