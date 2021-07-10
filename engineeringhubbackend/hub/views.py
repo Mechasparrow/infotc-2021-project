@@ -193,6 +193,8 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         serializer = serializers.GroupSerializer(queryset,many=True)
         return Response(serializer.data)
 
+
+# NOTE Ditto for Project Notes
 class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     
     queryset=models.Project.objects.all()
@@ -208,6 +210,19 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
 
         return Response(serializer.data)
         
+
+    @action(detail=True, methods=['delete'])
+    @permission_classes([permissions.IsAuthenticated])
+    def deleteUserProject(self,request,pk):
+
+        pass
+
+    @action(detail=True, methods=['put'])
+    @permission_classes([permissions.IsAuthenticated])
+    def updateUserProject(self, request,pk):
+
+        pass
+
     @action(detail=False, methods=['get'])
     @permission_classes([permissions.IsAuthenticated])
     def viewUserProjects(self,request):
