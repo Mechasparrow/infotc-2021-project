@@ -120,4 +120,17 @@ export class ApiService {
 
     return this.http.get(`${this.apiEndpoint}/projects/searchProjects/`, httpOptions).toPromise();
   }
+
+  async searchUsers(searchString:string){
+    var payload = 
+    {
+      "search_query": searchString  
+    }
+
+    var httpOptions = {
+      params: payload
+    }
+
+    return this.http.get(`${this.apiEndpoint}/users/searchUsers/`, httpOptions).toPromise();
+  }
 }
