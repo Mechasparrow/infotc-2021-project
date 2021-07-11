@@ -95,10 +95,30 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/users/get_logged_in_user/`, httpOptions).toPromise();
   }
 
+  async deleteProjectNote(noteId:number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.delete(`${this.apiEndpoint}/project-notes/${noteId}/deleteProjectNote/`, httpOptions).toPromise();
+  }
+
   async getProjectNotes(projectId:number){
     //http://localhost:8000/api/hub/projects/1/getProjectNotes/
   
     return this.http.get(`${this.apiEndpoint}/projects/${projectId}/getProjectNotes/`).toPromise();
+  }
+
+  async getUserProject(projectId:number, token:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${token}`
+      })
+    }
+
+    return this.http.get(`${this.apiEndpoint}/projects/${projectId}/getUserProject/`, httpOptions).toPromise();
   }
 
   async getUserProjects(token:string){

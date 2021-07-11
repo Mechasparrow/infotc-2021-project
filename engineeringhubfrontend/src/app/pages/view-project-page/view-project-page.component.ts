@@ -13,6 +13,7 @@ import { TokenStoreService } from 'src/app/services/token-store/token-store.serv
 export class ViewProjectPageComponent implements OnInit {
 
   projectNotes: ProjectNote[] = [];
+  project: Project | null = null;
   projectId: number = -1;
 
   constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute) {
@@ -23,6 +24,7 @@ export class ViewProjectPageComponent implements OnInit {
     let projectIdRaw: string | null = this.activatedRoute.snapshot.paramMap.get("id");
     this.projectId = projectIdRaw != null ? parseInt(projectIdRaw) : -1;
     this.getProjectNotes();
+    this.getProject();
   }
 
   private sortDatesDescending(projectNoteA: ProjectNote, projectNoteB: ProjectNote): number {
@@ -32,7 +34,33 @@ export class ViewProjectPageComponent implements OnInit {
   }
 
   async getProject(){
-    //TODO
+    let authToken = await this.tokenStore.getAuthenticationToken();
+    
+    if (authToken != null){
+      try{
+        this.project = <Project>await this.api.getUserProject(this.projectId,authToken);
+        console.log(this.project);
+      }catch(err){
+        console.log(err);
+      }
+    }
+
+  }
+
+  getProjectSkills(){
+    if (this.project != undefined){
+      return this.project.project_skills.map((skill)=>skill.name)
+    }else{
+      return [];
+    }
+  }
+
+  getProjectDiscliplines(){
+    if (this.project != undefined){
+      return this.project.project_discliplines.map((discliplines)=>discliplines.name)
+    }else{
+      return [];
+    }
   }
 
   async getProjectNotes(){
@@ -41,6 +69,25 @@ export class ViewProjectPageComponent implements OnInit {
       console.log(this.projectNotes)
     }catch (err){
       console.log(err);
+    }
+  }
+
+  async editProjectNote(noteId:number){
+
+  }
+
+  async deleteProjectNote(noteId:number){
+    let authToken = await this.tokenStore.getAuthenticationToken();
+    
+    let confirmation = confirm("Are you sure?");
+
+    if (authToken != null && confirmation == true){
+      try{
+        await this.api.deleteProjectNote(noteId,authToken);
+        await this.getProjectNotes();
+      }catch(err){
+        console.log(err);
+      }
     }
   }
 

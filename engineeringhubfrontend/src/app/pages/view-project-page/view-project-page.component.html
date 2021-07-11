@@ -2,21 +2,57 @@
     <div class = "flex flex-col flex-grow h-full">
         <div class = "mx-auto">    
             <div class = "mt-8 text-2xl text-center">
-                Viewing __project here__
+                Viewing <span class="font-bold" *ngIf="project != null">{{project.name}}</span>
                 
-                <a class = "hover:underline text-mizzou-orange" href="#" [routerLink]="'/projects'">Go back</a>
+                <a class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/projects'">Go back</a>
             </div>
         </div>
 
         <!--
             TODO add Project info section
         -->
+        <ng-container *ngIf="project != null">
+            <div class = "mt-2 mx-8">
+                <div class = "font-bold text-xl">
+                    Is Public: 
+                </div>
+                <div class = "fit-content text-white rounded-full py-1 px-4" [ngClass]="{
+                    'bg-mizzou-green': !project.private,
+                    'bg-mizzou-red': project.private
+                }">
+                    {{!project.private}}
+                </div>
+                <div class = "mt-4 font-bold text-xl">
+                    About: 
+                </div>
+                <div>
+                    {{project.description}}
+                </div>
 
+                <div class = "mt-4 space-y-4">
+                    <div>
+                        <AttributeList  listName="Skill" [attributeList]="getProjectSkills()"></AttributeList>
+                    </div>
+    
+                    <div>
+                        <AttributeList listName="Disclipline" [attributeList]="getProjectDiscliplines()"></AttributeList>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
         <!--
             TODO add create note button 
         -->
 
-        <div class="mt-4">
+        <div class = "text-2xl font-bold text-center">
+            Project Notes
+        </div>
+        <button class = "mx-8 ml-auto fit-content text-white rounded-full px-2 py-1 hover:bg-mizzou-orange bg-mizzou-gold">
+            + Add Project Note
+        </button>
+
+        <div class="mt-4 mb-4">
+            
             <div class = "mt-2 border-2 border-mizzou-black p-4 mx-8" *ngFor = "let projectNote of projectNotes">
                 <div class = "text-2xl">
                     {{projectNote.title}}
@@ -27,6 +63,15 @@
                 <div>
                     {{getPrettyDate(projectNote)}}
                 </div>
+                <div class = "mt-2 space-x-2">
+                    <button (click)="deleteProjectNote(projectNote.id)" class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-red">
+                        Delete Note
+                    </button>
+                    <button (click)="editProjectNote(projectNote.id)" class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-blue">
+                        Edit Note
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>

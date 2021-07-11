@@ -11,5 +11,9 @@
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
     
-
+@layer utilities {
+    .fit-content{
+        width:fit-content;
+    }
+}
 

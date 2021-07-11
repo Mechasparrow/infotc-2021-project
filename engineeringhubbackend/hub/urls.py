@@ -10,6 +10,7 @@ router.register(r'discliplines', views.DiscliplineViewSet, basename="Disclipline
 router.register(r'projects', views.ProjectViewSet, basename="Project")
 router.register(r'groups', views.GroupViewSet, basename="Group")
 router.register(r'project-proposals', views.ProjectProposalViewSet, basename="ProjectProposals")
+router.register(r'project-notes', views.ProjectNoteViewSet, basename="ProjectNotes")
 
 urlpatterns = [
     path('', include(router.urls)),

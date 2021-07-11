@@ -193,12 +193,40 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         serializer = serializers.GroupSerializer(queryset,many=True)
         return Response(serializer.data)
 
+class ProjectNoteViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
-# NOTE Ditto for Project Notes
+    queryset=models.ProjectNote.objects.all()
+    serializer_class=serializers.ProjectNoteSerializer
+
+    
+    @action(detail=True,methods=['delete'])
+    @permission_classes([permissions.IsAuthenticated])
+    def deleteProjectNote(self, request, pk):
+        located_project_note = models.ProjectNote.objects.get(pk=pk)
+
+        if (request.user.is_authenticated and request.user == located_project_note.relatedProject.owningUser):    
+            located_project_note.delete()
+            serializer = serializers.ProjectNoteSerializer(located_project_note)
+            return Response("deleted", status=200)
+        else:
+            return Response(status=401)
+        pass    
+
 class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     
     queryset=models.Project.objects.all()
     serializer_class=serializers.ProjectSerializer
+
+    @action(detail=True,methods=['get'])
+    @permission_classes([permissions.IsAuthenticated])
+    def getUserProject(self, request, pk):
+        located_project = models.Project.objects.get(pk=pk)
+
+        if (request.user.is_authenticated and request.user == located_project.owningUser):
+            serializer = serializers.ProjectSerializer(located_project)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
 
     @action(detail=True, methods=['get'])
     def getProjectNotes(self, request, pk):
