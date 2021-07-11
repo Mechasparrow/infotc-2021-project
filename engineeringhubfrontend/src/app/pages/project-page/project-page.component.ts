@@ -7,6 +7,7 @@ import { TokenStoreService } from 'src/app/services/token-store/token-store.serv
 import { CardType } from 'src/app/share/result-card/result-card.component';
 
 interface ProjectCardResult {
+  id: number,
   name: string,
   description: string,
   attributes: string[]
@@ -43,11 +44,18 @@ export class ProjectPageComponent implements OnInit {
   ToProjectCardResults(projectList: Project[]): ProjectCardResult[] {
     return projectList.map((project: Project) => {
       return <ProjectCardResult>{
+        id: project.id,
         name: project.name,
         description: project.description,
         attributes: project.project_discliplines.map((disclipline) => disclipline.name)
       }
     })
+  }
+
+  ViewProject(evt:any){
+    let projectId: number = <number>evt;
+
+    this.router.navigate([`/projects/${projectId}`]);
   }
 
 }

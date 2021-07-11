@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export enum CardType {
   ProjectView,
@@ -20,7 +20,12 @@ export class ResultCardComponent implements OnInit {
   @Input() projectDescription: string = "";
   @Input() projectAttributes: string[] = [];
 
+  @Input() extraMetaData: any = {};
+
   @Input() genericName:string = "";
+
+  @Output() viewCardEvent: EventEmitter<any> = new EventEmitter<any>();
+
 
 
   constructor() { }
@@ -42,6 +47,10 @@ export class ResultCardComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+  viewCard(): void {
+    this.viewCardEvent.emit(this.extraMetaData);
   }
 
 }

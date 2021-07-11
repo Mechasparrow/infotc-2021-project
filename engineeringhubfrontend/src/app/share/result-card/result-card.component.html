@@ -13,7 +13,7 @@
                 <AttributeList [hasHeader]="false" [attributeList] = "projectAttributes"></AttributeList>
             </div>
             <div class = "float-right">
-                <button class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-gold">
+                <button (click)="viewCard()" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-gold">
                     View {{cardToDisplayString()}}
                 </button>
             </div>
