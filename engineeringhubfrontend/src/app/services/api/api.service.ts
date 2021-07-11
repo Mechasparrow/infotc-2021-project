@@ -4,6 +4,7 @@ import { TokenStoreService } from '../token-store/token-store.service';
 import { of } from 'rxjs';
 import { Group } from 'src/app/models/Group';
 import { ProjectProposal } from 'src/app/models/ProjectProposal';
+import { ProjectNote } from 'src/app/models/ProjectNote';
 
 @Injectable({
   providedIn: 'root'
@@ -93,6 +94,37 @@ export class ApiService {
     }
 
     return this.http.get(`${this.apiEndpoint}/users/get_logged_in_user/`, httpOptions).toPromise();
+  }
+
+  async createProjectNote(noteData: ProjectNote, projectId:number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/projects/${projectId}/createProjectNote/`, noteData, httpOptions).toPromise();
+  }
+
+  async getProjectNote(projectId: number, noteId: number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.get(`${this.apiEndpoint}/project-notes/${noteId}`, httpOptions).toPromise();
+  }
+
+  async updateProjectNote(projectId:number, updatedNote: ProjectNote, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.put(`${this.apiEndpoint}/projects/${projectId}/updateProjectNote/`, updatedNote, httpOptions).toPromise();
+ 
   }
 
   async deleteProjectNote(noteId:number, authToken:string){

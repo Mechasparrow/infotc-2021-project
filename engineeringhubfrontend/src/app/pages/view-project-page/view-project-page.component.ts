@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/models/Project';
 import { ProjectNote } from 'src/app/models/ProjectNote';
 import { ApiService } from 'src/app/services/api/api.service';
@@ -16,7 +16,7 @@ export class ViewProjectPageComponent implements OnInit {
   project: Project | null = null;
   projectId: number = -1;
 
-  constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute) {
+  constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute, private router: Router) {
     
   }
 
@@ -72,8 +72,12 @@ export class ViewProjectPageComponent implements OnInit {
     }
   }
 
-  async editProjectNote(noteId:number){
+  createProjectNote(){
+    this.router.navigate([`projects/${this.projectId}/new-note`])
+  }
 
+  editProjectNote(noteId:number){
+    this.router.navigate([`projects/${this.projectId}/new-note/${noteId}`]);
   }
 
   async deleteProjectNote(noteId:number){

@@ -197,7 +197,6 @@ class ProjectNoteViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, views
 
     queryset=models.ProjectNote.objects.all()
     serializer_class=serializers.ProjectNoteSerializer
-
     
     @action(detail=True,methods=['delete'])
     @permission_classes([permissions.IsAuthenticated])
@@ -209,8 +208,7 @@ class ProjectNoteViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, views
             serializer = serializers.ProjectNoteSerializer(located_project_note)
             return Response("deleted", status=200)
         else:
-            return Response(status=401)
-        pass    
+            return Response(status=401)    
 
 class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     
@@ -227,6 +225,35 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
             return Response(serializer.data)
         else:
             return Response(status=401)
+
+    @action(detail=True,methods=['post'])
+    def createProjectNote(self, request, pk):
+        located_project = models.Project.objects.get(pk=pk)
+        
+        if (request.user.is_authenticated and request.user == located_project.owningUser):
+            serializer = serializers.ProjectNoteSerializer(data=request.data)
+            if (serializer.is_valid()):
+                serializer.save(relatedProject=located_project)
+
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
+    @action(detail=True,methods=['put'])
+    def updateProjectNote(self, request, pk):
+        located_project = models.Project.objects.get(pk=pk)
+        located_project_note = models.ProjectNote.objects.get(relatedProject=located_project, pk=request.data["id"])
+
+        if (request.user.is_authenticated and request.user == located_project.owningUser):
+            serializer = serializers.ProjectNoteSerializer(located_project_note, data=request.data)
+
+            if (serializer.is_valid()):
+                serializer.save()
+
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
 
     @action(detail=True, methods=['get'])
     def getProjectNotes(self, request, pk):
