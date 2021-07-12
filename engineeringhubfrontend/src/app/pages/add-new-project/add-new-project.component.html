@@ -38,7 +38,7 @@
                     <input class = "ml-2 mb-1" type="checkbox" formControlName="private" />
                 </div>
 
-                <div class = "mt-4 space-y-4">
+                <div *ngIf="editting" class = "mt-4 space-y-4">
                     <div>
                         <AttributeList (attributedAdded)="newSkillAdded($event)"  [editable] = "true" listName="Skill" [attributeList]="getProjectSkills()"></AttributeList>
                     </div>
