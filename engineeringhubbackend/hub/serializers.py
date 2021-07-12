@@ -51,7 +51,7 @@ class GroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Group
-        fields = ['id', 'name', 'users']
+        fields = ['id', 'name', 'description', 'isfaculty', 'users']
 
 class ProjectSerializer(serializers.ModelSerializer):
     project_skills = SkillSerializer(read_only=True, many=True)

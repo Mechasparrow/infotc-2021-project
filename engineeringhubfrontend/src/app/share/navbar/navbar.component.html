@@ -3,4 +3,19 @@
     <div class = "text-white font-bold px-4">
         Mizzou Engineering Hub
     </div>
+
+    <div class = "ml-auto">
+        <a href="#" class = "nav-link">
+            Browse
+        </a>
+        
+        <a *ngIf="!token" href = "#" routerLink="/login" class = "nav-link">
+            Login
+        </a>
+        
+        <a (click)="logout()" *ngIf = "token" href = "#" class = "nav-link">
+            Sign Out
+        </a>
+    </div>
+
 </div>

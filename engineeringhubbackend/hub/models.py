@@ -58,8 +58,9 @@ class Friendship(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=200, unique=True)
+    description = models.TextField(blank=True)
     users = models.ManyToManyField(User, related_name="hub_groups", blank=True)
-    
+    isfaculty = models.BooleanField(default=False)
 
 class Event(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="group_events")

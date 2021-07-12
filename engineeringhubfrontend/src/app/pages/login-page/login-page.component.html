@@ -16,15 +16,19 @@
                     
                     <input formControlName="password" class = "flex-grow rounded-full" type="password"/>
                 </div>
-
-                <button [ngClass] = "{
-                    'cursor-default': !loginForm.valid,
-                    'bg-mizzou-gray': !loginForm.valid,
-                    'bg-mizzou-black': loginForm.valid
-                }" [disabled] = "!loginForm.valid" class = "float-right text-white px-4 py-2 rounded-full">
-                    Submit
-                </button>
+                <div class="flex">
+                    <button [ngClass] = "{
+                        'cursor-default': !loginForm.valid,
+                        'bg-mizzou-gray': !loginForm.valid,
+                        'bg-mizzou-black': loginForm.valid
+                    }" [disabled] = "!loginForm.valid" class = "ml-auto text-white px-4 py-2 rounded-full">
+                        Submit
+                    </button>
+                </div>
             </form>
+            <div class = "text-center mt-4">
+                Don't have an account, <a routerLink = "/signup" class = "text-mizzou-green hover:underline" href = "#">Sign Up</a>
+            </div>
         </div>
     </div>
 </DefaultPageLayout>
