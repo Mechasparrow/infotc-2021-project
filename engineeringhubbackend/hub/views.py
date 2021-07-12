@@ -167,6 +167,17 @@ class ProjectProposalViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, v
     queryset=models.ProjectProposal.objects.all()
     serializer_class=serializers.ProjectProposalSerializer
 
+    @permission_classes([permissions.IsAuthenticated])
+    def create(self,request):
+        serializer = serializers.ProjectProposalSerializer(data=request.data)
+
+        if (request.user.is_authenticated and serializer.is_valid()):    
+            
+            serializer.save(owningUser=request.user)
+            return Response(serializer.data, status=200)
+        else:
+            return Response(status=401)    
+
     @action(detail=False,methods=['get'])    
     def searchProjectProposals(self, request):
         searchString = request.query_params.get("search_query", "")
@@ -275,7 +286,6 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
     @permission_classes([permissions.IsAuthenticated])
     def deleteUserProject(self, request, pk):
         located_project = models.Project.objects.get(pk=pk)
-        print("Deleting...")
         if (request.user.is_authenticated and request.user == located_project.owningUser):
             located_project.delete()
             return Response(status=200)

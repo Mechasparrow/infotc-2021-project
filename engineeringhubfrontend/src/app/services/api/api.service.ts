@@ -225,4 +225,14 @@ export class ApiService {
 
     return this.http.get(`${this.apiEndpoint}/groups/searchGroups/`, httpOptions).toPromise();
   }
+
+  async createProjectProposal(newProposal: ProjectProposal, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/project-proposals/`, newProposal, httpOptions).toPromise();
+  }
 }
