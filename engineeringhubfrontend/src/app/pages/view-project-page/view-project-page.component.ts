@@ -100,4 +100,24 @@ export class ViewProjectPageComponent implements OnInit {
     return `${noteDate.toLocaleDateString()} - ${noteDate.toLocaleTimeString()}`
   }
 
+  EditProject(){
+    this.router.navigate([`projects/new-project/${this.projectId}`]);
+  }
+
+  async DeleteProject(){
+
+    let token = this.tokenStore.getAuthenticationToken();
+
+    let confirmation:boolean = confirm("Are you sure you want to delete this?");
+
+    if (token != null && confirmation){
+      try{
+        await this.api.deleteUserProject(this.projectId,token);
+        this.router.navigate(['/projects/'])
+      }catch (err){
+        console.log(err);
+      }
+    }
+  }
+
 }

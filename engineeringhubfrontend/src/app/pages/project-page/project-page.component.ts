@@ -58,27 +58,6 @@ export class ProjectPageComponent implements OnInit {
     this.router.navigate([`/projects/${projectId}`]);
   }
 
-  EditProject(evt:any){
-    let projectId:number = <number>evt;
-    alert("Edit");
-  }
-
-  async DeleteProject(evt:any){
-    let projectId:number = <number>evt;
-
-    let token = this.tokenStore.getAuthenticationToken();
-
-    let confirmation:boolean = confirm("Are you sure you want to delete this?");
-
-    if (token != null && confirmation){
-      try{
-        await this.api.deleteUserProject(projectId,token);
-        await this.loadUserProjects();
-      }catch (err){
-        console.log(err);
-      }
-    }
-  }
 
   createNewProjectProposal(){
     this.router.navigate(["project-proposal/new"]);

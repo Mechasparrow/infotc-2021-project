@@ -1,1 +1,62 @@
-<p>add-new-project works!</p>
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Creating new project
+                
+                <a class = "pl-4 hover:underline text-mizzou-orange" href="#" routerLink= "/projects/">Go back</a>
+            </div>
+        </div>
+
+        <div class = "mx-8">
+            <form (ngSubmit)="onSubmit()" [formGroup]="projectForm">
+                <div>
+                    <label class="text-xl">Name</label>
+                    <br>
+                    <input formControlName="name" class="w-full" type ="text"/>
+                </div>
+
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Description
+                    </label>
+                    <br>
+                    <textarea formControlName="description" class = "w-full"></textarea>
+                </div>
+
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Complete
+                    </label>
+                    <input class = "ml-2 mb-1" type="checkbox" formControlName="complete" />
+                </div>
+
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Private
+                    </label>
+                    <input class = "ml-2 mb-1" type="checkbox" formControlName="private" />
+                </div>
+
+                <div class = "mt-4 space-y-4">
+                    <div>
+                        <AttributeList (attributedAdded)="newSkillAdded($event)"  [editable] = "true" listName="Skill" [attributeList]="getProjectSkills()"></AttributeList>
+                    </div>
+                    <div>
+                        <AttributeList (attributedAdded)="newDiscliplineAdded($event)" [editable] = "true" listName="Disclipline" [attributeList]="getProjectDiscliplines()"></AttributeList>
+                    </div>
+                </div>
+
+                <button 
+                [ngClass]="{
+                    'bg-mizzou-gray': !projectForm.valid,
+                    'bg-mizzou-green hover:ring-4 ring-mizzou-black': projectForm.valid  
+                }"
+                class = "mb-4 float-right mt-4 w-40 py-1 px-2 text-white">
+                    <span *ngIf="!editting">Create</span>
+                    <span *ngIf="editting">Update</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</DefaultPageLayout>

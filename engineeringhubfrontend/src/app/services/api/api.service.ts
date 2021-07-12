@@ -5,6 +5,9 @@ import { of } from 'rxjs';
 import { Group } from 'src/app/models/Group';
 import { ProjectProposal } from 'src/app/models/ProjectProposal';
 import { ProjectNote } from 'src/app/models/ProjectNote';
+import { Project } from 'src/app/models/Project';
+import { Disclipline } from 'src/app/models/Disclipline';
+import { Skill } from 'src/app/models/Skill';
 
 @Injectable({
   providedIn: 'root'
@@ -172,6 +175,33 @@ export class ApiService {
     }
 
     return this.http.get(`${this.apiEndpoint}/projects/viewUserProjects/`, httpOptions).toPromise();
+  }
+
+  async createProject(project: Project, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/projects/`, project, httpOptions).toPromise();
+  
+  }
+
+  async updateProject(projectId:number, projectPartial: Project, skills: Skill[], discliplines: Disclipline[], authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    let payload = {
+      project: projectPartial,
+      skills: skills,
+      discliplines: discliplines
+    };
+
+    return this.http.put(`${this.apiEndpoint}/projects/${projectId}/`, payload, httpOptions).toPromise();
   }
 
   async searchProjects(searchString:string){

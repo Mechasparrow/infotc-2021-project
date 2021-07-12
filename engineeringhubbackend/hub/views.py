@@ -226,6 +226,71 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
     queryset=models.Project.objects.all()
     serializer_class=serializers.ProjectSerializer
 
+    
+    @permission_classes([permissions.IsAuthenticated])
+    def create(self, request):
+        serializer = serializers.ProjectSerializer(data=request.data)
+
+        if (request.user.is_authenticated and serializer.is_valid()):
+            serializer.save(owningUser=request.user)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
+    
+    @permission_classes([permissions.IsAuthenticated])
+    def update(self, request, pk):
+        
+        project = models.Project.objects.get(pk=pk)
+
+        project_data = request.data["project"]
+        
+        skill_data = request.data["skills"]
+        print("skills")
+        print(skill_data)
+        disclipline_data = request.data["discliplines"]
+        print("discliplines")
+        print(disclipline_data)
+
+
+        project_serializer = serializers.ProjectSerializer(project,data=project_data)
+
+        if (request.user.is_authenticated and project_serializer.is_valid()):
+            
+            project_serializer.save()
+            
+            updated_project = models.Project.objects.get(pk=project_serializer.data["id"])
+
+            updated_project.project_skills.clear()
+            updated_project.project_discliplines.clear()
+
+            for skill in skill_data:
+                skill_name = skill["name"]
+                located_skill, skill_created = models.Skill.objects.get_or_create(name=skill_name)
+
+                if (skill_created):
+                    located_skill.save()
+
+                updated_project.project_skills.add(located_skill)
+
+            for disclipline in disclipline_data:
+                disclipline_name = disclipline["name"]
+                located_disclipline, disclipline_created = models.Disclipline.objects.get_or_create(name=disclipline_name)
+
+                if (disclipline_created):
+                    located_disclipline.save()
+
+                updated_project.project_discliplines.add(located_disclipline)
+
+            updated_project.save()
+
+            project_serializer = serializers.ProjectSerializer(updated_project)
+            print(project_serializer.data)
+
+            return Response(project_serializer.data)
+        else:
+            return Response(status=401)
+
     @action(detail=True, methods=['get'])
     @permission_classes([permissions.IsAuthenticated])
     def getUserProject(self, request, pk):
@@ -278,7 +343,7 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
 
     @action(detail=True, methods=['put'])
     @permission_classes([permissions.IsAuthenticated])
-    def updateUserProject(self, request,pk):
+    def updateUserProject(self, request, pk):
 
         pass
 

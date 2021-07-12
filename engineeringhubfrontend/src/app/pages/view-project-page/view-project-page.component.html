@@ -12,8 +12,28 @@
             TODO add Project info section
         -->
         <ng-container *ngIf="project != null">
+            
+            <div class="mt-2 mx-8 space-x-4">
+                <button (click)="EditProject()" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-blue">
+                    Edit Project
+                </button>
+                <button (click)="DeleteProject()"  class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-red">
+                    Delete Project
+                </button>
+            </div>
+
             <div class = "mt-2 mx-8">
                 <div class = "font-bold text-xl">
+                    Completed: 
+                </div>
+                <div class = "fit-content text-white rounded-full py-1 px-4" [ngClass]="{
+                    'bg-mizzou-green': project.complete,
+                    'bg-mizzou-red': !project.complete
+                }">
+                    {{project.complete}}
+                </div>
+                
+                <div class = "mt-2 font-bold text-xl">
                     Is Public: 
                 </div>
                 <div class = "fit-content text-white rounded-full py-1 px-4" [ngClass]="{
@@ -22,6 +42,9 @@
                 }">
                     {{!project.private}}
                 </div>
+
+                
+
                 <div class = "mt-4 font-bold text-xl">
                     About: 
                 </div>

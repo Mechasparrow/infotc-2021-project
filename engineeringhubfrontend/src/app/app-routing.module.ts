@@ -18,6 +18,7 @@ const routes: Routes = [
   {path: 'project-proposal/new', component: AddProjectProposalPageComponent},
   {path: 'projects', component: ProjectPageComponent},
   {path: 'projects/new-project', component: AddNewProjectComponent},
+  {path: 'projects/new-project/:id', component: AddNewProjectComponent},
   {path: 'projects/:id', component: ViewProjectPageComponent},
   {path: 'projects/:id/new-note', component: AddProjectNotePageComponent},
   {path: 'projects/:id/new-note/:id2', component: AddProjectNotePageComponent}
