@@ -22,6 +22,7 @@ import { AddNewProjectComponent } from './pages/add-new-project/add-new-project.
 import { ViewProjectPageComponent } from './pages/view-project-page/view-project-page.component';
 import { AddProjectNotePageComponent } from './pages/add-project-note-page/add-project-note-page.component';
 import { AddProjectProposalPageComponent } from './pages/add-project-proposal-page/add-project-proposal-page.component';
+import { BrowsePageComponent } from './pages/browse-page/browse-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddProjectProposalPageComponent } from './pages/add-project-proposal-pa
     AddNewProjectComponent,
     ViewProjectPageComponent,
     AddProjectNotePageComponent,
-    AddProjectProposalPageComponent
+    AddProjectProposalPageComponent,
+    BrowsePageComponent
   ],
   imports: [
     BrowserModule,
