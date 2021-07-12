@@ -10,6 +10,7 @@ import { ProjectNote } from 'src/app/models/ProjectNote';
   providedIn: 'root'
 })
 export class ApiService {
+  
 
   private apiEndpoint: string = "http://127.0.0.1:8000/api/hub";
 
@@ -151,6 +152,16 @@ export class ApiService {
     }
 
     return this.http.get(`${this.apiEndpoint}/projects/${projectId}/getUserProject/`, httpOptions).toPromise();
+  }
+
+  async deleteUserProject(projectId: number, token: string) {
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${token}`
+      })
+    }
+
+    return this.http.delete(`${this.apiEndpoint}/projects/${projectId}/deleteUserProject/`, httpOptions).toPromise();
   }
 
   async getUserProjects(token:string){

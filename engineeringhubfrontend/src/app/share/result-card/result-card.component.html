@@ -12,9 +12,15 @@
             <div class = "float-left">
                 <AttributeList [hasHeader]="false" [attributeList] = "projectAttributes"></AttributeList>
             </div>
-            <div class = "float-right">
+            <div class = "space-x-2 float-right">
                 <button (click)="viewCard()" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-gold">
                     View {{cardToDisplayString()}}
+                </button>
+                <button (click)="editCard()"  *ngIf="edittable" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-blue">
+                    Edit {{cardToDisplayString()}}
+                </button>
+                <button (click)="deleteCard()" *ngIf="edittable" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-red">
+                    Delete {{cardToDisplayString()}}
                 </button>
             </div>
         </div>

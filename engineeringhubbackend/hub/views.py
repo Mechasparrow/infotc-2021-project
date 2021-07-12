@@ -215,7 +215,7 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
     queryset=models.Project.objects.all()
     serializer_class=serializers.ProjectSerializer
 
-    @action(detail=True,methods=['get'])
+    @action(detail=True, methods=['get'])
     @permission_classes([permissions.IsAuthenticated])
     def getUserProject(self, request, pk):
         located_project = models.Project.objects.get(pk=pk)
@@ -264,19 +264,23 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
         serializer = serializers.ProjectNoteSerializer(located_project_skills, many=True)
 
         return Response(serializer.data)
-        
-
-    @action(detail=True, methods=['delete'])
-    @permission_classes([permissions.IsAuthenticated])
-    def deleteUserProject(self,request,pk):
-
-        pass
 
     @action(detail=True, methods=['put'])
     @permission_classes([permissions.IsAuthenticated])
     def updateUserProject(self, request,pk):
 
         pass
+
+    @action(detail=True,methods=['delete'])
+    @permission_classes([permissions.IsAuthenticated])
+    def deleteUserProject(self, request, pk):
+        located_project = models.Project.objects.get(pk=pk)
+        print("Deleting...")
+        if (request.user.is_authenticated and request.user == located_project.owningUser):
+            located_project.delete()
+            return Response(status=200)
+        else:
+            return Response(status=401)
 
     @action(detail=False, methods=['get'])
     @permission_classes([permissions.IsAuthenticated])

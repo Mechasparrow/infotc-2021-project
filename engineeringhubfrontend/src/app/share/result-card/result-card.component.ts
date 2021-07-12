@@ -20,12 +20,15 @@ export class ResultCardComponent implements OnInit {
   @Input() projectDescription: string = "";
   @Input() projectAttributes: string[] = [];
 
+  @Input() edittable: boolean = false;
+
   @Input() extraMetaData: any = {};
 
   @Input() genericName:string = "";
 
   @Output() viewCardEvent: EventEmitter<any> = new EventEmitter<any>();
-
+  @Output() deleteCardEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() editCardEvent: EventEmitter<any> = new EventEmitter<any>();
 
 
   constructor() { }
@@ -51,6 +54,14 @@ export class ResultCardComponent implements OnInit {
 
   viewCard(): void {
     this.viewCardEvent.emit(this.extraMetaData);
+  }
+
+  editCard(): void{
+    this.editCardEvent.emit(this.extraMetaData);
+  }
+
+  deleteCard(): void{
+    this.deleteCardEvent.emit(this.extraMetaData);
   }
 
 }
