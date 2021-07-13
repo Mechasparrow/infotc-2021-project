@@ -1,0 +1,24 @@
+<div>
+    <div class = "grid grid-cols-5 space-x-8 mx-8 mt-4">
+                
+        <div class = "flex items-center col-span-1">
+            <button *ngIf="this.pageIdx > 0" (click)="pageLeft()" class="w-11 ml-auto overflow-hidden inline-block">
+                <div class=" h-16  bg-mizzou-gray hover:bg-mizzou-gold -rotate-45 transform origin-top-right"></div>
+            </button>
+        </div>
+        
+
+        <CarousalCard *ngFor = "let item of getCurrentPage()" [item] = "item"></CarousalCard>
+
+        <div class = "flex items-center col-span-1">
+            <button *ngIf="this.pageIdx < (this.pages - 1)" (click)="pageRight()" class="w-11 mr-auto overflow-hidden inline-block">
+                <div class=" h-16 bg-mizzou-gray hover:bg-mizzou-gold rotate-45 transform origin-top-left"></div>
+            </button>
+        </div>
+    </div>
+    <div class = "grid grid-cols-5 space-x-8 mx-8 mt-4">
+        <div class = "ml-auto col-span-1 col-start-4">        
+            Page {{this.pageIdx+1}} of {{this.pages}}
+        </div>
+    </div>
+</div>

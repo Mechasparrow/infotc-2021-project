@@ -1,0 +1,16 @@
+<div *ngIf = "item.title != undefined" class = "relative p-4 border-2 col-span-1 h-48">
+    <div class = "text-2xl">
+        {{item.title}}
+    </div>
+    <div class = "h-20 overflow-y-auto">
+        {{item.description}}
+    </div>
+
+    <button class = "absolute bottom-4 right-8 w-20 hover:bg-mizzou-orange bg-mizzou-gold py-1 px-2 text-white float-right">
+        View
+    </button>
+</div>
+
+<div *ngIf = "item.title == undefined" class = "col-span-1">
+    
+</div>

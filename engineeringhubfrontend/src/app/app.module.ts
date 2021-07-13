@@ -23,6 +23,8 @@ import { ViewProjectPageComponent } from './pages/view-project-page/view-project
 import { AddProjectNotePageComponent } from './pages/add-project-note-page/add-project-note-page.component';
 import { AddProjectProposalPageComponent } from './pages/add-project-proposal-page/add-project-proposal-page.component';
 import { BrowsePageComponent } from './pages/browse-page/browse-page.component';
+import { CardCarousalComponent } from './share/card-carousal/card-carousal.component';
+import { CarousalCardComponent } from './share/carousal-card/carousal-card.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { BrowsePageComponent } from './pages/browse-page/browse-page.component';
     ViewProjectPageComponent,
     AddProjectNotePageComponent,
     AddProjectProposalPageComponent,
-    BrowsePageComponent
+    BrowsePageComponent,
+    CardCarousalComponent,
+    CarousalCardComponent
   ],
   imports: [
     BrowserModule,
