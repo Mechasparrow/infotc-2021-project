@@ -218,6 +218,43 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         else:
             return Response(status=401)
 
+    @action(detail=True, methods=['get'])
+    @permission_classes([permissions.IsAuthenticated])
+    def isOwnedByUser(self, request, pk):
+        group = models.Group.objects.get(pk=pk)
+
+        if (request.user.is_authenticated):
+            user_owns_group = group.owner == request.user
+            return Response(user_owns_group)
+        else:
+            return Response(status=401)
+
+    @action(detail=True, methods=['delete'])
+    @permission_classes([permissions.IsAuthenticated])
+    def deleteGroup(self, request, pk):
+        located_group = models.Group.objects.get(pk=pk)
+
+        if (request.user.is_authenticated and located_group.owner == request.user):
+            located_group.delete()
+            serializer = serializers.GroupSerializer(located_group)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
+    @action(detail=True, methods=['get'])
+    def getGroupUsers(self, request, pk):
+        located_group = models.Group.objects.get(pk=pk)
+
+        serializer = serializers.UserSerializer(located_group.users, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def getGroupEvents(self, request, pk):
+        located_group = models.Group.objects.get(pk=pk)
+
+        serializer = serializers.EventSerializer(located_group.group_events, many=True)
+        return Response(serializer.data)
+
 class ProjectNoteViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
     queryset=models.ProjectNote.objects.all()

@@ -41,6 +41,13 @@ class ProjectNoteSerializer(serializers.ModelSerializer):
         model = models.ProjectNote
         fields = ['id', 'title', 'note', 'created', 'relatedProject']
 
+class EventSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Event
+        fields = ['id', 'name', 'description', 'group','timeStart','timeEnd','location', 'users']
+
+
 class ProjectProposalSerializer(serializers.ModelSerializer):
 
     class Meta:

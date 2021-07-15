@@ -1,1 +1,105 @@
-<p>view-group-page works!</p>
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Viewing <span class="font-bold" *ngIf="group != null">{{group.name}}</span>
+                
+                <a class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/groups'">Go back</a>
+            </div>
+        </div>
+
+        <!--
+            TODO add Project info section
+        -->
+        
+        <ng-container *ngIf="group != null">
+            
+            <div *ngIf="userOwnsGroup" class="mt-2 mx-8 space-x-4">
+                <button (click)="EditGroup()" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-blue">
+                    Edit Group
+                </button>
+                <button (click)="DeleteGroup()"  class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-red">
+                    Delete Group
+                </button>
+            </div>
+            
+
+            <div class = "mt-2 mx-8">
+                
+                <div class = "font-bold text-xl">
+                    Faculty: 
+                </div>
+                <div class = "fit-content text-white rounded-full py-1 px-4" [ngClass]="{
+                    'bg-mizzou-green': group.isfaculty,
+                    'bg-mizzou-red': !group.isfaculty
+                }">
+                    {{group.isfaculty}}
+                </div>
+                
+
+                <div class = "mt-4 font-bold text-xl">
+                    Description: 
+                </div>
+                <div>
+                    {{group.description}}
+                </div>
+
+                <div class = "mt-4 font-bold text-xl">
+                    Members: 
+                </div>
+                <div>
+                    <ul>
+                        <li *ngFor = "let user of groupUsers">{{user.username}}</li>
+                    </ul>
+                </div>
+                <!--
+                <div class = "mt-4 space-y-4">
+                    <div>
+                        <AttributeList  listName="Skill" [attributeList]="getProjectSkills()"></AttributeList>
+                    </div>
+    
+                    <div>
+                        <AttributeList listName="Disclipline" [attributeList]="getProjectDiscliplines()"></AttributeList>
+                    </div>
+                </div>
+                -->
+            </div>
+        </ng-container>
+        <!--
+            TODO add create note button 
+        -->
+        
+        <div class = "text-2xl font-bold text-center">
+            Group Events
+        </div>
+        
+        <button *ngIf = "userOwnsGroup" (click)="addGroupEvent()" class = "mx-8 ml-auto fit-content text-white rounded-full px-2 py-1 hover:bg-mizzou-orange bg-mizzou-gold">
+            + Add Group Event
+        </button>
+        
+        <div class="mt-4 mb-4">
+            
+            <div class = "mt-2 border-2 border-mizzou-black p-4 mx-8" *ngFor = "let groupEvent of groupEvents">
+                
+                <div class = "text-2xl">
+                    {{groupEvent.name}}
+                </div>
+                <div>
+                    {{groupEvent.description}}
+                </div>
+                <div>
+                    {{getPrettyDate(groupEvent)}}
+                </div>
+                <div *ngIf = "userOwnsGroup" class = "mt-2 space-x-2">
+                    <button class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-red">
+                        Delete Event
+                    </button>
+                    <button class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-blue">
+                        Edit Event
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</DefaultPageLayout>

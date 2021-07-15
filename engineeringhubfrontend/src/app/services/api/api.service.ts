@@ -297,4 +297,37 @@ export class ApiService {
 
     return this.http.post(`${this.apiEndpoint}/project-proposals/`, newProposal, httpOptions).toPromise();
   }
+
+  async getGroup(groupId:number){
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/`).toPromise();
+  }
+
+  async isOwnedByUser(groupId: number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/isOwnedByUser`, httpOptions).toPromise();
+  }
+
+  async deleteGroup(groupId: number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.delete(`${this.apiEndpoint}/groups/${groupId}/deleteGroup`, httpOptions).toPromise();
+  }
+
+  async getGroupUsers(groupId:number){
+    
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupUsers`).toPromise();
+  }
+
+  async getGroupEvents(groupId: number){
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupEvents`).toPromise();
+  }
 }

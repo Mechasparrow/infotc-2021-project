@@ -21,8 +21,8 @@ export class GroupPageComponent implements OnInit {
     this.loadUserGroups();
   }
 
-  ViewGroup(groupId: number){
-    alert(`View group ${groupId}`)
+  ViewGroup(groupId:number){
+    this.router.navigate([`/groups/${groupId}`]);
   }
 
   async loadUserGroups(){

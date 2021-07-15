@@ -4,4 +4,5 @@ export interface Group {
     description: string;
     owner: number;
     users: number[];
+    isfaculty: boolean;
 }

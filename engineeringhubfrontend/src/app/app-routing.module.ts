@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddNewGroupComponent } from './pages/add-new-group/add-new-group.component';
 import { AddNewProjectComponent } from './pages/add-new-project/add-new-project.component';
 import { AddProjectNotePageComponent } from './pages/add-project-note-page/add-project-note-page.component';
 import { AddProjectProposalPageComponent } from './pages/add-project-proposal-page/add-project-proposal-page.component';
@@ -10,6 +11,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { ViewGroupPageComponent } from './pages/view-group-page/view-group-page.component';
 import { ViewProjectPageComponent } from './pages/view-project-page/view-project-page.component';
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfilePageComponent},
   {path: 'project-proposal/new', component: AddProjectProposalPageComponent},
   {path: 'groups', component: GroupPageComponent},
+  {path: 'groups/:id', component: ViewGroupPageComponent},
+  {path: 'groups/new-group/:id', component: AddNewGroupComponent},
   {path: 'projects', component: ProjectPageComponent},
   {path: 'projects/new-project', component: AddNewProjectComponent},
   {path: 'projects/new-project/:id', component: AddNewProjectComponent},
