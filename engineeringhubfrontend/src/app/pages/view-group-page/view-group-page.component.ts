@@ -37,6 +37,33 @@ export class ViewGroupPageComponent implements OnInit {
 
   }
 
+  async deleteGroupEvent(){
+
+  }
+
+  async DeleteGroupEvent(eventId: number){
+    let authToken = await this.tokenStore.getAuthenticationToken();
+    
+    let confirmation = confirm("Are you sure?");
+
+    if (authToken != null && confirmation == true){
+      try{
+        await this.api.deleteGroupEvent(eventId,authToken);
+        await this.obtainGroupEvents();
+      }catch(err){
+        console.log(err);
+      }
+    }
+  }
+
+  AddGroupEvent(){
+    this.router.navigate([`groups/${this.groupId}/new-event/`]);
+  }
+
+  EditGroupEvent(eventId: number){
+    this.router.navigate([`groups/${this.groupId}/new-event/${eventId}`]);
+  }
+
   async DeleteGroup(){
 
     let token = this.tokenStore.getAuthenticationToken();
@@ -69,15 +96,12 @@ export class ViewGroupPageComponent implements OnInit {
     }
   }
 
-  addGroupEvent(){
-
-  }
 
   getPrettyDate(event: GroupEvent): string{
     let eventTimeStart: Date = new Date(event.timeStart);
-    let eventTimeEnd: Date = new Date(event.timeStart);
+    let eventTimeEnd: Date = new Date(event.timeEnd);
 
-    return `From ${eventTimeStart.toLocaleDateString()} To ${eventTimeEnd.toLocaleTimeString()}`
+    return `From ${eventTimeStart.toLocaleDateString()} : ${eventTimeStart.toLocaleTimeString()}  To ${eventTimeEnd.toLocaleDateString()} : ${eventTimeEnd.toLocaleTimeString()}`
   }
 
   async CheckIfGroupOwner(){

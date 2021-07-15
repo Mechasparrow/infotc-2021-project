@@ -189,6 +189,27 @@ class ProjectProposalViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, v
         serializer = serializers.ProjectProposalSerializer(queryset,many=True)
         return Response(serializer.data)
 
+
+class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    queryset=models.Event.objects.all()
+    serializer_class=serializers.EventSerializer
+
+    @action(detail=True,methods=['delete'])
+    @permission_classes([permissions.IsAuthenticated])
+
+    def deleteGroupEvent(self, request, pk):
+        event_to_delete = models.Event.objects.get(pk=pk)
+        owning_group = event_to_delete.group
+
+        if (request.user.is_authenticated and request.user == owning_group.owner):    
+            event_to_delete.delete()
+            return Response("deleted", status=200)
+        else:
+            return Response(status=401)    
+
+
+
+
 class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Group.objects.all()
     serializer_class=serializers.GroupSerializer

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 import { AddNewGroupComponent } from './pages/add-new-group/add-new-group.component';
 import { AddNewProjectComponent } from './pages/add-new-project/add-new-project.component';
 import { AddProjectNotePageComponent } from './pages/add-project-note-page/add-project-note-page.component';
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: 'groups', component: GroupPageComponent},
   {path: 'groups/:id', component: ViewGroupPageComponent},
   {path: 'groups/new-group/:id', component: AddNewGroupComponent},
+  {path: 'groups/:id/new-event', component: AddEventPageComponent},
+  {path: 'groups/:id/new-event/:id2', component: AddEventPageComponent},
   {path: 'projects', component: ProjectPageComponent},
   {path: 'projects/new-project', component: AddNewProjectComponent},
   {path: 'projects/new-project/:id', component: AddNewProjectComponent},

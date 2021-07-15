@@ -162,6 +162,16 @@ export class ApiService {
     return this.http.delete(`${this.apiEndpoint}/project-notes/${noteId}/deleteProjectNote/`, httpOptions).toPromise();
   }
 
+  async deleteGroupEvent(eventId:number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.delete(`${this.apiEndpoint}/events/${eventId}/deleteGroupEvent/`, httpOptions).toPromise();
+  }
+
   async getProjectNotes(projectId:number){
     //http://localhost:8000/api/hub/projects/1/getProjectNotes/
   
