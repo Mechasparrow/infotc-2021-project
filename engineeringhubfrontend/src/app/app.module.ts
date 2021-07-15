@@ -25,6 +25,7 @@ import { AddProjectProposalPageComponent } from './pages/add-project-proposal-pa
 import { BrowsePageComponent } from './pages/browse-page/browse-page.component';
 import { CardCarousalComponent } from './share/card-carousal/card-carousal.component';
 import { CarousalCardComponent } from './share/carousal-card/carousal-card.component';
+import { GroupPageComponent } from './pages/group-page/group-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CarousalCardComponent } from './share/carousal-card/carousal-card.compo
     AddProjectProposalPageComponent,
     BrowsePageComponent,
     CardCarousalComponent,
-    CarousalCardComponent
+    CarousalCardComponent,
+    GroupPageComponent
   ],
   imports: [
     BrowserModule,

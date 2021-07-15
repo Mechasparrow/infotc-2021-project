@@ -103,4 +103,8 @@ export class ProfilePageComponent implements OnInit {
   navigateToProjects(){
     this.router.navigate(['/projects']);
   }
+
+  navigateToGroups(){
+    this.router.navigate(['/groups']);
+  }
 }
