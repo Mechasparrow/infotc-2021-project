@@ -21,6 +21,10 @@ export class GroupPageComponent implements OnInit {
     this.loadUserGroups();
   }
 
+  AddNewGroup(){
+    this.router.navigate([`/groups/new-group`]);
+  }
+
   ViewGroup(groupId:number){
     this.router.navigate([`/groups/${groupId}`]);
   }

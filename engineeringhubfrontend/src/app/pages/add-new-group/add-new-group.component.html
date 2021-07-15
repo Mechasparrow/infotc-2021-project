@@ -1,1 +1,46 @@
-<p>add-new-group works!</p>
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Creating new group
+                
+                <a class = "pl-4 hover:underline text-mizzou-orange" href="#" routerLink= "/projects/">Go back</a>
+            </div>
+        </div>
+
+        <div class = "mx-8">
+            <form (ngSubmit)="onSubmit()" [formGroup]="groupForm">
+                <div>
+                    <label class="text-xl">Name</label>
+                    <br>
+                    <input formControlName="name" class="w-full" type ="text"/>
+                </div>
+
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Description
+                    </label>
+                    <br>
+                    <textarea formControlName="description" class = "w-full"></textarea>
+                </div>
+
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Is Faculty
+                    </label>
+                    <input class = "ml-2 mb-1" type="checkbox" formControlName="isfaculty" />
+                </div>
+                
+                <button 
+                [ngClass]="{
+                    'bg-mizzou-gray': !groupForm.valid,
+                    'bg-mizzou-green hover:ring-4 ring-mizzou-black': groupForm.valid  
+                }"
+                class = "mb-4 float-right mt-4 w-40 py-1 px-2 text-white">
+                    <span *ngIf="!editting">Create</span>
+                    <span *ngIf="editting">Update</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</DefaultPageLayout>

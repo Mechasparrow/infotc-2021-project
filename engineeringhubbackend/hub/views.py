@@ -196,7 +196,6 @@ class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
 
     @action(detail=True,methods=['delete'])
     @permission_classes([permissions.IsAuthenticated])
-
     def deleteGroupEvent(self, request, pk):
         event_to_delete = models.Event.objects.get(pk=pk)
         owning_group = event_to_delete.group
@@ -213,6 +212,38 @@ class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
 class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Group.objects.all()
     serializer_class=serializers.GroupSerializer
+
+    @permission_classes([permissions.IsAuthenticated])
+    def create(self, request):
+        request.data["owner"] = request.user.id
+        serializer = serializers.GroupSerializer(data=request.data)
+
+        if (request.user.is_authenticated and serializer.is_valid()):
+
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
+    @permission_classes([permissions.IsAuthenticated])
+    def update(self, request, pk):
+        
+        group = models.Group.objects.get(pk=pk)
+        request.data["owner"] = group.owner.id
+        group_serializer = serializers.GroupSerializer(group,data=request.data)
+
+        if (request.user.is_authenticated and group.owner == request.user and group_serializer.is_valid()):
+            
+            group_serializer.save()
+            
+            updated_group = models.Group.objects.get(pk=group_serializer.data["id"])
+
+            group_serializer = serializers.GroupSerializer(updated_group)
+            print(group_serializer.data)
+
+            return Response(group_serializer.data)
+        else:
+            return Response(status=401)
 
     @action(detail=False,methods=['get'])    
     def searchGroups(self, request):

@@ -34,7 +34,7 @@ export class ViewGroupPageComponent implements OnInit {
   }
 
   EditGroup(){
-
+    this.router.navigate([`groups/new-group/${this.groupId}`]);
   }
 
   async deleteGroupEvent(){
