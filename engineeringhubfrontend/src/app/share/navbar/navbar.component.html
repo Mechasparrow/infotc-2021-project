@@ -9,6 +9,10 @@
             Browse
         </a>
         
+        <a *ngIf="token" href = "#" routerLink="/profile" class = "nav-link">
+            Profile
+        </a>
+
         <a *ngIf="!token" href = "#" routerLink="/login" class = "nav-link">
             Login
         </a>
