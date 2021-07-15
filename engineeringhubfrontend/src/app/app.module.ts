@@ -28,6 +28,7 @@ import { CarousalCardComponent } from './share/carousal-card/carousal-card.compo
 import { GroupPageComponent } from './pages/group-page/group-page.component';
 import { AddNewGroupComponent } from './pages/add-new-group/add-new-group.component';
 import { ViewGroupPageComponent } from './pages/view-group-page/view-group-page.component';
+import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ViewGroupPageComponent } from './pages/view-group-page/view-group-page.
     CarousalCardComponent,
     GroupPageComponent,
     AddNewGroupComponent,
-    ViewGroupPageComponent
+    ViewGroupPageComponent,
+    AddEventPageComponent
   ],
   imports: [
     BrowserModule,
