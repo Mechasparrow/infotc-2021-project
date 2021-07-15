@@ -1,1 +1,43 @@
-<p>group-page works!</p>
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Your Groups
+                
+                <a class = "hover:underline text-mizzou-orange" href="#" [routerLink]="'/profile'">Go back</a>
+            </div>
+        </div>
+
+        <!-- Search bar -->
+        <!--
+        <form class = "flex mx-8 mt-4">
+            <input class = "flex-grow rounded-full" type = "text"/>
+            <button class = "ml-8 mr-2 bg-mizzou-gold hover:bg-mizzou-orange rounded-full px-2 py-1 text-white">
+                Search
+            </button>
+        </form>
+        -->
+
+        <!-- Group Options -->
+        
+        <div class = "mx-8 mt-4 ml-auto">
+            <button class = "bg-mizzou-black hover:ring-2 ring-mizzou-gold rounded-full px-4 py-1 mx-2 text-white">
+                + New Group
+            </button>
+        </div>
+    
+        <div class="mt-4 mx-8 mb-4 space-y-4">
+            <!--
+            <div *ngFor = "let projectResult of ToProjectCardResults(userProjectList)">
+                <ResultCard 
+                (viewCardEvent)="ViewProject($event)"
+                [extraMetaData]="projectResult.id"
+                [cardType]="projectCardType" 
+                [projectAttributes]="projectResult.attributes" 
+                [projectName]="projectResult.name" 
+                [projectDescription]="projectResult.description"></ResultCard>
+            </div>
+        -->
+        </div>
+    </div>
+</DefaultPageLayout>

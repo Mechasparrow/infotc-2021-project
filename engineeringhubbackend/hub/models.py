@@ -57,6 +57,7 @@ class Friendship(models.Model):
         unique_together = ('userA', 'userB')
 
 class Group(models.Model):
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name="owning_groups")
     name = models.CharField(max_length=200, unique=True)
     description = models.TextField(blank=True)
     users = models.ManyToManyField(User, related_name="hub_groups", blank=True)
