@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Project } from 'src/app/models/Project';
 import { User } from 'src/app/models/User';
 
 export interface MappedItem{
@@ -29,6 +30,8 @@ export class CarousalCardComponent implements OnInit {
   ngOnInit(): void {
     if (this.itemType == "user"){
       this.mapToItem = this.mapUserToItem;
+    }else if (this.itemType == "project"){
+      this.mapToItem = this.mapProjectToItem;
     }
   }
 
@@ -43,6 +46,13 @@ export class CarousalCardComponent implements OnInit {
   mapUserToItem(item: User){
     return <MappedItem>{
       title: item.username
+    }
+  }
+
+  mapProjectToItem(item: Project){
+    return <MappedItem>{
+      title: item.name,
+      description: item.description
     }
   }
 

@@ -16,15 +16,16 @@
             <CardCarousal (viewItemEvent) = "userItemViewed($event)" itemType="user" [items] = "users"></CardCarousal>
         </div>
 
-        <!--
         <div>
             <div class = "mt-8 text-2xl text-center">
                 Notable Projects
             </div>
     
-            <CardCarousal></CardCarousal>
+            <CardCarousal (viewItemEvent) = "projectItemViewed($event)" itemType="project" [items] = "projects"></CardCarousal>
         </div>
 
+        
+        <!--
         <div>
             <div class = "mt-8 text-2xl text-center">
                 Notable Groups

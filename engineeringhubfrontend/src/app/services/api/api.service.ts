@@ -29,6 +29,22 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/users/`).toPromise();
   }
 
+  async ListPublicProjects(){
+    let mockProjects: Project[] = [];
+
+    for (var i = 0; i < 8; i++){
+      let mockProject: Project = <Project> {
+        id: i,
+        name: faker.name.title(),
+        description: faker.company.catchPhrase()
+      }
+
+      mockProjects.push(mockProject);
+    }
+
+    return of(mockProjects).toPromise();
+  }
+
   async addUserSkill(skill:string, user_pk:number, authToken:string){
     //POST /skills/
     var payload = {
