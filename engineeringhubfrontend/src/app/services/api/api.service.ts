@@ -11,6 +11,7 @@ import { Skill } from 'src/app/models/Skill';
 import { User } from 'src/app/models/User';
 
 import * as faker from 'faker';
+import { GroupEvent } from 'src/app/models/GroupEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class ApiService {
   constructor(private http: HttpClient, private tokenStore: TokenStoreService) {
 
   }
+
 
   async ListUsers(){
     //make api request
@@ -359,5 +361,16 @@ export class ApiService {
 
   async getGroupEvents(groupId: number){
     return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupEvents`).toPromise();
+  }
+
+  
+  async createGroupEvent(groupId: number, newEvent: GroupEvent,authToken: string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/groups/${groupId}/createGroupEvent/`, newEvent, httpOptions).toPromise();
   }
 }

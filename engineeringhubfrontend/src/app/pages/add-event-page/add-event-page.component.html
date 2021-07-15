@@ -12,7 +12,6 @@
             <form (ngSubmit)="onSubmit()" [formGroup]="groupEventForm">
                 
                 
-                <!--
                 <div>
                     <label class="text-xl">Name</label>
                     <br>
@@ -26,19 +25,47 @@
                     <br>
                     <textarea formControlName="description" class = "w-full"></textarea>
                 </div>
-                -->
+                
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Location
+                    </label>
+                    <br>
+                    <input type="text" formControlName="location" class = "w-full"/>
+                </div>
 
-                <!--
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        Start Time
+                    </label>
+                    <br>
+                    <div class = "space-x-4">
+                        <input type="date" formControlName="timestart-date" />
+                        <input type="time" formControlName="timestart-time" />
+                    </div>
+                </div>
+
+                <div class = "mt-4">
+                    <label class="text-xl">
+                        End Time
+                    </label>
+                    <br>
+                    <div class = "space-x-4">
+                        <input type="date" formControlName="timeend-date" />
+                        <input type="time" formControlName="timeend-time" />
+                    </div>
+                </div>
+                
+
                 <button 
                 [ngClass]="{
-                    'bg-mizzou-gray': !groupForm.valid,
-                    'bg-mizzou-green hover:ring-4 ring-mizzou-black': groupForm.valid  
+                    'bg-mizzou-gray': !groupEventForm.valid,
+                    'bg-mizzou-green hover:ring-4 ring-mizzou-black': groupEventForm.valid  
                 }"
                 class = "mb-4 float-right mt-4 w-40 py-1 px-2 text-white">
                     <span *ngIf="!editting">Create</span>
                     <span *ngIf="editting">Update</span>
                 </button>
-            -->
             </form>
         </div>
     </div>

@@ -281,6 +281,22 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         else:
             return Response(status=401)
 
+    @action(detail=True, methods=['post'])
+    @permission_classes([permissions.IsAuthenticated])
+    def createGroupEvent(self, request, pk):
+        located_group = models.Group.objects.get(pk=pk)
+
+        request.data["group"] = located_group.id
+        event_serializer = serializers.EventSerializer(data=request.data)
+
+
+        if (request.user.is_authenticated and located_group.owner == request.user and event_serializer.is_valid()):
+            event_serializer.save()
+            return Response(event_serializer.data)
+        else:
+            return Response(status=401)
+
+
     @action(detail=True, methods=['delete'])
     @permission_classes([permissions.IsAuthenticated])
     def deleteGroup(self, request, pk):
