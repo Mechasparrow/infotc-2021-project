@@ -226,7 +226,12 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.
     queryset=models.Project.objects.all()
     serializer_class=serializers.ProjectSerializer
 
-    
+    @action(detail=False, methods=['get'])
+    def public(self, request):
+        public_projects = models.Project.objects.filter(private = False)
+        serializer = serializers.ProjectSerializer(public_projects, many=True)
+        return Response(serializer.data)
+
     @permission_classes([permissions.IsAuthenticated])
     def create(self, request):
         serializer = serializers.ProjectSerializer(data=request.data)
