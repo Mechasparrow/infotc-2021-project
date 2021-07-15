@@ -25,24 +25,8 @@ export class ApiService {
   }
 
   async ListUsers(){
-
-    //dummy users
-    let dummyUsers: User[] = [];
-    for (var i = 0; i < 5; i ++){
-      let card: Faker.Card = faker.helpers.createCard();
-      let dummyUser:User = <User>{
-        id: i,
-        username: card.username,
-        email: card.email
-      } 
-      dummyUsers.push(dummyUser);
-    }
-
     //make api request
     return this.http.get(`${this.apiEndpoint}/users/`).toPromise();
-
-    //return results
-    return of(dummyUsers).toPromise();
   }
 
   async addUserSkill(skill:string, user_pk:number, authToken:string){
