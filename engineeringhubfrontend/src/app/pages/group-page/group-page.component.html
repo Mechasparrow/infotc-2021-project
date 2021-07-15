@@ -27,17 +27,15 @@
         </div>
     
         <div class="mt-4 mx-8 mb-4 space-y-4">
-            <!--
-            <div *ngFor = "let projectResult of ToProjectCardResults(userProjectList)">
+            
+            <div *ngFor = "let groupResult of userGroupList">
                 <ResultCard 
-                (viewCardEvent)="ViewProject($event)"
-                [extraMetaData]="projectResult.id"
-                [cardType]="projectCardType" 
-                [projectAttributes]="projectResult.attributes" 
-                [projectName]="projectResult.name" 
-                [projectDescription]="projectResult.description"></ResultCard>
+                (viewCardEvent)="ViewGroup($event)"
+                [extraMetaData]="groupResult.id"
+                [cardType]="groupCardType" 
+                [genericName]="groupResult.name"></ResultCard>
             </div>
-        -->
+        
         </div>
     </div>
 </DefaultPageLayout>

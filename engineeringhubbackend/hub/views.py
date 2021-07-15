@@ -204,6 +204,20 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         serializer = serializers.GroupSerializer(queryset,many=True)
         return Response(serializer.data)
 
+    @action(detail=False, methods=['get'])
+    @permission_classes([permissions.IsAuthenticated])
+    def getUserGroups(self, request):
+        located_owning_groups = models.Group.objects.filter(owner=request.user)
+        located_attending_groups = models.Group.objects.filter(users=request.user)
+        
+        located_groups = located_owning_groups.union(located_attending_groups)
+
+        if (request.user.is_authenticated):
+            serializer = serializers.GroupSerializer(located_groups, many=True)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
 class ProjectNoteViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
     queryset=models.ProjectNote.objects.all()

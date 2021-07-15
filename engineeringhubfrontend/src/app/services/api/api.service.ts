@@ -277,6 +277,17 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/groups/searchGroups/`, httpOptions).toPromise();
   }
 
+  async getUserGroups(authToken:string){
+    //getUserGroups
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.get(`${this.apiEndpoint}/groups/getUserGroups/`, httpOptions).toPromise();
+  }
+
   async createProjectProposal(newProposal: ProjectProposal, authToken:string){
     var httpOptions = {
       headers: new HttpHeaders({
