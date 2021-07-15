@@ -8,6 +8,9 @@ import { ProjectNote } from 'src/app/models/ProjectNote';
 import { Project } from 'src/app/models/Project';
 import { Disclipline } from 'src/app/models/Disclipline';
 import { Skill } from 'src/app/models/Skill';
+import { User } from 'src/app/models/User';
+
+import * as faker from 'faker';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +22,26 @@ export class ApiService {
 
   constructor(private http: HttpClient, private tokenStore: TokenStoreService) {
 
+  }
+
+  async ListUsers(){
+
+    //dummy users
+    let dummyUsers: User[] = [];
+    for (var i = 0; i < 5; i ++){
+      let card: Faker.Card = faker.helpers.createCard();
+      let dummyUser:User = <User>{
+        id: i,
+        username: card.username,
+        email: card.email
+      } 
+      dummyUsers.push(dummyUser);
+    }
+
+    //make api request
+
+    //return results
+    return of(dummyUsers).toPromise();
   }
 
   async addUserSkill(skill:string, user_pk:number, authToken:string){

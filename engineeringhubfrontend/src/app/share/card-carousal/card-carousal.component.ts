@@ -1,5 +1,5 @@
 import { InvokeMethodExpr } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import * as faker from 'faker';
 
@@ -10,8 +10,10 @@ import * as faker from 'faker';
 })
 export class CardCarousalComponent implements OnInit {
 
+
+  @Input() items: any[] | null = [];
+
   pageIdx: number = 0;
-  items: any[] = [];
   items_per_page: number = 3;
   pages: number = 0;
   currentPage: number = 1;
@@ -19,41 +21,18 @@ export class CardCarousalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.items = [
-      {
-        title: faker.company.bsAdjective() + " " + faker.company.bsNoun(),
-        description: faker.lorem.paragraph()
-      },
-      {
-        title: faker.company.bsAdjective() + " " + faker.company.bsNoun(),
-        description: faker.lorem.paragraph()
-      },
-      {
-        title: faker.company.bsAdjective() + " " + faker.company.bsNoun(),
-        description: faker.lorem.paragraph()
-      },
-      {
-        title: faker.company.bsAdjective() + " " + faker.company.bsNoun(),
-        description: faker.lorem.paragraph()
-      },
-      {
-        title: faker.company.bsAdjective() + " " + faker.company.bsNoun(),
-        description: faker.lorem.paragraph()
-      },
-      {
-        title: faker.company.bsAdjective() + " " + faker.company.bsNoun(),
-        description: faker.lorem.paragraph()
-      },
-    ];
-
     this.calculatePages();
   }
 
   calculatePages(){
-    this.pages = Math.ceil(this.items.length / this.items_per_page);
+    this.pages = (this.items != null) ? Math.ceil(this.items.length / this.items_per_page) : 0;
   }
 
   getCurrentPage(): any[] {
+    if (this.items == null){
+      return [];
+    }
+
     let minIndex: number = this.pageIdx * this.items_per_page;
     let maxIndex: number = minIndex + (this.items_per_page - 1);
 
