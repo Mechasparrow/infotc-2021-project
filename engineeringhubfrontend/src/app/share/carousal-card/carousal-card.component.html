@@ -1,12 +1,12 @@
-<div *ngIf = "item.title != undefined" class = "relative p-4 border-2 col-span-1 h-56">
+<div *ngIf = "mapToItem(item).title != undefined" class = "relative p-4 border-2 col-span-1 h-56">
     <div class = "text-2xl">
-        {{item.title}}
+       {{mapUserToItem(item).title}}
     </div>
     <div class = "h-20 overflow-y-auto">
         {{item.description}}
     </div>
 
-    <button class = "absolute bottom-4 right-8 w-20 hover:bg-mizzou-orange bg-mizzou-gold py-1 px-2 text-white float-right">
+    <button (click)="cardClick()" class = "absolute bottom-4 right-8 w-20 hover:bg-mizzou-orange bg-mizzou-gold py-1 px-2 text-white float-right">
         View
     </button>
 </div>

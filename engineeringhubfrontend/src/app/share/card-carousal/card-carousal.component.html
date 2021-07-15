@@ -8,7 +8,7 @@
         </div>
         
 
-        <CarousalCard *ngFor = "let item of getCurrentPage()" [item] = "item"></CarousalCard>
+        <CarousalCard (carousalItemSelected)="cardClicked($event)" *ngFor = "let item of getCurrentPage()" [itemType] = "itemType" [item] = "item"></CarousalCard>
 
         <div class = "flex items-center col-span-1">
             <button *ngIf="this.pageIdx < (this.pages - 1)" (click)="pageRight()" class="w-11 mr-auto overflow-hidden inline-block">

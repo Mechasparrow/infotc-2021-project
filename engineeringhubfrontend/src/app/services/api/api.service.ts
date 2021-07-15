@@ -39,6 +39,7 @@ export class ApiService {
     }
 
     //make api request
+    return this.http.get(`${this.apiEndpoint}/users/`).toPromise();
 
     //return results
     return of(dummyUsers).toPromise();

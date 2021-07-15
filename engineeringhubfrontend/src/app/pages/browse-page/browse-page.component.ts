@@ -21,9 +21,12 @@ export class BrowsePageComponent implements OnInit {
     this.pullUsers();
   }
 
+  userItemViewed(user: User): void {
+    alert(`Navigating to ${user.id}`);
+  }
+
   async pullUsers(){
     try{
-      //TODO pull users here
       this.users = <User[]> await this.api.ListUsers();  
       console.log(this.users);
     }catch (err){

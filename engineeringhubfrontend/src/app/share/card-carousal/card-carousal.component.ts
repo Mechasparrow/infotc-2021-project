@@ -1,5 +1,5 @@
 import { InvokeMethodExpr } from '@angular/compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import * as faker from 'faker';
 
@@ -8,10 +8,12 @@ import * as faker from 'faker';
   templateUrl: './card-carousal.component.html',
   styleUrls: ['./card-carousal.component.scss']
 })
-export class CardCarousalComponent implements OnInit {
+export class CardCarousalComponent implements OnInit, OnChanges {
 
 
   @Input() items: any[] | null = [];
+  @Input() itemType: string = "";
+  @Output() viewItemEvent: EventEmitter<any> = new EventEmitter<any>();
 
   pageIdx: number = 0;
   items_per_page: number = 3;
@@ -20,7 +22,15 @@ export class CardCarousalComponent implements OnInit {
 
   constructor() { }
 
+  cardClicked(event:any) {
+    this.viewItemEvent.emit(event);
+  }
+
   ngOnInit(): void {
+    this.calculatePages();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.calculatePages();
   }
 

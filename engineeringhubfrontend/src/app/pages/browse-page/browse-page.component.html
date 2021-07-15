@@ -13,7 +13,7 @@
                 Notable Users
             </div>
     
-            <CardCarousal [items] = "users"></CardCarousal>
+            <CardCarousal (viewItemEvent) = "userItemViewed($event)" itemType="user" [items] = "users"></CardCarousal>
         </div>
 
         <!--
