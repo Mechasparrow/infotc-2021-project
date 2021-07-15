@@ -25,13 +25,12 @@
         </div>
 
         
-        <!--
         <div>
             <div class = "mt-8 text-2xl text-center">
                 Notable Groups
             </div>
     
-            <CardCarousal></CardCarousal>
+            <CardCarousal (viewItemEvent) = "groupItemViewed($event)" itemType="group" [items] = "groups"></CardCarousal>
         </div>
 
         <div class = "mb-8">
@@ -39,8 +38,7 @@
                 Notable Proposals
             </div>
     
-            <CardCarousal></CardCarousal>
+            <CardCarousal (viewItemEvent) = "proposalItemViewed($event)" itemType="project-proposal" [items] = "proposals"></CardCarousal>
         </div>
-        -->
     </div>
 </DefaultPageLayout>

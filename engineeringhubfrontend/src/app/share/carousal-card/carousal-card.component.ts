@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Group } from 'src/app/models/Group';
 import { Project } from 'src/app/models/Project';
+import { ProjectProposal } from 'src/app/models/ProjectProposal';
 import { User } from 'src/app/models/User';
 
 export interface MappedItem{
@@ -32,6 +34,10 @@ export class CarousalCardComponent implements OnInit {
       this.mapToItem = this.mapUserToItem;
     }else if (this.itemType == "project"){
       this.mapToItem = this.mapProjectToItem;
+    }else if (this.itemType == "group"){
+      this.mapToItem = this.mapGroupToItem;
+    }else if (this.itemType == "project-proposal"){
+      this.mapToItem = this.mapProposalToItem;
     }
   }
 
@@ -50,6 +56,20 @@ export class CarousalCardComponent implements OnInit {
   }
 
   mapProjectToItem(item: Project){
+    return <MappedItem>{
+      title: item.name,
+      description: item.description
+    }
+  }
+
+  mapGroupToItem(item: Group){
+    return <MappedItem>{
+      title: item.name,
+      description: item.description
+    }
+  }
+
+  mapProposalToItem(item: ProjectProposal){
     return <MappedItem>{
       title: item.name,
       description: item.description

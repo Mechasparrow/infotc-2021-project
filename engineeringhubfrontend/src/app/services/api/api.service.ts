@@ -33,6 +33,15 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/projects/public`).toPromise();
   }
 
+
+  async ListGroups(){
+    return this.http.get(`${this.apiEndpoint}/groups/`).toPromise();
+  }
+
+  async ListProjectProposals(){
+    return this.http.get(`${this.apiEndpoint}/project-proposals/`).toPromise();
+  }
+
   async addUserSkill(skill:string, user_pk:number, authToken:string){
     //POST /skills/
     var payload = {
