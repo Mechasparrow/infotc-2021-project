@@ -29,11 +29,19 @@ export class AddEventPageComponent implements OnInit {
     name: new FormControl("", Validators.required),
     description: new FormControl("", Validators.required),
     location: new FormControl("" ,Validators.required),
-    "timestart-date": new FormControl(formatDate(this.defaultDate, 'yyyy-MM-dd', 'en'), Validators.required),
-    "timeend-date": new FormControl(formatDate(this.defaultDate, 'yyyy-MM-dd', 'en'), Validators.required),
-    "timestart-time": new FormControl(formatDate(this.defaultDate, 'hh:mm', 'en'), Validators.required),
-    "timeend-time": new FormControl(formatDate(this.defaultDate, 'hh:mm', 'en'), Validators.required)
+    "timestart-date": new FormControl(this.getDayString(this.defaultDate), Validators.required),
+    "timeend-date": new FormControl(this.getDayString(this.defaultDate), Validators.required),
+    "timestart-time": new FormControl(this.getTimeString(this.defaultDate), Validators.required),
+    "timeend-time": new FormControl(this.getTimeString(this.defaultDate), Validators.required)
   });
+
+  private getDayString(date: Date){
+    return formatDate(date, 'yyyy-MM-dd', 'en');
+  }
+
+  private getTimeString(date: Date){
+    return formatDate(date, 'HH:mm', 'en')
+  }
 
   constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -58,9 +66,17 @@ export class AddEventPageComponent implements OnInit {
         this.groupEventForm.get("name")?.setValue(this.loadedEvent.name);
         this.groupEventForm.get("description")?.setValue(this.loadedEvent.description);
         this.groupEventForm.get("location")?.setValue(this.loadedEvent.location);
+      
+        let startDate = new Date(this.loadedEvent.timeStart);
+        let endDate = new Date(this.loadedEvent.timeEnd);
+      
+        this.groupEventForm.get("timestart-date")?.setValue(this.getDayString(startDate));
+        this.groupEventForm.get("timeend-date")?.setValue(this.getDayString(endDate));
+        this.groupEventForm.get("timestart-time")?.setValue(this.getTimeString(startDate));
+        this.groupEventForm.get("timeend-time")?.setValue(this.getTimeString(endDate));
       }
-    }catch(err){
-
+    } catch(err){
+      console.log(err);
     }
   }
 
@@ -70,6 +86,14 @@ export class AddEventPageComponent implements OnInit {
     let parsedDate = moment(dateString, "YYYY-MM-DD hh:mm").toDate();
 
     return parsedDate;
+  }
+
+  async updateEvent(eventPartial: GroupEvent, authToken:string){
+    return <GroupEvent>await this.api.updateGroupEvent(this.groupId, eventPartial, authToken);
+  }
+
+  async createEvent(newEvent: GroupEvent, authToken: string){
+    return <GroupEvent>await this.api.createGroupEvent(this.groupId, newEvent,authToken);
   }
 
   async onSubmit(){
@@ -92,11 +116,18 @@ export class AddEventPageComponent implements OnInit {
     if (authToken != null){
       try{
         
-        var event:GroupEvent | null = null;
+        var returnedEvent:GroupEvent | null = null;
 
-        event = <GroupEvent>await this.api.createGroupEvent(this.groupId, newEvent,authToken);
+        //returnedEvent = <GroupEvent>await this.api.createGroupEvent(this.groupId, newEvent,authToken);
         
-        if (event != null){
+        if (this.editting){
+          returnedEvent = await this.updateEvent(newEvent, authToken);
+        }else{
+          returnedEvent = await this.createEvent(newEvent, authToken);
+        }
+
+
+        if (returnedEvent != null){
           this.router.navigate([`/groups/${this.groupId}`])
         }
       }catch(err){

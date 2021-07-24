@@ -376,4 +376,21 @@ export class ApiService {
 
     return this.http.post(`${this.apiEndpoint}/groups/${groupId}/createGroupEvent/`, newEvent, httpOptions).toPromise();
   }
+
+  async updateGroupEvent(groupId: number, eventPartial: GroupEvent, authToken: string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return of(<GroupEvent>{
+      id: 1,
+      name: "It worked",
+      description: "Hello there"
+    }).toPromise();
+
+    //return this.http.put(`${this.apiEndpoint}/groups/${groupId}/updateProjectNote/`, eventPartial, httpOptions).toPromise();
+ 
+  }
 }
