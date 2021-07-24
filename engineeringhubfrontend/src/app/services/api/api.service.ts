@@ -363,7 +363,10 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupEvents`).toPromise();
   }
 
-  
+  async getGroupEvent(eventId: number){
+    return this.http.get(`${this.apiEndpoint}/events/${eventId}`).toPromise();
+  }
+
   async createGroupEvent(groupId: number, newEvent: GroupEvent,authToken: string){
     var httpOptions = {
       headers: new HttpHeaders({

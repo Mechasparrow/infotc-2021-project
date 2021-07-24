@@ -22,6 +22,9 @@ export class AddEventPageComponent implements OnInit {
 
   editting: boolean = false;
   groupId: number = -1;
+  eventId: number = -1;
+  loadedEvent: GroupEvent | null = null;
+
   groupEventForm: FormGroup = new FormGroup({
     name: new FormControl("", Validators.required),
     description: new FormControl("", Validators.required),
@@ -37,8 +40,29 @@ export class AddEventPageComponent implements OnInit {
   ngOnInit(): void {
     let groupIdRaw: string | null = this.activatedRoute.snapshot.paramMap.get("id");
     this.groupId = groupIdRaw != null ? parseInt(groupIdRaw) : -1;
+
+    let eventIdRaw: string | null = this.activatedRoute.snapshot.paramMap.get("id2");
+    this.eventId = eventIdRaw != null ? parseInt(eventIdRaw) : -1;
+
+    if (eventIdRaw != null){
+      this.editting = true;
+      this.retrieveEventForUpdate();
+    }
   }
 
+  async retrieveEventForUpdate(){
+    try{
+      this.loadedEvent = <GroupEvent> await this.api.getGroupEvent(this.eventId);
+      console.log(this.loadedEvent);
+      if (this.loadedEvent!=null){
+        this.groupEventForm.get("name")?.setValue(this.loadedEvent.name);
+        this.groupEventForm.get("description")?.setValue(this.loadedEvent.description);
+        this.groupEventForm.get("location")?.setValue(this.loadedEvent.location);
+      }
+    }catch(err){
+
+    }
+  }
 
   createDate(date:string, time: string): Date {
     let dateString = date + " " + time;
