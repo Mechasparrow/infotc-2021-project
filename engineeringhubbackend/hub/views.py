@@ -296,6 +296,41 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         else:
             return Response(status=401)
 
+    @action(detail=True, methods=['put'])
+    @permission_classes([permissions.IsAuthenticated])
+    def updateGroupEvent(self, request, pk):
+        located_group = models.Group.objects.get(pk=pk)
+
+        request.data["group"] = located_group.id
+        located_groupevent = models.Event.objects.get(pk=request.data["id"], group = located_group)
+
+        if (request.user.is_authenticated and located_group.owner == request.user):
+
+            event_serializer = serializers.EventSerializer(located_groupevent, data=request.data)
+
+            if (event_serializer.is_valid()):
+                event_serializer.save()
+
+            return Response(event_serializer.data)
+        else:
+            return Response(status=401)
+
+    '''
+    @action(detail=True,methods=['put'])
+    def updateProjectNote(self, request, pk):
+        located_project = models.Project.objects.get(pk=pk)
+        located_project_note = models.ProjectNote.objects.get(relatedProject=located_project, pk=request.data["id"])
+
+        if (request.user.is_authenticated and request.user == located_project.owningUser):
+            serializer = serializers.ProjectNoteSerializer(located_project_note, data=request.data)
+
+            if (serializer.is_valid()):
+                serializer.save()
+
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+    '''
 
     @action(detail=True, methods=['delete'])
     @permission_classes([permissions.IsAuthenticated])

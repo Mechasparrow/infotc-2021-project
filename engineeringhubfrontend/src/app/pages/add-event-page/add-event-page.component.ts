@@ -89,6 +89,8 @@ export class AddEventPageComponent implements OnInit {
   }
 
   async updateEvent(eventPartial: GroupEvent, authToken:string){
+    eventPartial.id = this.eventId;
+
     return <GroupEvent>await this.api.updateGroupEvent(this.groupId, eventPartial, authToken);
   }
 
@@ -110,7 +112,6 @@ export class AddEventPageComponent implements OnInit {
       location: groupValues["location"]
     }
 
-    console.log(newEvent);
     let authToken = await this.tokenStore.getAuthenticationToken();
 
     if (authToken != null){

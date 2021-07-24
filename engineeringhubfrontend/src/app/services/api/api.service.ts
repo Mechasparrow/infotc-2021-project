@@ -12,6 +12,7 @@ import { User } from 'src/app/models/User';
 
 import * as faker from 'faker';
 import { GroupEvent } from 'src/app/models/GroupEvent';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable({
   providedIn: 'root'
@@ -384,13 +385,7 @@ export class ApiService {
       })
     }
 
-    return of(<GroupEvent>{
-      id: 1,
-      name: "It worked",
-      description: "Hello there"
-    }).toPromise();
-
-    //return this.http.put(`${this.apiEndpoint}/groups/${groupId}/updateProjectNote/`, eventPartial, httpOptions).toPromise();
+    return this.http.put(`${this.apiEndpoint}/groups/${groupId}/updateGroupEvent/`, eventPartial, httpOptions).toPromise();
  
   }
 }
