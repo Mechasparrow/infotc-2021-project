@@ -4,7 +4,8 @@
             <div class = "mt-8 text-2xl text-center">
                 Viewing <span class="font-bold" *ngIf="group != null">{{group.name}}</span>
                 
-                <a class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/groups'">Go back</a>
+                <a *ngIf="userOwnsGroup"  class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/browse'">Go back</a>
+                <a *ngIf="!userOwnsGroup"  class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/groups'">Go back</a>
             </div>
         </div>
 

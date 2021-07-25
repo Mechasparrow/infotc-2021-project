@@ -41,7 +41,7 @@ export class BrowsePageComponent implements OnInit {
   }
 
   groupItemViewed(group: Group): void {
-    alert(`Navigating to Group: ${group.id}`);
+    this.router.navigate([`/groups/${group.id}`]);
   }
 
   proposalItemViewed(proposal: ProjectProposal): void {
