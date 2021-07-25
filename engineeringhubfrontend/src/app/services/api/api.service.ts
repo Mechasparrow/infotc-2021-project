@@ -415,4 +415,8 @@ export class ApiService {
 
     return this.http.post(`${this.apiEndpoint}/project-proposals/${proposalId}/createProjectFromProposal/`, {}, httpOptions).toPromise();
   }
+
+  async getPublicProjectForUser(userId: number){
+    return this.http.get(`${this.apiEndpoint}/users/${userId}/getUserPublicProjects/`).toPromise(); 
+  }
 }

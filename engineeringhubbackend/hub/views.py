@@ -26,6 +26,14 @@ class DiscliplineViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.
 
 class UserViewSet(viewsets.ViewSet):
 
+    @action(detail=True,methods=['get'])
+    def getUserPublicProjects(self, request,pk):
+        user = User.objects.get(pk=pk)
+        public_projects = models.Project.objects.filter(owningUser=user, private=False)
+
+        serializer = serializers.ProjectSerializer(public_projects, many=True)
+        return Response(serializer.data)
+
     @action(detail=False,methods=['get'])    
     def searchUsers(self, request):
         searchString = request.query_params.get("search_query", "")
@@ -221,9 +229,6 @@ class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
             return Response("deleted", status=200)
         else:
             return Response(status=401)    
-
-
-
 
 class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Group.objects.all()
