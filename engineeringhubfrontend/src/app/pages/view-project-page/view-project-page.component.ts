@@ -12,9 +12,12 @@ import { TokenStoreService } from 'src/app/services/token-store/token-store.serv
 })
 export class ViewProjectPageComponent implements OnInit {
 
+
+  
   projectNotes: ProjectNote[] = [];
   project: Project | null = null;
   projectId: number = -1;
+  
 
 
   visitingUser: boolean = true;

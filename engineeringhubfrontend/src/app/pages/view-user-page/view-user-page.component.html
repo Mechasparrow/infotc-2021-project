@@ -26,22 +26,24 @@
             </div>
         </div>
 
-        
-
-
-        <!-- Events -->
-        <div>
-
-        </div>
-
-        <!-- Groups -->
-        <div>
-
-        </div>
-
         <!-- Projects -->
-        <div>
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Projects
+                
+            </div>
+        </div>
 
+        <div class="mt-4 mx-8 mb-4 space-y-4">
+            <div *ngFor = "let projectResult of ToProjectCardResults(userProjects)">
+                <ResultCard 
+                (viewCardEvent)="ViewProject($event)"
+                [extraMetaData]="projectResult.id"
+                [cardType]="projectCardType" 
+                [projectAttributes]="projectResult.attributes" 
+                [projectName]="projectResult.name" 
+                [projectDescription]="projectResult.description"></ResultCard>
+            </div>
         </div>
     </div>
 </DefaultPageLayout>
