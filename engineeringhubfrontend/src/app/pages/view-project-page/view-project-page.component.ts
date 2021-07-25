@@ -16,6 +16,9 @@ export class ViewProjectPageComponent implements OnInit {
   project: Project | null = null;
   projectId: number = -1;
 
+
+  visitingUser: boolean = true;
+
   constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute, private router: Router) {
     
   }
@@ -25,6 +28,8 @@ export class ViewProjectPageComponent implements OnInit {
     this.projectId = projectIdRaw != null ? parseInt(projectIdRaw) : -1;
     this.getProjectNotes();
     this.getProject();
+
+    console.log("init");
   }
 
   private sortDatesDescending(projectNoteA: ProjectNote, projectNoteB: ProjectNote): number {
@@ -36,10 +41,21 @@ export class ViewProjectPageComponent implements OnInit {
   async getProject(){
     let authToken = await this.tokenStore.getAuthenticationToken();
     
+
     if (authToken != null){
       try{
         this.project = <Project>await this.api.getUserProject(this.projectId,authToken);
+        this.visitingUser = false;
+        console.log("Logging project");
         console.log(this.project);
+      }catch(err){
+        console.log(err);
+      }
+    }
+
+    if (this.visitingUser){
+      try {
+        this.project = <Project> await this.api.getProject(this.projectId);
       }catch(err){
         console.log(err);
       }
