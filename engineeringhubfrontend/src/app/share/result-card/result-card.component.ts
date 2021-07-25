@@ -20,6 +20,7 @@ export class ResultCardComponent implements OnInit {
   @Input() projectDescription: string = "";
   @Input() projectAttributes: string[] = [];
 
+  @Input() ownedByUser: boolean = false;
 
   @Input() extraMetaData: any = {};
 

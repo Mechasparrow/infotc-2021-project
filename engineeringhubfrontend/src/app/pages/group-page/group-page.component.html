@@ -33,6 +33,7 @@
                 (viewCardEvent)="ViewGroup($event)"
                 [extraMetaData]="groupResult.id"
                 [cardType]="groupCardType" 
+                [ownedByUser]="getUserOwnsGroup(groupResult)"
                 [genericName]="groupResult.name"></ResultCard>
             </div>
         
