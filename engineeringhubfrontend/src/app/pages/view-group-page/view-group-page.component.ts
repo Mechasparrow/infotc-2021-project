@@ -143,7 +143,7 @@ export class ViewGroupPageComponent implements OnInit {
 
     try{
 
-      eventMembers = await this.api.getGroupEventAttendees(event.id); 
+      eventMembers = <User[]> await this.api.getGroupEventAttendees(event.id); 
     
     }catch(err){
       console.log(err);

@@ -420,14 +420,8 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/users/${userId}/getUserPublicProjects/`).toPromise(); 
   }
 
-  async getGroupEventAttendees(groupId: number){
-    return of (<User[]>[
-      <User>{
-        username: "Paula"
-      },
-      <User>{
-        username: "James"
-      }
-    ]).toPromise();
+  async getGroupEventAttendees(eventId: number){
+ 
+    return this.http.get(`${this.apiEndpoint}/events/${eventId}/attendees/`).toPromise(); 
   }
 }

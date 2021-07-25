@@ -228,7 +228,16 @@ class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
             event_to_delete.delete()
             return Response("deleted", status=200)
         else:
-            return Response(status=401)    
+            return Response(status=401)   
+
+    @action(detail=True, methods=['get'])
+    def attendees(self, request,pk):
+        event = models.Event.objects.get(pk=pk)
+        users = event.users
+        
+        serializer = serializers.UserSerializer(users, many=True)
+
+        return Response(serializer.data)
 
 class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Group.objects.all()
