@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="193" height="193" viewBox="0 0 193 193">
+  <g id="construction_black_24dp" transform="translate(0 0.486)">
+    <g id="Group_10" data-name="Group 10" transform="translate(0 -0.486)">
+      <rect id="Rectangle_85" data-name="Rectangle 85" width="193" height="193" fill="none"/>
+    </g>
+    <g id="Group_12" data-name="Group 12" transform="translate(16.873 20.942)">
+      <g id="Group_11" data-name="Group 11">
+        <rect id="Rectangle_86" data-name="Rectangle 86" width="24.105" height="68.136" transform="translate(93.869 100.913) rotate(-45)"/>
+        <path id="Path_5" data-name="Path 5" d="M125.837,61.97a28.153,28.153,0,0,0,28.122-28.122,27.761,27.761,0,0,0-3.294-12.856L128.97,42.686,117,30.714,138.693,9.02a27.761,27.761,0,0,0-12.856-3.294A28.153,28.153,0,0,0,97.715,33.848a27.4,27.4,0,0,0,1.687,9.32L84.538,58.033l-14.3-14.3,5.7-5.7L64.611,26.7,81.645,9.663a24.1,24.1,0,0,0-34.068,0L19.134,38.106,30.463,49.436H7.8l-5.7,5.7L30.543,83.584l5.7-5.7V55.14L47.577,66.47l5.7-5.7,14.3,14.3L8.046,134.605,25.08,151.639l91.437-91.356A27.4,27.4,0,0,0,125.837,61.97Z" transform="translate(-2.1 -2.613)"/>
+      </g>
+    </g>
+  </g>
+</svg>
