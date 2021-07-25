@@ -4,7 +4,9 @@
             <div class = "mt-8 text-2xl text-center">
                 Viewing <span class="font-bold" *ngIf="project != null">{{project.name}}</span>
                 
-                <a class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/projects'">Go back</a>
+
+                <a *ngIf = "visitingUser" class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/browse'">Go back</a>
+                <a *ngIf = "!visitingUser" class = "pl-4 hover:underline text-mizzou-orange" href="#" [routerLink]="'/projects'">Go back</a>
             </div>
         </div>
 
@@ -13,7 +15,7 @@
         -->
         <ng-container *ngIf="project != null">
             
-            <div class="mt-2 mx-8 space-x-4">
+            <div *ngIf = "!visitingUser" class="mt-2 mx-8 space-x-4">
                 <button (click)="EditProject()" class = "rounded-full px-4 py-1 text-white hover:bg-mizzou-orange bg-mizzou-blue">
                     Edit Project
                 </button>
@@ -70,7 +72,7 @@
         <div class = "text-2xl font-bold text-center">
             Project Notes
         </div>
-        <button (click)="createProjectNote()" class = "mx-8 ml-auto fit-content text-white rounded-full px-2 py-1 hover:bg-mizzou-orange bg-mizzou-gold">
+        <button *ngIf = "!visitingUser" (click)="createProjectNote()" class = "mx-8 ml-auto fit-content text-white rounded-full px-2 py-1 hover:bg-mizzou-orange bg-mizzou-gold">
             + Add Project Note
         </button>
 
@@ -86,7 +88,7 @@
                 <div>
                     {{getPrettyDate(projectNote)}}
                 </div>
-                <div class = "mt-2 space-x-2">
+                <div *ngIf = "!visitingUser" class = "mt-2 space-x-2">
                     <button (click)="deleteProjectNote(projectNote.id)" class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-red">
                         Delete Note
                     </button>

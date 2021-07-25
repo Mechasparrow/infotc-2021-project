@@ -395,4 +395,9 @@ export class ApiService {
     return this.http.get(`${this.apiEndpoint}/users/${userId}`).toPromise();
 
   }
+
+  async getProject(projectId: number){
+    
+    return this.http.get(`${this.apiEndpoint}/projects/${projectId}`).toPromise();
+  }
 }
