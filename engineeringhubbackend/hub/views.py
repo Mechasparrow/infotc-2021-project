@@ -239,6 +239,31 @@ class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
 
         return Response(serializer.data)
 
+
+    @action(detail=True, methods=['post'])
+    def attend(self, request, pk):
+        event = models.Event.objects.get(pk=pk)
+
+        if (request.user.is_authenticated):
+            event.users.add(request.user)
+            event.save()
+            serializer = serializers.EventSerializer(event)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
+    @action(detail=True, methods=['delete'])
+    def unattend(self, request, pk):
+        event = models.Event.objects.get(pk=pk)
+
+        if (request.user.is_authenticated):
+            event.users.remove(request.user)
+            event.save()
+            serializer = serializers.EventSerializer(event)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
 class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Group.objects.all()
     serializer_class=serializers.GroupSerializer

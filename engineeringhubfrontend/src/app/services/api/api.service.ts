@@ -424,4 +424,26 @@ export class ApiService {
  
     return this.http.get(`${this.apiEndpoint}/events/${eventId}/attendees/`).toPromise(); 
   }
+
+  async attendGroupEvent(eventId:number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+    
+    return this.http.post(`${this.apiEndpoint}/events/${eventId}/attend/`, {}, httpOptions).toPromise(); 
+  }
+
+  async unattendGroupEvent(eventId: number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+    
+    return this.http.delete(`${this.apiEndpoint}/events/${eventId}/unattend/`, httpOptions).toPromise(); 
+
+  }
+  
 }

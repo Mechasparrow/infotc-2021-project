@@ -196,12 +196,31 @@ export class ViewGroupPageComponent implements OnInit {
     return returnedEvent != undefined;
   }
 
-  attendEvent(event: GroupEvent){
+  async attendEvent(event: GroupEvent){
+    let userAuthToken: string | null = this.tokenStore.getAuthenticationToken();
+    
+    if (userAuthToken != null){  
+      try{
+        await this.api.attendGroupEvent(event.id, userAuthToken);
+        await this.obtainGroupEvents();
+      }catch(err){
+        console.log(err);
+      }
+    }
 
   }
 
-  unattendEvent(event: GroupEvent){
-
+  async unattendEvent(event: GroupEvent){
+    let userAuthToken: string | null = this.tokenStore.getAuthenticationToken();
+    
+    if (userAuthToken != null){  
+      try{
+        await this.api.unattendGroupEvent(event.id, userAuthToken);
+        await this.obtainGroupEvents();
+      }catch(err){
+        console.log(err);
+      }
+    }
   }
 
 }
