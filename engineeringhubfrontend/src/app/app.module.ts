@@ -30,6 +30,7 @@ import { AddNewGroupComponent } from './pages/add-new-group/add-new-group.compon
 import { ViewGroupPageComponent } from './pages/view-group-page/view-group-page.component';
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 import { ViewUserPageComponent } from './pages/view-user-page/view-user-page.component';
+import { ProjectProposalPageComponent } from './pages/project-proposal-page/project-proposal-page.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ViewUserPageComponent } from './pages/view-user-page/view-user-page.com
     AddNewGroupComponent,
     ViewGroupPageComponent,
     AddEventPageComponent,
-    ViewUserPageComponent
+    ViewUserPageComponent,
+    ProjectProposalPageComponent
   ],
   imports: [
     BrowserModule,
