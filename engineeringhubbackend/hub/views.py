@@ -7,6 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from django.contrib.postgres.search import TrigramSimilarity
 
+import datetime
+
 from . import serializers
 
 from django.contrib.auth.models import User
@@ -189,6 +191,20 @@ class ProjectProposalViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, v
         serializer = serializers.ProjectProposalSerializer(queryset,many=True)
         return Response(serializer.data)
 
+    @action(detail=True, methods=['post'])
+    @permission_classes([permissions.IsAuthenticated])
+    def createProjectFromProposal (self, request, pk):
+        proposal = models.ProjectProposal.objects.get(pk=pk)
+
+        if (request.user.is_authenticated):
+            new_project = models.Project(created = datetime.datetime.now(), relatedProposal=proposal, owningUser = request.user)
+            new_project.save()
+
+            serializer = serializers.ProjectSerializer(new_project)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
 
 class EventViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset=models.Event.objects.all()
@@ -314,23 +330,6 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
             return Response(event_serializer.data)
         else:
             return Response(status=401)
-
-    '''
-    @action(detail=True,methods=['put'])
-    def updateProjectNote(self, request, pk):
-        located_project = models.Project.objects.get(pk=pk)
-        located_project_note = models.ProjectNote.objects.get(relatedProject=located_project, pk=request.data["id"])
-
-        if (request.user.is_authenticated and request.user == located_project.owningUser):
-            serializer = serializers.ProjectNoteSerializer(located_project_note, data=request.data)
-
-            if (serializer.is_valid()):
-                serializer.save()
-
-            return Response(serializer.data)
-        else:
-            return Response(status=401)
-    '''
 
     @action(detail=True, methods=['delete'])
     @permission_classes([permissions.IsAuthenticated])

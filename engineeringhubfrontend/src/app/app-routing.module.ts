@@ -11,6 +11,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { ProjectProposalPageComponent } from './pages/project-proposal-page/project-proposal-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { ViewGroupPageComponent } from './pages/view-group-page/view-group-page.component';
 import { ViewProjectPageComponent } from './pages/view-project-page/view-project-page.component';
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path: 'projects/:id', component: ViewProjectPageComponent},
   {path: 'projects/:id/new-note', component: AddProjectNotePageComponent},
   {path: 'projects/:id/new-note/:id2', component: AddProjectNotePageComponent},
-  {path: 'users/:id', component: ViewUserPageComponent}
+  {path: 'users/:id', component: ViewUserPageComponent},
+  {path: 'proposals/:id', component: ProjectProposalPageComponent}
 ];
 
 @NgModule({

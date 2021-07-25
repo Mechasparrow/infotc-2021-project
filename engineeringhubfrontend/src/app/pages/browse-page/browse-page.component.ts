@@ -45,7 +45,7 @@ export class BrowsePageComponent implements OnInit {
   }
 
   proposalItemViewed(proposal: ProjectProposal): void {
-    alert(`Navigating to Proposal: ${proposal.id}`);
+    this.router.navigate([`/proposals/${proposal.id}`]);
   }
 
   async pullUsers(){

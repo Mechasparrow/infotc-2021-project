@@ -400,4 +400,19 @@ export class ApiService {
     
     return this.http.get(`${this.apiEndpoint}/projects/${projectId}`).toPromise();
   }
+
+  async getProjectProposal(projectProposalId: number){
+    
+    return this.http.get(`${this.apiEndpoint}/project-proposals/${projectProposalId}`).toPromise();
+  }
+
+  async createProjectFromProposal(proposalId: number, authToken: string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/project-proposals/${proposalId}/createProjectFromProposal/`, {}, httpOptions).toPromise();
+  }
 }

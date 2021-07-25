@@ -10,6 +10,13 @@
             </div>
         </div>
 
+
+        <div class = "ml-auto mx-8" *ngIf = "project?.relatedProposal != null">
+            <button (click) = "viewRelatedProposal()" class = "text-white rounded-full hover:ring ring-mizzou-black bg-mizzou-green py-1 px-2">
+                View Related Proposal
+            </button>
+        </div>
+
         <!--
             TODO add Project info section
         -->
@@ -75,6 +82,7 @@
         <button *ngIf = "!visitingUser" (click)="createProjectNote()" class = "mx-8 ml-auto fit-content text-white rounded-full px-2 py-1 hover:bg-mizzou-orange bg-mizzou-gold">
             + Add Project Note
         </button>
+
 
         <div class="mt-4 mb-4">
             

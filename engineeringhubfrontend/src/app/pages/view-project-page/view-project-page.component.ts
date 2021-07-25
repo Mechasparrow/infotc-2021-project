@@ -136,4 +136,12 @@ export class ViewProjectPageComponent implements OnInit {
     }
   }
 
+  viewRelatedProposal(){
+    if (this.project?.relatedProposal == null){
+      return;
+    }
+
+    this.router.navigate([`/proposals/${this.project?.relatedProposal}`]);
+  }
+
 }

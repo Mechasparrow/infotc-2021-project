@@ -1,1 +1,27 @@
-<p>project-proposal-page works!</p>
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                {{projectProposal?.name}}
+            </div>
+        </div>
+
+        <div class = "ml-auto">
+            <button (click)="createProjectFromProposal()" class = "mx-8 bg-mizzou-gold text-white hover:bg-mizzou-orange px-2 py-1 rounded-full">
+                + Create Project from Proposal
+            </button>
+        </div>
+
+        <div class = "mx-8">
+            <div class = "font-bold text-2xl">
+                Description
+            </div>
+            <div>
+                {{projectProposal?.description}}
+            </div>
+
+        </div>
+
+
+    </div>
+</DefaultPageLayout>
