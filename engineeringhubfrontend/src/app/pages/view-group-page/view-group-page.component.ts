@@ -18,6 +18,8 @@ export class ViewGroupPageComponent implements OnInit {
   groupId: number = -1;
   userOwnsGroup: boolean = false;
   groupEvents: GroupEvent[] = [];
+  expandedEvents: GroupEvent[] = [];
+  eventAttendees: {[key: number]: Promise<User[]>} = {};
 
   constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute, private router: Router) {
     
@@ -91,6 +93,13 @@ export class ViewGroupPageComponent implements OnInit {
   async obtainGroupEvents(){
     try{
       this.groupEvents = <GroupEvent[]> await this.api.getGroupEvents(this.groupId);
+
+      this.groupEvents.forEach((groupEvent: GroupEvent) => {
+        
+        let attendees: Promise<User[]> = this.getEventAttendees(groupEvent);
+        this.eventAttendees[groupEvent.id] = attendees;
+
+      })
     }catch(err){
       console.log(err);
     }
@@ -127,6 +136,36 @@ export class ViewGroupPageComponent implements OnInit {
       console.log(err);
     }
   
+  }
+
+  async getEventAttendees(event: GroupEvent) : Promise<User[]>{
+    let eventMembers: User[] = [];
+
+    try{
+
+      eventMembers = await this.api.getGroupEventAttendees(event.id); 
+    
+    }catch(err){
+      console.log(err);
+    }
+
+    return eventMembers
+  }
+
+  expandEventMembers(event: GroupEvent){
+    this.expandedEvents.push(event);
+  }
+
+  unExpandEventMembers(event: GroupEvent){
+    this.expandedEvents = this.expandedEvents.filter((groupEvent: GroupEvent) => {
+      return groupEvent != event;
+    });
+  }
+
+  expandedEvent(event:GroupEvent){
+    let returnedEvent = this.expandedEvents.find((groupEvent: GroupEvent) => groupEvent == event);
+
+    return returnedEvent != undefined;
   }
 
 }

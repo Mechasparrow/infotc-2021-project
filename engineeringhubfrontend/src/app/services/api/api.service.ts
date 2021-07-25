@@ -419,4 +419,15 @@ export class ApiService {
   async getPublicProjectForUser(userId: number){
     return this.http.get(`${this.apiEndpoint}/users/${userId}/getUserPublicProjects/`).toPromise(); 
   }
+
+  async getGroupEventAttendees(groupId: number){
+    return of (<User[]>[
+      <User>{
+        username: "Paula"
+      },
+      <User>{
+        username: "James"
+      }
+    ]).toPromise();
+  }
 }
