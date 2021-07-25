@@ -13,7 +13,10 @@ import { TokenStoreService } from 'src/app/services/token-store/token-store.serv
 })
 export class ViewGroupPageComponent implements OnInit {
 
+  authUser: User | null = null;
   group: Group = <Group>{name:"test"};
+
+
   groupUsers: User[] = [];
   groupId: number = -1;
   userOwnsGroup: boolean = false;
@@ -25,14 +28,39 @@ export class ViewGroupPageComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
     let groupIdRaw: string | null = this.activatedRoute.snapshot.paramMap.get("id");
     this.groupId = groupIdRaw != null ? parseInt(groupIdRaw) : -1;
+    
+    await this.loadAuthUser();
     this.getGroup();
     this.CheckIfGroupOwner();
     this.obtainGroupUsers();
     this.obtainGroupEvents();
+  }
+
+  async loadAuthUser(){
+    let apiToken:string | null = this.tokenStore.getAuthenticationToken();
+
+    if (apiToken != null){
+      try{
+        this.authUser = <User> await this.api.getAuthUser(apiToken);
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
+  }
+
+  isUserAttendingEvent(groupEvent: GroupEvent){
+    if (this.authUser != null){
+
+      let locatedUser = groupEvent.users.find(user => user == this.authUser?.id);
+      return locatedUser != undefined;
+    }else{
+      return false;
+    }
   }
 
   EditGroup(){
@@ -166,6 +194,14 @@ export class ViewGroupPageComponent implements OnInit {
     let returnedEvent = this.expandedEvents.find((groupEvent: GroupEvent) => groupEvent == event);
 
     return returnedEvent != undefined;
+  }
+
+  attendEvent(event: GroupEvent){
+
+  }
+
+  unattendEvent(event: GroupEvent){
+
   }
 
 }

@@ -92,6 +92,16 @@
                     {{getPrettyDate(groupEvent)}}
                 </div>
 
+                <div class = "mt-4 mb-4">
+                    <button *ngIf = "!isUserAttendingEvent(groupEvent)" (click) = "attendEvent(groupEvent)" class = "hover:ring-2 ring-mizzou-black bg-mizzou-green py-1 px-2 text-white">
+                        Attend Event
+                    </button>
+
+                    <button *ngIf = "isUserAttendingEvent(groupEvent)" (click) = "unattendEvent(groupEvent)" class = "hover:ring-2 ring-mizzou-black bg-mizzou-red py-1 px-2 text-white">
+                        Unattend Event
+                    </button>
+                </div>
+
                 <div class = "mt-4">
                     <div>
                         <div class = "fit-content hover:cursor-pointer" *ngIf="!expandedEvent(groupEvent)" (click) = "expandEventMembers(groupEvent)" >
@@ -112,6 +122,8 @@
                         </li>
                     </ul>
                 </div>
+
+
 
                 <div *ngIf = "userOwnsGroup" class = "mt-2 space-x-2">
                     <button (click)="DeleteGroupEvent(groupEvent.id)" class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-red">
