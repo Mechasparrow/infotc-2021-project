@@ -388,4 +388,11 @@ export class ApiService {
     return this.http.put(`${this.apiEndpoint}/groups/${groupId}/updateGroupEvent/`, eventPartial, httpOptions).toPromise();
  
   }
+
+  async getUser(userId: number){
+
+
+    return this.http.get(`${this.apiEndpoint}/users/${userId}`).toPromise();
+
+  }
 }

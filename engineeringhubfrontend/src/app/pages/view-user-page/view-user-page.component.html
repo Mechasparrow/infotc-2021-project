@@ -1,0 +1,47 @@
+<DefaultPageLayout>
+    <div class = "flex flex-col flex-grow h-full">
+        <div class = "mx-auto">    
+            <div class = "mt-8 text-2xl text-center">
+                Viewing User {{loadedUser?.username}}
+            </div>
+        </div>
+
+        <div class = "mx-8 space-y-4">
+            <div>
+                <div class = "font-bold text-xl">Username: </div>
+                <div>{{loadedUser?.username}}</div>
+            </div>
+    
+            <div>
+                <div class = "font-bold text-xl">Email: </div>
+                <div>{{loadedUser?.email}}</div>
+            </div>
+    
+            <div>
+                <AttributeList listName = "Skill" [attributeList]="getUserSkills()"></AttributeList>
+            </div>
+    
+            <div>
+                <AttributeList listName="Disclipline" [attributeList]="getUserDiscliplines()"></AttributeList>
+            </div>
+        </div>
+
+        
+
+
+        <!-- Events -->
+        <div>
+
+        </div>
+
+        <!-- Groups -->
+        <div>
+
+        </div>
+
+        <!-- Projects -->
+        <div>
+
+        </div>
+    </div>
+</DefaultPageLayout>

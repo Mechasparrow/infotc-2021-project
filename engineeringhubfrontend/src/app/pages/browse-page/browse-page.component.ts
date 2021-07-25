@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Group } from 'src/app/models/Group';
 import { Project } from 'src/app/models/Project';
 import { ProjectProposal } from 'src/app/models/ProjectProposal';
@@ -18,7 +19,7 @@ export class BrowsePageComponent implements OnInit {
   groups: Group[] | null = null;
   proposals: ProjectProposal[] | null = null;
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
 
   }
 
@@ -31,7 +32,7 @@ export class BrowsePageComponent implements OnInit {
   }
 
   userItemViewed(user: User): void {
-    alert(`Navigating to User: ${user.id}`);
+    this.router.navigate([`/users/${user.id}`]);
   }
 
   
