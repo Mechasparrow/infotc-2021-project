@@ -23,6 +23,8 @@
     <div class="mt-4 mb-4 space-y-4">
         <div *ngFor = "let result of searchResults">
             <ResultCard 
+            (viewCardEvent)="viewCard($event)"
+            [extraMetaData]="{id: result.id, type: result.type}"
             [genericName]="result.genericName"
             [cardType]="result.type" 
             [projectAttributes]="result.attributes" 
