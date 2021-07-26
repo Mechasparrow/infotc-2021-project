@@ -1,0 +1,1866 @@
+[
+{
+  "model": "hub.course",
+  "pk": 1,
+  "fields": {
+    "name": "CS 1000",
+    "instructor": 1,
+    "students": [
+      1
+    ]
+  }
+},
+{
+  "model": "hub.projectnote",
+  "pk": 11,
+  "fields": {
+    "title": "Got first block created",
+    "relatedProject": 2,
+    "note": {
+      "content": "Wow it actually works: P.S it did not"
+    },
+    "created": "2021-07-12T22:02:44.300Z"
+  }
+},
+{
+  "model": "hub.projectnote",
+  "pk": 12,
+  "fields": {
+    "title": "Laptop on fire",
+    "relatedProject": 2,
+    "note": {
+      "content": "I was wrong"
+    },
+    "created": "2021-07-12T22:03:10.915Z"
+  }
+},
+{
+  "model": "hub.projectnote",
+  "pk": 13,
+  "fields": {
+    "title": "Jake start working on this project",
+    "relatedProject": 3,
+    "note": {
+      "title": "Please start working Jake",
+      "content": "pretty please"
+    },
+    "created": "2021-07-25T03:16:06Z"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$agcty4WVkhAZKI9RysMmMo$287bcAtDb+pOGtKYVyzQm81ZsHl4H1VPv+SXx2smj1U=",
+    "last_login": "2021-07-25T03:15:17.517Z",
+    "is_superuser": true,
+    "username": "michael",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-06-17T17:02:51.644Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$QqX34GnrGKiY7G0KBhY1rL$knj9J+vBAb6CstLPPIk2WDnR6HdRv8NuQh7B0A63ZrQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Jacob",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-06-17T17:09:49.058Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "John",
+    "first_name": "",
+    "last_name": "",
+    "email": "mechasparrow@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-06-18T18:21:26.667Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$W1l4N4m11CYInmZHqyRaJZ$9YpOH1bGNaWg/7jGUlRZ8dWqCiOGYO1fsSLI7fuVQ24=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "John2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-06-18T19:38:46.556Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$V6ZOX7MYSAI4duJbOV5AHa$4ttUihA8/Utca8zwWZO9fbJ6Gt96eHJh2aOEHo7v1No=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "JacobTheSecond",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-06-24T08:00:50.898Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$4E1aNSGCvttUA7kNwDpW5L$So6tcMQ1rmPLWCfwQejPVnag+ESYZUF8IMjiUJDBeuE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ronny",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-06-28T22:02:56.806Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$M9V5FqNDFvT48CyZC8sTn8$iL1bsr/jDZCK8/EE3u2gOHwiP08781aAObP9taeor8c=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "jake",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-07-04T02:47:34.221Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "385u5jyvy7ejmdc7k61z7xnkiod4hxb3",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-20tJnzNY3l2DAyiR4qRC3B0ipYD2zcx7iVy2teWt1yWPLM5Ci9PvhoUeddoB38t0myXN07qMKHdFHrTLYeb6vBzu30ErvX1rUgiaOKZrgkSBEgAjoWPPmgmU9cEEbwgQXbQ21FCcQlTGQ7IxVPH-APEeN7k:1m7Ubl:HAv4Pio4eRhct_XEE1l8tDOHY3_iGNhVFVXOxOoqg_c",
+    "expire_date": "2021-08-08T03:15:17.521Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rq71g68wsphekkulc76qhk4d2vv2923x",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-20tJnzNY3l2DAyiR4qRC3B0ipYD2zcx7iVy2teWt1yWPLM5Ci9PvhoUeddoB38t0myXN07qMKHdFHrTLYeb6vBzu30ErvX1rUgiaOKZrgkSBEgAjoWPPmgmU9cEEbwgQXbQ21FCcQlTGQ7IxVPH-APEeN7k:1luKaQ:WqIogF5Y9AzenREMVrcj8Ezdv-lL9REZdXv5zMW9a1I",
+    "expire_date": "2021-07-02T19:55:30.529Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vcc50mrvqpldnsfs9yazlwbtf14z3t88",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-20tJnzNY3l2DAyiR4qRC3B0ipYD2zcx7iVy2teWt1yWPLM5Ci9PvhoUeddoB38t0myXN07qMKHdFHrTLYeb6vBzu30ErvX1rUgiaOKZrgkSBEgAjoWPPmgmU9cEEbwgQXbQ21FCcQlTGQ7IxVPH-APEeN7k:1lzQYg:-3sKYbLCBkMufpPICSVLmAuve42XWhhze_2eY4v_4Yw",
+    "expire_date": "2021-07-16T21:18:46.997Z"
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 1,
+  "fields": {
+    "name": "C#",
+    "projects": [
+      6
+    ],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 2,
+  "fields": {
+    "name": "Java",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 3,
+  "fields": {
+    "name": "Python",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 4,
+  "fields": {
+    "name": "Apache Web Server",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 5,
+  "fields": {
+    "name": "PHP",
+    "projects": [],
+    "users": []
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 6,
+  "fields": {
+    "name": "Adobe Photoshop",
+    "projects": [],
+    "users": []
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 7,
+  "fields": {
+    "name": "HTML",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.skill",
+  "pk": 10,
+  "fields": {
+    "name": "TCP/IP",
+    "projects": [
+      2
+    ],
+    "users": []
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 1,
+  "fields": {
+    "name": "AI/ML",
+    "projects": [
+      6
+    ],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 2,
+  "fields": {
+    "name": "Algorithms",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 3,
+  "fields": {
+    "name": "Database Administration",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 4,
+  "fields": {
+    "name": "Mechatronics",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 5,
+  "fields": {
+    "name": "Cryptocurrency",
+    "projects": [
+      2
+    ],
+    "users": []
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 6,
+  "fields": {
+    "name": "Blockchain",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.disclipline",
+  "pk": 7,
+  "fields": {
+    "name": "Robotics",
+    "projects": [],
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.project",
+  "pk": 2,
+  "fields": {
+    "owningUser": [
+      "michael"
+    ],
+    "owningGroup": null,
+    "name": "Bitcoin Knockoff",
+    "description": "This is my implementation of a bitcoin knockoff.",
+    "created": "2021-07-12T22:04:36Z",
+    "complete": false,
+    "relatedProposal": null,
+    "private": false,
+    "interestedUsers": []
+  }
+},
+{
+  "model": "hub.project",
+  "pk": 3,
+  "fields": {
+    "owningUser": [
+      "jake"
+    ],
+    "owningGroup": null,
+    "name": "Test Project For Jake #1",
+    "description": "Woot",
+    "created": "2021-07-04T02:48:18Z",
+    "complete": false,
+    "relatedProposal": null,
+    "private": false,
+    "interestedUsers": []
+  }
+},
+{
+  "model": "hub.project",
+  "pk": 6,
+  "fields": {
+    "owningUser": [
+      "michael"
+    ],
+    "owningGroup": null,
+    "name": "test",
+    "description": "O really",
+    "created": "2021-07-12T06:19:22.775Z",
+    "complete": false,
+    "relatedProposal": null,
+    "private": true,
+    "interestedUsers": []
+  }
+},
+{
+  "model": "hub.project",
+  "pk": 10,
+  "fields": {
+    "owningUser": [
+      "Jacob"
+    ],
+    "owningGroup": null,
+    "name": "A really cool project",
+    "description": "No really!",
+    "created": "2021-07-25T05:48:49Z",
+    "complete": false,
+    "relatedProposal": 1,
+    "private": false,
+    "interestedUsers": []
+  }
+},
+{
+  "model": "hub.projectproposal",
+  "pk": 1,
+  "fields": {
+    "owningUser": [
+      "Jacob"
+    ],
+    "owningGroup": null,
+    "name": "Proposal for Sem #1",
+    "description": "Check this out."
+  }
+},
+{
+  "model": "hub.projectproposal",
+  "pk": 2,
+  "fields": {
+    "owningUser": [
+      "michael"
+    ],
+    "owningGroup": null,
+    "name": "wot",
+    "description": "man"
+  }
+},
+{
+  "model": "hub.projectproposal",
+  "pk": 3,
+  "fields": {
+    "owningUser": [
+      "michael"
+    ],
+    "owningGroup": null,
+    "name": "Search platform for engineering college",
+    "description": "Please help build a new search box for engineering"
+  }
+},
+{
+  "model": "hub.message",
+  "pk": 1,
+  "fields": {
+    "userFrom": null,
+    "groupFrom": null,
+    "userTo": [
+      "Jacob"
+    ],
+    "groupTo": null,
+    "message": "Hello world.",
+    "timestamp": "2021-06-18T04:28:10Z"
+  }
+},
+{
+  "model": "hub.event",
+  "pk": 4,
+  "fields": {
+    "group": 6,
+    "name": "My super cool event",
+    "timeStart": "2021-07-20T06:00:00Z",
+    "timeEnd": "2021-07-20T22:00:00Z",
+    "description": "There will be ice pops",
+    "location": "No really",
+    "users": []
+  }
+},
+{
+  "model": "hub.event",
+  "pk": 5,
+  "fields": {
+    "group": 2,
+    "name": "Robotics Demoz",
+    "timeStart": "2021-07-26T03:00:00Z",
+    "timeEnd": "2021-07-25T07:00:00Z",
+    "description": "A demoz",
+    "location": "Zoom",
+    "users": [
+      [
+        "JacobTheSecond"
+      ],
+      [
+        "ronny"
+      ],
+      [
+        "jake"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.group",
+  "pk": 2,
+  "fields": {
+    "owner": [
+      "michael"
+    ],
+    "name": "Vison robotics Lab",
+    "description": "Does navigation and vision for robotics (research)",
+    "isfaculty": true,
+    "users": [
+      [
+        "ronny"
+      ],
+      [
+        "jake"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.group",
+  "pk": 6,
+  "fields": {
+    "owner": [
+      "Jacob"
+    ],
+    "name": "MCA mk",
+    "description": "A new MCA",
+    "isfaculty": true,
+    "users": [
+      [
+        "michael"
+      ],
+      [
+        "ronny"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.group",
+  "pk": 7,
+  "fields": {
+    "owner": [
+      "michael"
+    ],
+    "name": "test group",
+    "description": "O'really",
+    "isfaculty": false,
+    "users": []
+  }
+},
+{
+  "model": "hub.friendship",
+  "pk": 1,
+  "fields": {
+    "userA": [
+      "Jacob"
+    ],
+    "userB": [
+      "michael"
+    ]
+  }
+},
+{
+  "model": "hub.student",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "michael"
+    ],
+    "yearsInSchool": 2
+  }
+},
+{
+  "model": "hub.instructor",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Jacob"
+    ],
+    "facultyPage": null
+  }
+},
+{
+  "model": "hub.college",
+  "pk": 1,
+  "fields": {
+    "name": "Engineering",
+    "users": [
+      [
+        "michael"
+      ]
+    ]
+  }
+},
+{
+  "model": "hub.major",
+  "pk": 1,
+  "fields": {
+    "name": "Computer Science",
+    "users": [
+      [
+        "michael"
+      ],
+      [
+        "Jacob"
+      ]
+    ]
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "78cfa4ed61f8407e26da41fd6437ad3e8b8940b6",
+  "fields": {
+    "user": [
+      "jake"
+    ],
+    "created": "2021-07-04T02:47:34.398Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "816ff58e06aceb66db97665fae24ae4f0c460313",
+  "fields": {
+    "user": [
+      "ronny"
+    ],
+    "created": "2021-06-28T22:02:57.054Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "92280627c9632516f32d8c23bb98f9d666b5ab47",
+  "fields": {
+    "user": [
+      "JacobTheSecond"
+    ],
+    "created": "2021-06-24T08:00:51.132Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "b0d30b58aa78c9dd7d973b9a3cea2ba5a6c5100f",
+  "fields": {
+    "user": [
+      "John2"
+    ],
+    "created": "2021-06-18T19:38:46.741Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "e7f00cb8450cbcc37a0467b1e102110c7ea279e1",
+  "fields": {
+    "user": [
+      "michael"
+    ],
+    "created": "2021-06-25T15:23:54.218Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-06-17T17:09:49.217Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "Jacob",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-06-17T17:10:21.040Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "instructor"
+    ],
+    "object_id": "1",
+    "object_repr": "Instructor object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-06-17T17:10:32.283Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "student"
+    ],
+    "object_id": "1",
+    "object_repr": "Student object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2021-06-17T19:11:02.761Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "major"
+    ],
+    "object_id": "1",
+    "object_repr": "Computer Science",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2021-06-17T19:11:08.718Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "major"
+    ],
+    "object_id": "1",
+    "object_repr": "Computer Science",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2021-06-17T19:11:11.927Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "major"
+    ],
+    "object_id": "1",
+    "object_repr": "Computer Science",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2021-06-17T19:16:44.016Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "course"
+    ],
+    "object_id": "1",
+    "object_repr": "Course object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2021-06-17T19:18:19.658Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "instructor"
+    ],
+    "object_id": "1",
+    "object_repr": "Jacob",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2021-06-17T19:18:26.592Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "course"
+    ],
+    "object_id": "1",
+    "object_repr": "CS 1000",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Instructor\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2021-06-18T04:25:56.078Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2021-06-18T04:27:19.451Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2021-06-18T04:27:31.714Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Group object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2021-06-18T04:27:44.157Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"OwningUser\", \"OwningGroup\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2021-06-18T04:27:52.802Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "friendship"
+    ],
+    "object_id": "1",
+    "object_repr": "Friendship object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2021-06-18T04:28:11.195Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "message"
+    ],
+    "object_id": "1",
+    "object_repr": "Message object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2021-06-18T04:29:37.330Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectproposal"
+    ],
+    "object_id": "1",
+    "object_repr": "ProjectProposal object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2021-06-18T04:29:47.543Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"RelatedProposal\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2021-06-18T19:55:52.458Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "2",
+    "object_repr": "Skill object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2021-06-20T03:55:06.010Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "1",
+    "object_repr": "Disclipline object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2021-07-01T14:41:43.254Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "college"
+    ],
+    "object_id": "1",
+    "object_repr": "Engineering",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2021-07-01T20:57:18.346Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"OwningUser\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2021-07-01T21:04:33.567Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "4",
+    "object_repr": "Skill object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Projects\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2021-07-01T21:05:06.964Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "2",
+    "object_repr": "Disclipline object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Projects\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2021-07-01T21:05:10.332Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "1",
+    "object_repr": "Disclipline object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Projects\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2021-07-02T21:19:04.139Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2021-07-04T02:33:48.070Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "2",
+    "object_repr": "Project object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2021-07-04T02:34:08.390Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "5",
+    "object_repr": "Disclipline object (5)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2021-07-04T02:48:19.498Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "3",
+    "object_repr": "Project object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2021-07-04T02:53:42.533Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "1",
+    "object_repr": "ProjectNote object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2021-07-04T02:53:51.052Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "1",
+    "object_repr": "ProjectNote object (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2021-07-04T02:53:55.650Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "1",
+    "object_repr": "ProjectNote object (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2021-07-04T02:54:19.398Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "2",
+    "object_repr": "ProjectNote object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2021-07-05T22:02:59.279Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "5",
+    "object_repr": "Skill object (5)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2021-07-05T22:03:02.738Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "6",
+    "object_repr": "Skill object (6)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2021-07-06T03:31:14.630Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "1",
+    "object_repr": "Project object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Private\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2021-07-06T03:42:22.513Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Group object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2021-07-06T03:42:38.910Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Group object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2021-07-11T20:44:23.111Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "3",
+    "object_repr": "ProjectNote object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2021-07-12T05:02:15.865Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "1",
+    "object_repr": "Skill object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Projects\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2021-07-12T06:18:40.720Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "8",
+    "object_repr": "Disclipline object (8)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2021-07-12T06:18:45.652Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "10",
+    "object_repr": "Disclipline object (10)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2021-07-12T06:18:52.396Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "disclipline"
+    ],
+    "object_id": "9",
+    "object_repr": "Disclipline object (9)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2021-07-12T06:19:02.357Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "9",
+    "object_repr": "Skill object (9)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2021-07-12T06:19:05.565Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "skill"
+    ],
+    "object_id": "8",
+    "object_repr": "Skill object (8)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2021-07-15T03:39:33.838Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "2",
+    "object_repr": "Project object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Private\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2021-07-15T03:47:59.348Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Group object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2021-07-15T04:41:19.237Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Group object (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2021-07-15T04:45:27.995Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "Group object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2021-07-15T05:44:50.912Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "Group object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Isfaculty\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2021-07-15T05:45:01.795Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "Group object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Isfaculty\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2021-07-15T05:48:46.956Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "3",
+    "object_repr": "Group object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2021-07-15T06:05:27.822Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Event object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2021-07-15T06:19:10.601Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "2",
+    "object_repr": "Event object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2021-07-15T06:21:01.586Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Event object (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2021-07-15T06:22:10.715Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "1",
+    "object_repr": "Event object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"TimeStart\", \"TimeEnd\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2021-07-25T03:16:06.553Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "13",
+    "object_repr": "ProjectNote object (13)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2021-07-25T03:16:15.097Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "projectnote"
+    ],
+    "object_id": "13",
+    "object_repr": "ProjectNote object (13)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"RelatedProject\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2021-07-25T03:53:10.530Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "6",
+    "object_repr": "Group object (6)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Owner\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2021-07-25T03:53:39.699Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "group"
+    ],
+    "object_id": "6",
+    "object_repr": "Group object (6)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2021-07-25T03:53:52.697Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "4",
+    "object_repr": "Event object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Group\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2021-07-25T05:47:25.271Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "8",
+    "object_repr": "Project object (8)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2021-07-25T06:16:15.155Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "project"
+    ],
+    "object_id": "10",
+    "object_repr": "Project object (10)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"OwningUser\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2021-07-25T16:10:36.926Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "5",
+    "object_repr": "Event object (5)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2021-07-25T16:28:15.946Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "5",
+    "object_repr": "Event object (5)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2021-07-25T16:28:27.782Z",
+    "user": [
+      "michael"
+    ],
+    "content_type": [
+      "hub",
+      "event"
+    ],
+    "object_id": "5",
+    "object_repr": "Event object (5)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Users\"]}}]"
+  }
+}
+]
