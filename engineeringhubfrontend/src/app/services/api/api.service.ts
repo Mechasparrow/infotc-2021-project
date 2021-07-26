@@ -33,7 +33,7 @@ export class ApiService {
   }
 
   async ListPublicProjects(){
-    return this.http.get(`${this.apiEndpoint}/projects/public`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/projects/public/`).toPromise();
   }
 
   async createGroup(group:Group,authToken:string ){
@@ -342,7 +342,7 @@ export class ApiService {
       })
     }
 
-    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/isOwnedByUser`, httpOptions).toPromise();
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/isOwnedByUser/`, httpOptions).toPromise();
   }
 
   async deleteGroup(groupId: number, authToken:string){
@@ -352,16 +352,16 @@ export class ApiService {
       })
     }
 
-    return this.http.delete(`${this.apiEndpoint}/groups/${groupId}/deleteGroup`, httpOptions).toPromise();
+    return this.http.delete(`${this.apiEndpoint}/groups/${groupId}/deleteGroup/`, httpOptions).toPromise();
   }
 
   async getGroupUsers(groupId:number){
     
-    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupUsers`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupUsers/`).toPromise();
   }
 
   async getGroupEvents(groupId: number){
-    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupEvents`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/groups/${groupId}/getGroupEvents/`).toPromise();
   }
 
   async getGroupEvent(eventId: number){
