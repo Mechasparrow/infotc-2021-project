@@ -20,7 +20,7 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 export class ApiService {
   
 
-  private apiEndpoint: string = "http://23.101.131.209:8000/api/hub";
+  private apiEndpoint: string = "http://20.106.154.30:8000/api/hub";
 
   constructor(private http: HttpClient, private tokenStore: TokenStoreService) {
 
