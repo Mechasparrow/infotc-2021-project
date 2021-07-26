@@ -396,6 +396,36 @@ class GroupViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.Ge
         serializer = serializers.EventSerializer(located_group.group_events, many=True)
         return Response(serializer.data)
 
+    @action(detail=True, methods=['post'])
+    @permission_classes([permissions.IsAuthenticated])
+    def joinGroup(self, request,pk):
+        located_group = models.Group.objects.get(pk=pk)
+        
+        if (request.user.is_authenticated):
+            if (request.user not in located_group.users.all()):
+                located_group.users.add(request.user)
+
+            located_group.save()
+            serializer = serializers.GroupSerializer(located_group)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
+    @action(detail=True, methods=['delete'])
+    @permission_classes([permissions.IsAuthenticated])
+    def leaveGroup(self, request, pk):
+        located_group = models.Group.objects.get(pk=pk)
+        
+        if (request.user.is_authenticated):
+            if (request.user in located_group.users.all()):
+                located_group.users.remove(request.user)
+            
+            located_group.save()
+            serializer = serializers.GroupSerializer(located_group)
+            return Response(serializer.data)
+        else:
+            return Response(status=401)
+
 class ProjectNoteViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
     queryset=models.ProjectNote.objects.all()

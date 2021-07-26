@@ -240,35 +240,44 @@ export class ViewGroupPageComponent implements OnInit {
   }
 
   async leaveGroup(){
-    try{
-      //dummy code: hit join group api endpoint
+    let authToken: string | null = this.tokenStore.getAuthenticationToken();
 
-      if (this.authUser != null){
-        this.groupUsers = this.groupUsers.filter((user: User) => user.id != this.authUser?.id);
+    if (authToken != null){
+      try{
+        //dummy code: hit join group api endpoint
+
+        if (this.authUser != null){
+          await this.api.userLeaveGroup(this.groupId, authToken);
+        }
+        
+        //refresh code
+        this.obtainGroupUsers();
+
+      }catch(err){
+        console.log(err);
       }
-      
-      //refresh code
-      //this.obtainGroupUsers();
-
-    }catch(err){
-      console.log(err);
     }
   }
 
   async joinGroup(){
-    try{
-      //dummy code: hit leave group api endpoint
-      if (this.authUser != null){
-        this.groupUsers.push(this.authUser);
+    let authToken: string | null = this.tokenStore.getAuthenticationToken();
+
+    if (authToken != null){  
+      try{
+        //dummy code: hit leave group api endpoint
+        if (this.authUser != null){
+          await this.api.userJoinGroup(this.groupId, authToken);
+        }
+
+        //refresh code
+        this.obtainGroupUsers();
+
+
+      }catch(err){
+        console.log(err);
       }
-
-      //refresh code
-      //this.obtainGroupUsers();
-
-
-    }catch(err){
-      console.log(err);
     }
+
   }
 
 }
