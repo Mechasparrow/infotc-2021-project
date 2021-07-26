@@ -10,8 +10,10 @@ import { ApiService } from 'src/app/services/api/api.service';
 
 import { CardType } from '../result-card/result-card.component';
 import { ProjectProposal } from 'src/app/models/ProjectProposal';
+import { Router } from '@angular/router';
 
 interface SearchResult {
+  id: number,
   type: CardType,
   name: string,
   genericName: string,
@@ -33,10 +35,37 @@ export class MainSearchComponent implements OnInit {
 
   searchResults:SearchResult[] = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
 
+  }
+
+  viewCard(event: any){
+    let baseUrlFragment = "users";
+
+    let cardType = <CardType> event.type;
+
+    switch (cardType){
+      case CardType.ProjectView:
+        baseUrlFragment = "projects";
+        break;
+      case CardType.GroupView:
+        baseUrlFragment = "groups";
+        break;
+      case CardType.ProjectProposalView:
+        baseUrlFragment = "proposals";
+        break;
+      case CardType.UserView:
+        baseUrlFragment = "users";
+        break;
+    }
+
+    
+    let navigateUrl = `${baseUrlFragment}/${event.id}`;
+    
+    this.router.navigate([navigateUrl]);
+    
   }
 
   async projectSearch(searchQuery: string){
@@ -45,6 +74,7 @@ export class MainSearchComponent implements OnInit {
 
     this.searchResults = (<Project[]>projectSearchResults).map ((projectResult: Project) => {
       return <SearchResult>{
+        id: projectResult.id,
         type: CardType.ProjectView,
         name: projectResult.name,
         description: projectResult.description,
@@ -58,6 +88,7 @@ export class MainSearchComponent implements OnInit {
 
     this.searchResults = (<User[]>userSearchResults).map ((userSearchResult: User) => {
       return <SearchResult>{
+        id: userSearchResult.id,
         type: CardType.UserView,
         genericName: userSearchResult.username
       }
@@ -69,6 +100,7 @@ export class MainSearchComponent implements OnInit {
 
     this.searchResults = (<Group[]>groupSearchResults).map ((groupSearchResult: Group) => {
       return <SearchResult>{
+        id: groupSearchResult.id,
         type: CardType.GroupView,
         genericName: groupSearchResult.name
       }
@@ -81,6 +113,7 @@ export class MainSearchComponent implements OnInit {
 
     this.searchResults = (<ProjectProposal[]>projectProposalSearchResults).map ((projectProposalSearchResult: ProjectProposal) => {
       return <SearchResult>{
+        id: projectProposalSearchResult.id,
         type: CardType.ProjectProposalView,
         name: projectProposalSearchResult.name,
         description: projectProposalSearchResult.description
