@@ -35,7 +35,7 @@ export class ViewGroupPageComponent implements OnInit {
     
     await this.loadAuthUser();
     this.getGroup();
-    this.CheckIfGroupOwner();
+    await this.CheckIfGroupOwner();
     this.obtainGroupUsers();
     this.obtainGroupEvents();
   }
@@ -113,6 +113,11 @@ export class ViewGroupPageComponent implements OnInit {
   async obtainGroupUsers(){
     try{
       this.groupUsers = <User[]> await this.api.getGroupUsers(this.groupId);
+
+      if (this.userOwnsGroup && this.authUser != null){
+        this.groupUsers.push(this.authUser);
+      }
+
     }catch(err){
       console.log(err);
     }
@@ -220,6 +225,49 @@ export class ViewGroupPageComponent implements OnInit {
       }catch(err){
         console.log(err);
       }
+    }
+  }
+
+  isUserInGroup(): boolean {
+    let userInGroup : User | undefined = undefined;
+
+    if (this.authUser != null){
+      userInGroup = this.groupUsers.find((user: User) => user.id == this.authUser?.id);
+    }
+
+    return userInGroup != undefined;
+
+  }
+
+  async leaveGroup(){
+    try{
+      //dummy code: hit join group api endpoint
+
+      if (this.authUser != null){
+        this.groupUsers = this.groupUsers.filter((user: User) => user.id != this.authUser?.id);
+      }
+      
+      //refresh code
+      //this.obtainGroupUsers();
+
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  async joinGroup(){
+    try{
+      //dummy code: hit leave group api endpoint
+      if (this.authUser != null){
+        this.groupUsers.push(this.authUser);
+      }
+
+      //refresh code
+      //this.obtainGroupUsers();
+
+
+    }catch(err){
+      console.log(err);
     }
   }
 

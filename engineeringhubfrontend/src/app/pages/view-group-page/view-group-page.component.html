@@ -9,6 +9,16 @@
             </div>
         </div>
 
+        <div *ngIf = "!userOwnsGroup && authUser != null" class = "ml-auto mx-8 space-x-2">
+            <button (click) = "joinGroup()" *ngIf = "!isUserInGroup()" class = "hover:ring-2 ring-mizzou-black bg-mizzou-green rounded-full text-white py-1 px-2">
+                Join Group
+            </button>
+
+            <button (click) = "leaveGroup()" *ngIf = "isUserInGroup()" class = "hover:ring-2 ring-mizzou-black bg-mizzou-red rounded-full text-white py-1 px-2">
+                Leave Group
+            </button>
+        </div>
+
         <!--
             TODO add Project info section
         -->
