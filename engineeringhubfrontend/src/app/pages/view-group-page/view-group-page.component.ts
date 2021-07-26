@@ -13,24 +13,54 @@ import { TokenStoreService } from 'src/app/services/token-store/token-store.serv
 })
 export class ViewGroupPageComponent implements OnInit {
 
+  authUser: User | null = null;
   group: Group = <Group>{name:"test"};
+
+
   groupUsers: User[] = [];
   groupId: number = -1;
   userOwnsGroup: boolean = false;
   groupEvents: GroupEvent[] = [];
+  expandedEvents: GroupEvent[] = [];
+  eventAttendees: {[key: number]: Promise<User[]>} = {};
 
   constructor(private api: ApiService, private tokenStore: TokenStoreService, private activatedRoute: ActivatedRoute, private router: Router) {
     
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
     let groupIdRaw: string | null = this.activatedRoute.snapshot.paramMap.get("id");
     this.groupId = groupIdRaw != null ? parseInt(groupIdRaw) : -1;
+    
+    await this.loadAuthUser();
     this.getGroup();
     this.CheckIfGroupOwner();
     this.obtainGroupUsers();
     this.obtainGroupEvents();
+  }
+
+  async loadAuthUser(){
+    let apiToken:string | null = this.tokenStore.getAuthenticationToken();
+
+    if (apiToken != null){
+      try{
+        this.authUser = <User> await this.api.getAuthUser(apiToken);
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
+  }
+
+  isUserAttendingEvent(groupEvent: GroupEvent){
+    if (this.authUser != null){
+
+      let locatedUser = groupEvent.users.find(user => user == this.authUser?.id);
+      return locatedUser != undefined;
+    }else{
+      return false;
+    }
   }
 
   EditGroup(){
@@ -91,6 +121,13 @@ export class ViewGroupPageComponent implements OnInit {
   async obtainGroupEvents(){
     try{
       this.groupEvents = <GroupEvent[]> await this.api.getGroupEvents(this.groupId);
+
+      this.groupEvents.forEach((groupEvent: GroupEvent) => {
+        
+        let attendees: Promise<User[]> = this.getEventAttendees(groupEvent);
+        this.eventAttendees[groupEvent.id] = attendees;
+
+      })
     }catch(err){
       console.log(err);
     }
@@ -127,6 +164,63 @@ export class ViewGroupPageComponent implements OnInit {
       console.log(err);
     }
   
+  }
+
+  async getEventAttendees(event: GroupEvent) : Promise<User[]>{
+    let eventMembers: User[] = [];
+
+    try{
+
+      eventMembers = <User[]> await this.api.getGroupEventAttendees(event.id); 
+    
+    }catch(err){
+      console.log(err);
+    }
+
+    return eventMembers
+  }
+
+  expandEventMembers(event: GroupEvent){
+    this.expandedEvents.push(event);
+  }
+
+  unExpandEventMembers(event: GroupEvent){
+    this.expandedEvents = this.expandedEvents.filter((groupEvent: GroupEvent) => {
+      return groupEvent != event;
+    });
+  }
+
+  expandedEvent(event:GroupEvent){
+    let returnedEvent = this.expandedEvents.find((groupEvent: GroupEvent) => groupEvent == event);
+
+    return returnedEvent != undefined;
+  }
+
+  async attendEvent(event: GroupEvent){
+    let userAuthToken: string | null = this.tokenStore.getAuthenticationToken();
+    
+    if (userAuthToken != null){  
+      try{
+        await this.api.attendGroupEvent(event.id, userAuthToken);
+        await this.obtainGroupEvents();
+      }catch(err){
+        console.log(err);
+      }
+    }
+
+  }
+
+  async unattendEvent(event: GroupEvent){
+    let userAuthToken: string | null = this.tokenStore.getAuthenticationToken();
+    
+    if (userAuthToken != null){  
+      try{
+        await this.api.unattendGroupEvent(event.id, userAuthToken);
+        await this.obtainGroupEvents();
+      }catch(err){
+        console.log(err);
+      }
+    }
   }
 
 }

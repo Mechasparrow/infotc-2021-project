@@ -91,6 +91,40 @@
                 <div>
                     {{getPrettyDate(groupEvent)}}
                 </div>
+
+                <div class = "mt-4 mb-4">
+                    <button *ngIf = "!isUserAttendingEvent(groupEvent)" (click) = "attendEvent(groupEvent)" class = "hover:ring-2 ring-mizzou-black bg-mizzou-green py-1 px-2 text-white">
+                        Attend Event
+                    </button>
+
+                    <button *ngIf = "isUserAttendingEvent(groupEvent)" (click) = "unattendEvent(groupEvent)" class = "hover:ring-2 ring-mizzou-black bg-mizzou-red py-1 px-2 text-white">
+                        Unattend Event
+                    </button>
+                </div>
+
+                <div class = "mt-4">
+                    <div>
+                        <div class = "fit-content hover:cursor-pointer" *ngIf="!expandedEvent(groupEvent)" (click) = "expandEventMembers(groupEvent)" >
+                            <img   class = "inline-block" src = "/assets/icons/expand.svg"/>
+                            <div class = "text-xl inline-block">View attendees</div>
+                        </div>
+                        
+                        <div class = "fit-content hover:cursor-pointer" *ngIf="expandedEvent(groupEvent)" (click) = "unExpandEventMembers(groupEvent)">
+                            <img class = "inline-block" src = "/assets/icons/minimize.svg"/>
+                            <div class = "text-xl inline-block">View attendees</div>
+                        </div>
+
+                    </div>
+                    
+                    <ul *ngIf="expandedEvent(groupEvent)" class = "ml-8 list-disc">
+                        <li *ngFor = "let attendee of eventAttendees[groupEvent.id] | async">
+                            {{attendee.username}}
+                        </li>
+                    </ul>
+                </div>
+
+
+
                 <div *ngIf = "userOwnsGroup" class = "mt-2 space-x-2">
                     <button (click)="DeleteGroupEvent(groupEvent.id)" class = "hover:ring-4 ring-mizzou-gold px-2 py-1 text-white inline-block bg-mizzou-red">
                         Delete Event
