@@ -161,7 +161,7 @@ export class ApiService {
       })
     }
 
-    return this.http.get(`${this.apiEndpoint}/project-notes/${noteId}`, httpOptions).toPromise();
+    return this.http.get(`${this.apiEndpoint}/project-notes/${noteId}/`, httpOptions).toPromise();
   }
 
   async updateProjectNote(projectId:number, updatedNote: ProjectNote, authToken:string){
@@ -365,7 +365,7 @@ export class ApiService {
   }
 
   async getGroupEvent(eventId: number){
-    return this.http.get(`${this.apiEndpoint}/events/${eventId}`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/events/${eventId}/`).toPromise();
   }
 
   async createGroupEvent(groupId: number, newEvent: GroupEvent,authToken: string){
@@ -392,18 +392,18 @@ export class ApiService {
   async getUser(userId: number){
 
 
-    return this.http.get(`${this.apiEndpoint}/users/${userId}`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/users/${userId}/`).toPromise();
 
   }
 
   async getProject(projectId: number){
     
-    return this.http.get(`${this.apiEndpoint}/projects/${projectId}`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/projects/${projectId}/`).toPromise();
   }
 
   async getProjectProposal(projectProposalId: number){
     
-    return this.http.get(`${this.apiEndpoint}/project-proposals/${projectProposalId}`).toPromise();
+    return this.http.get(`${this.apiEndpoint}/project-proposals/${projectProposalId}/`).toPromise();
   }
 
   async createProjectFromProposal(proposalId: number, authToken: string){
