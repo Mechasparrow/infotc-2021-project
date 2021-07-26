@@ -446,4 +446,25 @@ export class ApiService {
 
   }
   
+  async userJoinGroup(groupId: number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+
+    return this.http.post(`${this.apiEndpoint}/groups/${groupId}/joinGroup/`, {}, httpOptions).toPromise();
+  }
+
+  async userLeaveGroup(groupId: number, authToken:string){
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Token ${authToken}`
+      })
+    }
+    
+    return this.http.delete(`${this.apiEndpoint}/groups/${groupId}/leaveGroup/`, httpOptions).toPromise(); 
+
+  }
+
 }
